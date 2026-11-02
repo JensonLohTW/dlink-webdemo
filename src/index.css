@@ -1,0 +1,245 @@
+@import 'tailwindcss';
+
+@import '@fontsource/dm-serif-display/400.css';
+@import '@fontsource/dm-serif-display/400-italic.css';
+@import '@fontsource-variable/manrope';
+@import '@fontsource-variable/noto-serif-tc';
+@import '@fontsource-variable/noto-sans-tc';
+@import '@fontsource-variable/noto-serif-jp';
+@import '@fontsource-variable/noto-sans-jp';
+@import '@fontsource-variable/familjen-grotesk';
+
+@theme {
+  /* MuRu, sampled from the 設計2 mockups */
+  --color-cream: #fffcf8;
+  --color-sand: #f5eae1;
+  --color-linen: #f3ede4;
+  --color-bark: #33241b;
+  --color-bark-soft: #4a3226;
+  --color-clay: #c8602f;
+  --color-apricot: #e8875a;
+  --color-peach: #ffd6c0;
+  --color-umber: #6f5d52;
+
+  /* D-Link Robotics: open sky over a network, with one warm light from MuRu's world */
+  --color-lagoon: #0e3438;
+  --color-lagoon-soft: #164a4f;
+  --color-signal: #0f8f9e;
+  --color-mist: #e6efed;
+  --color-paper: #f7faf8;
+  --color-sun: #f2b872;
+  --color-slate: #4a6063;
+
+  --font-ui: 'Manrope Variable', 'Noto Sans TC Variable', 'Noto Sans JP Variable', sans-serif;
+  --font-serif: 'DM Serif Display', 'Noto Serif TC Variable', 'Noto Serif JP Variable', serif;
+  --font-corp: 'Familjen Grotesk Variable', 'Noto Sans TC Variable', sans-serif;
+  --font-corp-body: 'Noto Sans TC Variable', 'Familjen Grotesk Variable', sans-serif;
+
+  --ease-soft: cubic-bezier(0.22, 0.8, 0.3, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--color-cream);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Japanese readers get Japanese glyph shapes before the Traditional Chinese fallback. */
+:root:lang(ja) {
+  --font-ui: 'Manrope Variable', 'Noto Sans JP Variable', 'Noto Sans TC Variable', sans-serif;
+  --font-serif: 'DM Serif Display', 'Noto Serif JP Variable', 'Noto Serif TC Variable', serif;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-clay);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.corp :focus-visible {
+  outline-color: var(--color-signal);
+}
+
+.display {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.04;
+  text-wrap: balance;
+}
+
+:lang(zh) .display,
+:lang(zh-Hant) .display,
+:lang(ja) .display {
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.25;
+}
+
+.eyebrow {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+/* Scroll reveal: quiet, single pass. */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.8s var(--ease-soft),
+    transform 0.8s var(--ease-soft);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+.load-in {
+  animation: load-in 1s var(--ease-soft) both;
+  animation-delay: var(--reveal-delay, 0ms);
+}
+
+@keyframes load-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+@layer components {
+  /* MuRu's OLED face. 12 breaths a minute is the sleep-mode rhythm from the spec. */
+  .oled {
+    --glow: #ffd6c0;
+    position: relative;
+    display: block;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: radial-gradient(circle at 50% 42%, #5a3a28, #33241b 72%);
+    box-shadow:
+      0 0 0 calc(var(--size) * 0.045) rgb(255 255 255 / 0.05),
+      0 0 0 calc(var(--size) * 0.11) rgb(255 255 255 / 0.03);
+    width: var(--size);
+    flex: none;
+  }
+
+  .oled-eye {
+    position: absolute;
+    top: 44%;
+    width: 15%;
+    aspect-ratio: 1;
+    margin-top: -7.5%;
+    border-radius: 50%;
+    background: var(--glow);
+    box-shadow: 0 0 calc(var(--size) * 0.09) rgb(255 214 192 / 0.75);
+    transform: translate(var(--look-x, 0), var(--look-y, 0));
+    transition:
+      transform 0.35s var(--ease-soft),
+      border-radius 0.8s var(--ease-soft),
+      height 0.8s var(--ease-soft),
+      aspect-ratio 0.8s var(--ease-soft);
+    animation: oled-breathe 5s ease-in-out infinite;
+  }
+
+  .oled-eye:first-child {
+    left: 26%;
+  }
+
+  .oled-eye:last-child {
+    right: 26%;
+  }
+
+  @keyframes oled-breathe {
+    0%,
+    100% {
+      opacity: 0.55;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+
+  .oled[data-mood='curious'] .oled-eye {
+    animation:
+      oled-blink 4.2s linear infinite;
+  }
+
+  .oled[data-mood='sleepy'] .oled-eye {
+    aspect-ratio: 1 / 0.24;
+    margin-top: -1.8%;
+    animation-duration: 7s;
+  }
+
+  .oled[data-mood='happy'] .oled-eye {
+    aspect-ratio: 1 / 0.62;
+    border-radius: 50% 50% 22% 22% / 90% 90% 16% 16%;
+    animation: none;
+  }
+
+  @keyframes oled-blink {
+    0%,
+    94%,
+    100% {
+      scale: 1 1;
+    }
+    97% {
+      scale: 1 0.08;
+    }
+  }
+}
+
+/* D-Link Robotics signature: the network line that breathes at MuRu's pace. */
+.breath-line path {
+  animation: breath-drift 5s linear infinite;
+}
+
+@keyframes breath-drift {
+  to {
+    transform: translateX(-120px);
+  }
+}
+
+.sound-bar {
+  transform-origin: bottom;
+  animation: sound-bar 2.6s ease-in-out infinite alternate;
+  animation-delay: calc(var(--i) * -0.37s);
+}
+
+@keyframes sound-bar {
+  from {
+    transform: scaleY(0.35);
+  }
+}
+
+.glow-pulse {
+  animation: oled-breathe 5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .load-in,
+  .oled-eye,
+  .oled[data-mood='curious'] .oled-eye,
+  .breath-line path,
+  .sound-bar,
+  .glow-pulse {
+    animation: none;
+  }
+}

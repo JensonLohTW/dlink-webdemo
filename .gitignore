@@ -1,0 +1,10 @@
+node_modules
+dist
+*.local
+
+# Internal source documents and local tooling stay out of the repository
+docs/
+.claude/
+
+.DS_Store
+*.tsbuildinfo
