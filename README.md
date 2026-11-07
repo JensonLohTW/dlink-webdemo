@@ -11,6 +11,13 @@ pnpm build     # 型別檢查並輸出到 dist/
 pnpm preview   # 預覽正式版本
 ```
 
+使用 Docker 啟動／停止（需先開啟 Docker Desktop，服務位於 <http://localhost:5173>）：
+
+```bash
+./scripts/start.sh   # 建置並啟動，等到服務可連線後返回
+./scripts/stop.sh    # 停止並移除容器
+```
+
 ## 頁面
 
 | 路徑 | 內容 |

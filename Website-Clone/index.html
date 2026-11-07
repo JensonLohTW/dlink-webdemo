@@ -10,10 +10,18 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+  <!-- Liquid glass refraction map, used by backdrop-filter in Chromium -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <filter id="liquid-glass" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.009 0.014" numOctaves="2" seed="7" result="noise"/>
+      <feGaussianBlur in="noise" stdDeviation="2" result="map"/>
+      <feDisplacementMap in="SourceGraphic" in2="map" scale="38" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </svg>
   <!-- Recreation prototype of https://ai-robots.apps.mdxpreview.xyz/unitree-go2 . Cart, search, account and sales forms are demo-only. -->
   <header class="site-header">
-    <a href="https://ai-robots.apps.mdxpreview.xyz/" class="brand-link" aria-label="AI Robots home">
-      <img src="assets/logos/ai_robots_logo.svg" alt="Ai Robots Brand" width="211" height="26">
+    <a href="https://ai-robots.apps.mdxpreview.xyz/" class="brand-link" aria-label="D-Link Robotics home">
+      <img src="assets/logos/dlink_robotics_logo.svg" alt="D-Link Robotics" width="211" height="26">
     </a>
     <div class="menus">
       <button id="hamburger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span><span></span></button>
@@ -371,7 +379,7 @@
     <a class="bottom-link social-1" href="https://www.linkedin.com/company/ai-robots-gr/" target="_blank" rel="noopener">linkedin <img class="icon" src="assets/icons/arrow_right.svg" alt="" width="22" height="17"></a>
     <a class="bottom-link social-2" href="https://www.youtube.com/@PhysicalAILab" target="_blank" rel="noopener">youtube <img class="icon" src="assets/icons/arrow_right.svg" alt="" width="22" height="17"></a>
     <a class="bottom-link social-3" href="https://www.instagram.com/airobots.ai/" target="_blank" rel="noopener">instagram <img class="icon" src="assets/icons/arrow_right.svg" alt="" width="22" height="17"></a>
-    <a class="bottom-link brand" href="https://ai-robots.apps.mdxpreview.xyz/" aria-label="AI Robots home"><img src="assets/logos/ai_robots_logo.svg" alt="Ai Robots Brand" width="211" height="26" loading="lazy"></a>
+    <a class="bottom-link brand" href="https://ai-robots.apps.mdxpreview.xyz/" aria-label="D-Link Robotics home"><img src="assets/logos/dlink_robotics_logo.svg" alt="D-Link Robotics" width="211" height="26" loading="lazy"></a>
     <span class="last-elem-footer legal-copy">© All rights reserved 2026.</span>
     <span class="last-elem-footer legal-country">Greece</span>
     <a class="last-elem-footer legal-service" href="https://ai-robots.apps.mdxpreview.xyz/contact">Customer Service</a>

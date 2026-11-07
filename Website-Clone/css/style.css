@@ -682,3 +682,39 @@ table { border-spacing: 0; }
 .js .specs { opacity: 0; }
 .no-js .specs { position: absolute; inset: auto 0 0 0; display: flex; flex-wrap: wrap; gap: 24px; padding: 0 var(--hor-padding) calc(var(--fs) * 5); }
 html.menu-open { overflow: hidden; }
+
+/* ---------- Liquid glass: nav pill + header icon buttons ---------- */
+.main-nav,
+.icon-btn {
+  border: 1px solid rgba(255, 255, 255, .22);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, .18) 0%, rgba(255, 255, 255, .05) 45%, rgba(255, 255, 255, .02) 100%),
+    rgba(16, 16, 16, .22);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .55),
+    inset 0 -1px 0 rgba(255, 255, 255, .10),
+    inset 0 0 calc(var(--fs) * 1.2) rgba(255, 255, 255, .08),
+    0 calc(var(--fs) * .5) calc(var(--fs) * 2) rgba(0, 0, 0, .28);
+  -webkit-backdrop-filter: blur(14px) saturate(180%) brightness(1.06);
+  backdrop-filter: blur(14px) saturate(180%) brightness(1.06);
+  isolation: isolate;
+}
+/* Specular sheen across the top edge */
+.main-nav::before,
+.icon-btn::before {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  border-radius: inherit; pointer-events: none;
+  background: radial-gradient(120% 70% at 50% -20%, rgba(255, 255, 255, .28), rgba(255, 255, 255, 0) 60%);
+}
+.icon-btn { position: relative; }
+.icon-btn:hover { background-color: rgba(255, 255, 255, .10); }
+.main-nav .nav-link { text-shadow: 0 1px 2px rgba(0, 0, 0, .45); }
+.main-nav .nav-link:hover,
+.main-nav .nav-link[aria-expanded="true"] { background-color: rgba(255, 255, 255, .14); }
+
+/* Chromium can feed an SVG filter into backdrop-filter: add the refraction wobble there */
+.lg-refract .main-nav,
+.lg-refract .icon-btn {
+  -webkit-backdrop-filter: url(#liquid-glass) blur(10px) saturate(180%) brightness(1.06);
+  backdrop-filter: url(#liquid-glass) blur(10px) saturate(180%) brightness(1.06);
+}

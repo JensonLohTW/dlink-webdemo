@@ -6,6 +6,10 @@
   root.classList.remove("no-js");
   root.classList.add("js");
 
+  /* Liquid glass refraction: only Chromium honours url() inside backdrop-filter */
+  var brands = navigator.userAgentData && navigator.userAgentData.brands;
+  if (brands && brands.some(function (b) { return /Chrom/.test(b.brand); })) root.classList.add("lg-refract");
+
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var mobileQuery = window.matchMedia("(orientation: portrait) and (max-aspect-ratio: .624)");
   var portraitQuery = window.matchMedia("(orientation: portrait)");
