@@ -1,0 +1,13 @@
+.git
+.github
+.serena
+.claude
+docs
+node_modules
+dist
+*.tsbuildinfo
+*.local
+.DS_Store
+.dockerignore
+Dockerfile
+docker-compose.yml

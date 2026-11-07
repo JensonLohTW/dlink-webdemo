@@ -179,7 +179,7 @@ function Footer() {
         <div>
           <h2 className="eyebrow text-cream">{footer.follow}</h2>
           <SocialIcons className="mt-5 text-cream" />
-          <Link to="/" className="mt-4 inline-block text-sm text-cream/75 no-underline hover:text-peach">
+          <Link to="/robotics" className="mt-4 inline-block text-sm text-cream/75 no-underline hover:text-peach">
             D-Link Robotics
           </Link>
         </div>

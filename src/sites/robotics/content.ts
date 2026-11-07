@@ -86,9 +86,9 @@ export const support = {
     zh: '客戶支援',
     body: '為消費者提供完整的產品支援。點擊前往下載數位照護指南、查看常見問題或進行產品保固登錄。',
     links: [
-      { to: '/care-guide', en: 'Care guide', zh: '數位照護指南' },
+      { to: '/robotics/care-guide', en: 'Care guide', zh: '數位照護指南' },
       { to: '/muru#faq', en: 'FAQ', zh: '常見問題' },
-      { to: '/warranty', en: 'Warranty registration', zh: '產品保固登錄' },
+      { to: '/robotics/warranty', en: 'Warranty registration', zh: '產品保固登錄' },
     ],
   },
   partner: {

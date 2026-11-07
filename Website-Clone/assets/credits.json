@@ -1,0 +1,22 @@
+{
+  "note": "All media in this folder was copied from the reference page for a local recreation prototype. Rights remain with AI Robots / Unitree and the respective owners.",
+  "reference_page": "https://ai-robots.apps.mdxpreview.xyz/unitree-go2",
+  "assets": [
+    { "local": "assets/logos/ai_robots_logo.svg", "source": "https://ai-robots.apps.mdxpreview.xyz/logos/ai_robots_logo.svg" },
+    { "local": "assets/icons/*", "source": "https://ai-robots.apps.mdxpreview.xyz/icons/" },
+    { "local": "assets/images/menu/**", "source": "https://ai-robots.apps.mdxpreview.xyz/images/menu/" },
+    { "local": "assets/videos/go2/hero.mp4", "source": "https://ai-robots.apps.mdxpreview.xyz/videos/go2/hero.mp4" },
+    { "local": "assets/videos/go2/1.mp4", "source": "https://ai-robots.apps.mdxpreview.xyz/videos/go2/1.mp4", "note": "Reference embeds this clip via Vimeo (video 1168639430); the site's own MP4 is used locally." },
+    { "local": "assets/videos/go2/2.mp4", "source": "https://ai-robots.apps.mdxpreview.xyz/videos/go2/2.mp4", "note": "Reference embeds this clip via Vimeo (video 1168639453); the site's own MP4 is used locally." },
+    { "local": "assets/img/hero_poster.avif", "source": "https://ai-robots.apps.mdxpreview.xyz/_astro/poster.CkjznDZC_2g2pq6.avif" },
+    { "local": "assets/img/poster_2.webp", "source": "https://ai-robots.apps.mdxpreview.xyz/_astro/poster_2.CWlyqkgk_22EJmb.webp" },
+    { "local": "assets/img/poster_3.webp", "source": "https://ai-robots.apps.mdxpreview.xyz/_astro/poster_3.B1_33uGK_ZGn47v.webp" },
+    { "local": "assets/img/go2_power.webp", "source": "https://ai-robots.apps.mdxpreview.xyz/_astro/go2.lTo6ID4__NQwzq.webp" },
+    { "local": "assets/img/open_platform.webp", "source": "https://ai-robots.apps.mdxpreview.xyz/_astro/open_platform.B81froEU_2hVN3J.webp" },
+    { "local": "assets/img/book_bck.webp", "source": "https://ai-robots.apps.mdxpreview.xyz/_astro/book_bck.WGXL8-j1_Z1SbJwc.webp" },
+    { "local": "assets/img/new_go2.webp", "source": "https://ai-robots.apps.mdxpreview.xyz/_astro/new_go2.CfA5fx1J_2kogY.webp" },
+    { "local": "assets/seq/f000.avif … f200.avif", "source": "https://ai-robots.apps.mdxpreview.xyz/_astro/RAW_GO2__00000 … RAW_GO2__00800 (.avif)", "note": "Every 4th frame of the original 801-frame sequence (f000 = frame 0, f200 = frame 800)." },
+    { "local": "assets/fonts/work-sans-latin.woff2", "source": "https://fonts.google.com/specimen/Work+Sans", "license": "SIL Open Font License 1.1" },
+    { "local": "assets/vendor/gsap.min.js, assets/vendor/ScrollTrigger.min.js", "source": "https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/", "license": "GSAP Standard License (free)" }
+  ]
+}

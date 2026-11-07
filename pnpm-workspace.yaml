@@ -1,0 +1,4 @@
+# pnpm 11 runs a dependency status check before scripts and prompts to
+# purge node_modules when it thinks they are stale. That prompt aborts in
+# the non-TTY Docker dev container (and is unnecessary locally anyway).
+verifyDepsBeforeRun: false

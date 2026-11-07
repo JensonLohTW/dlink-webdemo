@@ -5,12 +5,12 @@ import { news } from './content'
 export function NewsArticlePage() {
   const { slug } = useParams()
   const article = news.find((item) => item.slug === slug)
-  if (!article) return <Navigate to="/#news" replace />
+  if (!article) return <Navigate to="/robotics#news" replace />
 
   return (
     <article className="mx-auto max-w-3xl px-6 pt-36 pb-24 md:pt-44 md:pb-32">
       <Link
-        to="/#news"
+        to="/robotics#news"
         className="inline-flex items-center gap-1.5 font-corp text-sm font-bold text-signal no-underline"
       >
         <ArrowLeft size={15} />

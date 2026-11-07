@@ -165,7 +165,7 @@ function News() {
                 <p className="text-sm font-bold text-signal">{item.category}</p>
                 <h3 className="mt-3 flex-1 text-xl leading-relaxed font-bold">{item.title}</h3>
                 <Link
-                  to={`/news/${item.slug}`}
+                  to={`/robotics/news/${item.slug}`}
                   aria-label={`Read More：${item.title}`}
                   className="group mt-5 inline-flex w-fit items-center gap-1.5 font-corp text-sm font-bold text-lagoon no-underline hover:text-signal"
                 >

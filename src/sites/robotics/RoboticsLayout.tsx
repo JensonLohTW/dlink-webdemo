@@ -18,7 +18,7 @@ function Header() {
 
   useEffect(() => setMenuOpen(false), [pathname])
 
-  const light = pathname === '/' && !scrolled && !menuOpen
+  const light = pathname === '/robotics' && !scrolled && !menuOpen
   const close = () => setMenuOpen(false)
 
   return (
@@ -29,7 +29,7 @@ function Header() {
     >
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between gap-6 px-6 md:px-10">
         <Link
-          to="/"
+          to="/robotics"
           className={`font-corp text-xl font-bold tracking-tight no-underline ${light ? 'text-paper' : 'text-lagoon'}`}
         >
           D-Link <span className={light ? 'font-normal' : 'font-normal text-signal'}>Robotics</span>
@@ -38,7 +38,7 @@ function Header() {
           {nav.map(({ id, en, zh }) => (
             <Link
               key={id}
-              to={`/#${id}`}
+              to={`/robotics#${id}`}
               className={`group flex flex-col no-underline transition-colors ${
                 light ? 'text-paper' : 'text-lagoon hover:text-signal'
               }`}
@@ -72,7 +72,7 @@ function Header() {
           {nav.map(({ id, en, zh }) => (
             <Link
               key={id}
-              to={`/#${id}`}
+              to={`/robotics#${id}`}
               onClick={close}
               className="flex items-baseline justify-between py-3 font-corp text-lg font-semibold text-lagoon no-underline"
             >
@@ -115,11 +115,11 @@ function Footer() {
             <ArrowUpRight size={14} />
           </a>
           <p className="flex gap-3 text-sm text-paper/75">
-            <Link to="/privacy" className="text-inherit no-underline hover:text-sun">
+            <Link to="/robotics/privacy" className="text-inherit no-underline hover:text-sun">
               Privacy Policy 隱私權政策
             </Link>
             <span aria-hidden="true">｜</span>
-            <Link to="/terms" className="text-inherit no-underline hover:text-sun">
+            <Link to="/robotics/terms" className="text-inherit no-underline hover:text-sun">
               Terms of Service 服務條款
             </Link>
           </p>

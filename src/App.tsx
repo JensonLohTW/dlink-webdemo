@@ -1,5 +1,7 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
+import { BackToHub } from './shared/BackToHub'
 import { ScrollManager } from './shared/ScrollManager'
+import { HubPage } from './sites/hub/HubPage'
 import { LanguageProvider } from './sites/muru/i18n'
 import { MuruLayout } from './sites/muru/MuruLayout'
 import { GrowingPage } from './sites/muru/pages/GrowingPage'
@@ -17,8 +19,10 @@ export default function App() {
   return (
     <>
       <ScrollManager />
+      <BackToHub />
       <Routes>
-        <Route element={<RoboticsLayout />}>
+        <Route index element={<HubPage />} />
+        <Route path="robotics" element={<RoboticsLayout />}>
           <Route index element={<RoboticsHomePage />} />
           <Route path="news/:slug" element={<NewsArticlePage />} />
           <Route path="care-guide" element={<RoboticsStubPage page="careGuide" />} />
