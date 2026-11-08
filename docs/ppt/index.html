@@ -598,6 +598,21 @@
   body.dark-bg #hint{color:var(--paper);opacity:.4}
   body.low-power #hint{color:var(--accent);opacity:.72}
   body.dark-bg.low-power #hint{color:var(--paper);opacity:.72}
+  #hint{right:calc(2.5vw + 118px)}
+  #fs-btn{position:fixed;bottom:1.8vh;right:2.5vw;z-index:31;display:inline-flex;align-items:center;gap:8px;height:30px;padding:0 12px;font-family:var(--mono);font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);background:transparent;border:1px solid rgba(var(--ink-rgb),.4);cursor:pointer;opacity:.6;transition:opacity .2s ease,background .2s ease,color .2s ease}
+  #fs-btn:hover,#fs-btn:focus-visible{opacity:1;background:var(--accent);border-color:var(--accent);color:var(--accent-on);outline:none}
+  #fs-btn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.6}
+  #fs-btn .ico-exit{display:none}
+  body.is-fs #fs-btn .ico-enter{display:none}
+  body.is-fs #fs-btn .ico-exit{display:block}
+  body.dark-bg #fs-btn{color:var(--paper);border-color:rgba(255,255,255,.4)}
+  body.dark-bg #fs-btn:hover,body.dark-bg #fs-btn:focus-visible{color:var(--accent-on);background:var(--accent)}
+  @media print{#fs-btn{display:none}}
+  #fs-toast{position:fixed;right:2.5vw;bottom:8vh;z-index:60;max-width:min(32em,90vw);padding:14px 18px;background:var(--ink);color:var(--paper);font-family:var(--sans),var(--sans-zh);font-size:15px;line-height:1.6;box-shadow:0 8px 28px rgba(0,0,0,.28);display:none}
+  #fs-toast.on{display:block}
+  #fs-toast b{font-weight:600}
+  #fs-toast .act{display:flex;gap:14px;margin-top:10px;font-family:var(--mono);font-size:13px;letter-spacing:.08em}
+  #fs-toast .act a,#fs-toast .act button{color:var(--accent-bright);background:none;border:0;padding:0;cursor:pointer;font:inherit;letter-spacing:inherit;text-decoration:underline}
 
   /* ESC 索引页: 动画元素强制可见 (覆盖 motion-ready 的 opacity:0) */
   #overview [data-anim]{opacity:1!important;transform:none!important}
@@ -1649,6 +1664,12 @@
 
 <canvas id="bg-grid" class="bg"></canvas>
 <div id="hint">← → 翻頁 · B 靜態 · ESC 索引</div>
+<button id="fs-btn" type="button" aria-label="全屏播放（快捷鍵 F）" title="全屏播放（F）">
+  <svg class="ico-enter" viewBox="0 0 16 16" aria-hidden="true"><path d="M1 5V1h4M11 1h4v4M15 11v4h-4M5 15H1v-4"/></svg>
+  <svg class="ico-exit" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 1v4H1M15 5h-4V1M11 15v-4h4M1 11h4v4"/></svg>
+  <span class="fs-label">全屏播放</span>
+</button>
+<div id="fs-toast" role="status" aria-live="polite"></div>
 
 <div id="deck">
 
@@ -1669,13 +1690,13 @@
     <canvas class="ascii-bg" aria-hidden="true"></canvas>
     <div class="chrome-min">
       <div class="l">D-LINK ROBOTICS · 數位平台提案</div>
-      <div class="r">2026.11 · 01 / 34</div>
+      <div class="r">2026.11 · 01 / 41</div>
     </div>
     <div style="flex:1;padding:0;display:grid;grid-template-rows:auto 1fr auto;gap:2.6vh">
-      <div data-anim="kicker" class="t-meta" style="color:rgba(255,255,255,.78);letter-spacing:.22em">ARCHITECTURE · WEBSITE · JOURNEY · SERVICE · COMMERCE · DATA</div>
-      <h1 data-anim="title" style="align-self:center;font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(8.6vw,14.4vh);line-height:1.02;letter-spacing:-.03em;color:#fff">一個平台，<br/>串起整段<span style="font-style:italic;font-weight:300">陪伴</span></h1>
+      <div data-anim="kicker" class="t-meta" style="color:rgba(255,255,255,.78);letter-spacing:.22em">ARCHITECTURE · WEBSITE · JOURNEY · SERVICE · COMMERCE · APP · DATA</div>
+      <h1 data-anim="title" style="align-self:center;font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(8.6vw,14.4vh);line-height:1.02;letter-spacing:-.03em;color:#fff">數位平台<br/><span style="font-style:italic;font-weight:300">整體解決方案</span></h1>
       <div data-anim="bottom" style="display:grid;grid-template-rows:auto auto;gap:1.6vh;border-top:1px solid rgba(255,255,255,.22);padding-top:2vh">
-        <div data-anim="lead" class="lead" style="max-width:64ch;color:rgba(255,255,255,.9)">從您的兩份規劃出發：前後台分離的技術架構、網站與頁面、使用者旅程、智慧客服、電商與會員，以及讓這一切持續變好的數據閉環。</div>
+        <div data-anim="lead" class="lead" style="max-width:64ch;color:rgba(255,255,255,.9)">本提案依據貴公司「企業官網架構」與「MuRu 網站架構」兩份規劃文件，就技術架構、網站與頁面、使用者旅程、智慧客服、電商與會員、App 聯動、數據賦能七大面向提出整體解決方案，並以數據回饋閉環支持平台長期優化。</div>
         <div style="display:flex;justify-content:space-between;align-items:end">
           <div class="t-meta" style="color:rgba(255,255,255,.62)">提案團隊 · 2026 年 11 月</div>
           <div class="t-meta" style="color:rgba(255,255,255,.62);margin-right:12vw">滑鼠移到虛線文字或「＋」卡片，可看延伸說明</div>
@@ -1688,25 +1709,26 @@
 <!-- ============ 02 · overview ============ -->
 <section class="slide" data-layout="S17" data-animate="system-diagram">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l dl-trail"><span class="on">總覽</span><span>回顧</span><span>01 架構</span><span>02 網站</span><span>03 旅程</span><span>04 客服</span><span>05 電商</span><span>06 數據</span><span>閉環</span></div><div class="r">02 / 34</div></div>
+    <div class="chrome-min"><div class="l dl-trail"><span class="on">總覽</span><span>回顧</span><span>01 架構</span><span>02 網站</span><span>03 旅程</span><span>04 客服</span><span>05 電商</span><span>06 App</span><span>07 數據</span><span>閉環</span></div><div class="r">02 / 41</div></div>
     <div class="dl-main dl-dense" style="grid-template-rows:auto 1fr;gap:3vh">
       <div data-anim="line" class="dl-head-row">
         <div class="dl-head">
           <div class="t-meta">OVERVIEW · 全局總覽</div>
-          <h2 class="dl-h4">一個平台，<br/>六段接成一個閉環</h2>
+          <h2 class="dl-h4">平台整體架構，<br/>與七個章節</h2>
         </div>
-        <p class="dl-note" style="max-width:58ch">左邊是整個平台的分層架構：使用者從最上層進來，資料一路往下沉澱，再由數據回饋往上優化。右邊是今天的講解順序，每一段開始時都會回到這張圖。方塊可移入看說明。</p>
+        <p class="dl-note" style="max-width:58ch">左側為平台的分層架構：使用者由最上層進入，資料逐層寫入，再由數據回饋至上層進行優化。右側為今日的說明順序，每個章節開始時會回到此圖。方塊可移入查看說明。</p>
       </div>
       <div data-anim="up" class="dl-ovwrap">
-        <div class="ov"><div class="ov-l" style="grid-column:1">觸點<small>TOUCH</small></div><div class="ov-r" style="grid-column:2"><div class="ov-c hv">企業官網<span class="tip">講信任：品牌、技術、產品組合、新聞與商務合作。</span></div><div class="ov-c hv">MuRu 三語站<span class="tip">講陪伴：繁中、英文、日文三語，生活故事、規格與方案。</span></div><div class="ov-c hv">LINE<span class="tip">台灣與日本的主要溝通管道；客服與通知都接同一個平台。</span></div><div class="ov-c hv">MuRu App<span class="tip left">App 團隊既有系統；透過會員帳號與權益 API 串接。</span></div><div class="ov-c hv">Email<span class="tip left">確認信、開賣通知、訂單通知；依語言與興趣分群寄送。</span></div></div><div class="ov-l" style="grid-column:1">前台<small>FRONTEND</small></div><div class="ov-r" style="grid-column:2"><div class="ov-c hv">預先產生頁面<span class="tip">公開頁在發布時產生成完整網頁，搜尋引擎與 AI 助理直接讀取。</span></div><div class="ov-c hv">互動元件<span class="tip">表單、語言切換、推薦等元件，只在需要時呼叫 API。</span></div><div class="ov-c hv">對話視窗<span class="tip">每頁右下角的客服入口，自動帶入目前產品與語言。</span></div><div class="ov-c hv">結帳頁<span class="tip left">購物車與結帳；付款在託管付款頁完成，卡號不經過我們的伺服器。</span></div><div class="ov-c hv">CDN · WAF<span class="tip left">全球節點就近送出網頁；防火牆與機器人防護擋在最外層。</span></div></div><div class="ov-l" style="grid-column:1">API<small>GATEWAY</small></div><div class="ov-r" style="grid-column:2"><div class="ov-c hv">統一 API<span class="tip">/api/v1/ 版本化；網站、App、LINE、客服共用同一組規則。</span></div><div class="ov-c hv">身分與權限<span class="tip">員工用企業單一登入＋多因素；會員用標準登入協定；服務之間用憑證。</span></div><div class="ov-c hv">防濫用 · 冪等<span class="tip left">速率限制與驗證；寫入請求帶冪等鍵，重送也不會重複建立。</span></div></div><div class="ov-l" style="grid-column:1">後台<small>BACKEND</small></div><div class="ov-r" style="grid-column:2"><div class="ov-c hv">內容管理<span class="tip up">產品、頁面、規格、FAQ、三語與審核；發布後同步網站與 AI 知識庫。</span></div><div class="ov-c hv">表單名單<span class="tip up">上市通知、商務、客服表單；先存再回應，失敗自動重試。</span></div><div class="ov-c hv">會員<span class="tip up">一個帳號通用官網、App、客服；連結舊訂單需要驗證。</span></div><div class="ov-c hv">商務訂單<span class="tip up">商品、價格、庫存、訂單；台灣與日本分市場設定。</span></div><div class="ov-c hv">訂閱權益<span class="tip up left">Plus 訂閱：官網、App Store、Google Play 都寫進同一處。</span></div><div class="ov-c hv">智慧客服<span class="tip up left">依已核准內容回答並附來源；沒把握就轉真人。</span></div><div class="ov-c hv">推薦<span class="tip up left">先依頁面內容與規則，之後依擁有的裝置推薦。</span></div></div><div class="ov-l" style="grid-column:1">資料<small>DATA</small></div><div class="ov-r" style="grid-column:2"><div class="ov-c hv">業務資料庫<span class="tip up">名單、案件、訂單、帳號；只放台灣區域，個資加密。</span></div><div class="ov-c hv">知識庫向量<span class="tip up">把核准內容切成段落建立索引，讓 AI 找得到正確答案。</span></div><div class="ov-c hv">快取 · 佇列<span class="tip up left">快取加速 API；寄信、轉交、同步、對帳排隊處理。</span></div><div class="ov-c hv">事件收集<span class="tip up left">瀏覽器事件（同意後）＋伺服器事件；個資不進分析平台。</span></div></div><div class="ov-l" style="grid-column:1">營運<small>OPS</small></div><div class="ov-r" style="grid-column:2"><div class="ov-c hv">數據看板<span class="tip up">經營總覽、產品漏斗、內容成效、客服洞察、電商與訂閱。</span></div><div class="ov-c hv">CRM<span class="tip up">名單分群、開賣通知、商務線索跟進。</span></div><div class="ov-c hv">客服平台<span class="tip up left">網站、LINE、Email 單一收件匣；真人接手看到完整脈絡。</span></div><div class="ov-c hv">金流 · 發票 · 物流<span class="tip up left">台灣綠界與電子發票；日本 KOMOJU；物流單號回寫訂單。</span></div></div><div class="ov-loop"><span>數據回饋 · 持續優化</span></div></div>
+        <div class="ov"><div class="ov-l" style="grid-column:1">觸點<small>TOUCH</small></div><div class="ov-r" style="grid-column:2"><div class="ov-c hv">企業官網<span class="tip">定位為信任：品牌、技術、產品組合、新聞與商務合作。</span></div><div class="ov-c hv">MuRu 三語站<span class="tip">定位為陪伴：繁中、英文、日文三語，生活情境、規格與方案。</span></div><div class="ov-c hv">LINE<span class="tip">台灣與日本的主要溝通管道；客服與通知都接同一個平台。</span></div><div class="ov-c hv">MuRu App<span class="tip left">App 團隊既有系統；透過會員帳號與權益 API 串接。</span></div><div class="ov-c hv">Email<span class="tip left">確認信、開賣通知、訂單通知；依語言與興趣分群寄送。</span></div></div><div class="ov-l" style="grid-column:1">前台<small>FRONTEND</small></div><div class="ov-r" style="grid-column:2"><div class="ov-c hv">預先產生頁面<span class="tip">公開頁在發布時產生成完整網頁，搜尋引擎與 AI 助理直接讀取。</span></div><div class="ov-c hv">互動元件<span class="tip">表單、語言切換、推薦等元件，只在需要時呼叫 API。</span></div><div class="ov-c hv">對話視窗<span class="tip">每頁右下角的客服入口，自動帶入目前產品與語言。</span></div><div class="ov-c hv">結帳頁<span class="tip left">購物車與結帳；付款在託管付款頁完成，卡號不經過我們的伺服器。</span></div><div class="ov-c hv">CDN · WAF<span class="tip left">全球節點就近送出網頁；防火牆與機器人防護擋在最外層。</span></div></div><div class="ov-l" style="grid-column:1">API<small>GATEWAY</small></div><div class="ov-r" style="grid-column:2"><div class="ov-c hv">統一 API<span class="tip">/api/v1/ 版本化；網站、App、LINE、客服共用同一組規則。</span></div><div class="ov-c hv">身分與權限<span class="tip">員工用企業單一登入＋多因素；會員用標準登入協定；服務之間用憑證。</span></div><div class="ov-c hv">防濫用 · 冪等<span class="tip left">速率限制與驗證；寫入請求帶冪等鍵，重送也不會重複建立。</span></div></div><div class="ov-l" style="grid-column:1">後台<small>BACKEND</small></div><div class="ov-r" style="grid-column:2"><div class="ov-c hv">內容管理<span class="tip up">產品、頁面、規格、FAQ、三語與審核；發布後同步網站與 AI 知識庫。</span></div><div class="ov-c hv">表單名單<span class="tip up">上市通知、商務、客服表單；先存再回應，失敗自動重試。</span></div><div class="ov-c hv">會員<span class="tip up">一個帳號通用官網、App、客服；連結舊訂單需要驗證。</span></div><div class="ov-c hv">商務訂單<span class="tip up">商品、價格、庫存、訂單；台灣與日本分市場設定。</span></div><div class="ov-c hv">訂閱權益<span class="tip up left">Plus 訂閱：官網、App Store、Google Play 都寫進同一處。</span></div><div class="ov-c hv">智慧客服<span class="tip up left">依已核准內容回答並附來源；信心不足時轉真人。</span></div><div class="ov-c hv">推薦<span class="tip up left">先依頁面內容與規則，之後依擁有的裝置推薦。</span></div></div><div class="ov-l" style="grid-column:1">資料<small>DATA</small></div><div class="ov-r" style="grid-column:2"><div class="ov-c hv">業務資料庫<span class="tip up">名單、案件、訂單、帳號；只放台灣區域，個資加密。</span></div><div class="ov-c hv">知識庫向量<span class="tip up">把核准內容切成段落建立索引，讓 AI 找得到正確答案。</span></div><div class="ov-c hv">快取 · 佇列<span class="tip up left">快取加速 API；寄信、轉交、同步、對帳排隊處理。</span></div><div class="ov-c hv">事件收集<span class="tip up left">瀏覽器事件（同意後）＋伺服器事件；個資不進分析平台。</span></div></div><div class="ov-l" style="grid-column:1">營運<small>OPS</small></div><div class="ov-r" style="grid-column:2"><div class="ov-c hv">數據看板<span class="tip up">經營總覽、產品漏斗、內容成效、客服洞察、電商與訂閱。</span></div><div class="ov-c hv">CRM<span class="tip up">名單分群、開賣通知、商務線索跟進。</span></div><div class="ov-c hv">客服平台<span class="tip up left">網站、LINE、Email 單一收件匣；真人接手看到完整脈絡。</span></div><div class="ov-c hv">金流 · 發票 · 物流<span class="tip up left">台灣綠界與電子發票；日本 KOMOJU；物流單號回寫訂單。</span></div></div><div class="ov-loop"><span>數據回饋 · 持續優化</span></div></div>
         <div class="dl-agenda">
-          <div><span class="n">01</span><div><b>技術架構</b><small>前後台分離：怎麼搭才快、穩、安全、能長大</small></div></div>
-          <div><span class="n">02</span><div><b>網站與頁面</b><small>每一頁回答什麼問題、帶人去哪裡</small></div></div>
-          <div><span class="n">03</span><div><b>使用者旅程</b><small>在哪裡猶豫、需要什麼才會往前</small></div></div>
-          <div><span class="n">04</span><div><b>智慧客服</b><small>問題怎麼被接住，又怎麼越來越少</small></div></div>
-          <div><span class="n">05</span><div><b>電商與會員</b><small>興趣怎麼變成訂單、訂閱與回購</small></div></div>
-          <div><span class="n">06</span><div><b>數據賦能</b><small>哪裡該改、改了有沒有用</small></div></div>
-          <div class="last"><span class="n">↺</span><div><b>全局閉環</b><small>六段如何接成一圈，持續變好</small></div></div>
+          <div><span class="n">01</span><div><b>技術架構</b><small>前後台分離：效能、穩定、安全與擴充性</small></div></div>
+          <div><span class="n">02</span><div><b>網站與頁面</b><small>各頁面的定位與下一步動線</small></div></div>
+          <div><span class="n">03</span><div><b>使用者旅程</b><small>使用者各階段的疑慮與所需資訊</small></div></div>
+          <div><span class="n">04</span><div><b>智慧客服</b><small>客服流程，以及問題量的持續降低</small></div></div>
+          <div><span class="n">05</span><div><b>電商與會員</b><small>從興趣到訂單、訂閱與回購</small></div></div>
+          <div><span class="n">06</span><div><b>App 聯動</b><small>機器人與 App 的功能聯動與分工</small></div></div>
+          <div><span class="n">07</span><div><b>數據賦能</b><small>找出改善項目並驗證成效</small></div></div>
+          <div class="last"><span class="n">↺</span><div><b>全局閉環</b><small>七個章節如何構成持續優化的閉環</small></div></div>
         </div>
       </div>
     </div>
@@ -1716,15 +1738,15 @@
 <!-- ============ 03 · 回顧兩份規劃 · S08 ============ -->
 <section class="slide" data-layout="S08" data-animate="duo-mirror">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l dl-trail"><span>總覽</span><span class="on">回顧</span><span>01 架構</span><span>02 網站</span><span>03 旅程</span><span>04 客服</span><span>05 電商</span><span>06 數據</span><span>閉環</span></div><div class="r">03 / 34</div></div>
+    <div class="chrome-min"><div class="l dl-trail"><span>總覽</span><span class="on">回顧</span><span>01 架構</span><span>02 網站</span><span>03 旅程</span><span>04 客服</span><span>05 電商</span><span>06 App</span><span>07 數據</span><span>閉環</span></div><div class="r">03 / 41</div></div>
     <div class="dl-main dl-dense" style="grid-template-rows:auto 1fr">
       <div data-anim="line" class="dl-head-row">
         <div class="dl-head">
           <div class="t-cat">YOUR PLAN · 兩份規劃文件重點</div>
-          <h2 class="dl-h4">一個講信任，一個講陪伴</h2>
+          <h2 class="dl-h4">兩份規劃文件的定位與內容</h2>
         </div>
         <div style="display:flex;flex-direction:column;gap:1vh;align-items:flex-start">
-          <p class="dl-note" style="max-width:52ch">企業官網把 D-Link 的技術與信任帶給 MuRu；MuRu 產品站用三語的生活故事打動使用者。兩份文件的內容與語氣，我們全數保留。</p>
+          <p class="dl-note" style="max-width:52ch">企業官網呈現 D-Link 的技術與品牌信任；MuRu 產品站以三語生活情境說明產品價值。兩份文件的內容與文案，本提案全數保留。</p>
           <span class="dl-legend">虛線文字可滑鼠移入看細節</span>
         </div>
       </div>
@@ -1758,14 +1780,14 @@
 <!-- ============ 04 · 我們在規劃之上做了什麼 · S15 ============ -->
 <section class="slide dark" data-layout="S15" data-animate="matrix-fill">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l dl-trail"><span>總覽</span><span class="on">回顧</span><span>01 架構</span><span>02 網站</span><span>03 旅程</span><span>04 客服</span><span>05 電商</span><span>06 數據</span><span>閉環</span></div><div class="r">04 / 34</div></div>
+    <div class="chrome-min"><div class="l dl-trail"><span>總覽</span><span class="on">回顧</span><span>01 架構</span><span>02 網站</span><span>03 旅程</span><span>04 客服</span><span>05 電商</span><span>06 App</span><span>07 數據</span><span>閉環</span></div><div class="r">04 / 41</div></div>
     <div class="dl-main dl-dense" style="grid-template-rows:auto 1fr">
       <div data-anim="line" class="dl-head-row">
         <div class="dl-head">
           <div class="t-cat">OUR PLAN · 我們在規劃之上做了什麼</div>
-          <h2 class="dl-h4">每一段內容，<br/>都接上一套能運作的機制</h2>
+          <h2 class="dl-h4">規劃內容，<br/>與對應的系統機制</h2>
         </div>
-        <p class="dl-note">每張卡片上方是您文件裡的元素，下方是我們把它變成的能力與衡量指標。移到卡片上可看具體做法。</p>
+        <p class="dl-note">卡片上方為貴公司文件中的項目，下方為對應的系統能力與衡量指標。移入卡片可查看具體做法。</p>
       </div>
       <div data-anim="up" class="dl-map">
         <div class="card-fill hvc"><div class="from">您的規劃：「預約 MuRu」按鈕</div><div class="arrow">→</div><div class="to">上市通知名單</div><div class="txt">Email 雙重確認，依產品、語言、地區分群</div><div class="kp">指標 · 登記轉換率、Email 確認率</div>
@@ -1777,7 +1799,7 @@
         <div class="card-accent hvc"><div class="from" style="color:rgba(255,255,255,.8)">您的規劃：FAQ、照護指南</div><div class="arrow">→</div><div class="to">AI 客服知識庫</div><div class="txt">同一份內容服務網頁、搜尋引擎與 AI 客服</div><div class="kp">指標 · AI 自助解決率</div>
           <div class="flip"><b>怎麼做</b><br/>內容發布後自動同步成知識庫；AI 只用已核准內容回答並附來源；回答不了的問題自動成為內容待辦，補寫後全站同步。</div></div>
         <div class="card-fill hvc"><div class="from">您的規劃：支援與商務表單</div><div class="arrow">→</div><div class="to">客服與商務承接</div><div class="txt">網站、LINE、Email 進同一個收件匣</div><div class="kp">指標 · 首次回覆時間、有效商機</div>
-          <div class="flip"><b>怎麼做</b><br/>客服類進客服平台，AI 先回應、真人接手；B2B、經銷、媒體進 CRM，依類型指派窗口；失敗自動重試並告警，一筆都不漏。</div></div>
+          <div class="flip"><b>怎麼做</b><br/>客服類進客服平台，AI 先回應、真人接手；B2B、經銷、媒體進 CRM，依類型指派窗口；失敗時自動重試並告警，每筆皆有紀錄可追查。</div></div>
         <div class="card-fill hvc"><div class="from">您的規劃：Basic／Plus 方案</div><div class="arrow">→</div><div class="to">電商與訂閱權益</div><div class="txt">商店賣主機與配件；訂閱權益統一管理</div><div class="kp">指標 · 結帳完成率、訂閱率</div>
           <div class="flip"><b>怎麼做</b><br/>官網商店處理訂單、付款、電子發票與物流；Plus 不論在官網、App Store 或 Google Play 購買，都寫進同一個權益服務，App 只問一個地方。</div></div>
         <div class="card-fill hvc"><div class="from">您的規劃：新聞、社群連結</div><div class="arrow">→</div><div class="to">流量來源追蹤</div><div class="txt">知道使用者從哪裡來、看了什麼、在哪裡離開</div><div class="kp">指標 · 各來源轉換、AI 推薦流量</div>
@@ -1794,10 +1816,10 @@
   <div class="canvas-card" style="padding:0;display:flex;flex-direction:column;overflow:hidden">
     <div data-anim="img" style="position:relative;flex:0 0 56%;overflow:hidden;background:var(--grey-1)">
       <img src="images/10-prototype-hero.jpg" data-image-slot="s22-hero-21x9" alt="一位女性微笑看著桌上的 MuRu 陪伴機器人" loading="eager" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%">
-      <div class="chrome-min" style="position:absolute;top:0;left:0;right:0;color:rgba(10,10,10,.7);padding:5.6vh 5vw 0"><div class="l dl-trail"><span>總覽</span><span class="on">回顧</span><span>01 架構</span><span>02 網站</span><span>03 旅程</span><span>04 客服</span><span>05 電商</span><span>06 數據</span><span>閉環</span></div><div class="r" style="color:rgba(255,255,255,.88)">05 / 34</div></div>
+      <div class="chrome-min" style="position:absolute;top:0;left:0;right:0;color:rgba(10,10,10,.7);padding:5.6vh 5vw 0"><div class="l dl-trail"><span>總覽</span><span class="on">回顧</span><span>01 架構</span><span>02 網站</span><span>03 旅程</span><span>04 客服</span><span>05 電商</span><span>06 App</span><span>07 數據</span><span>閉環</span></div><div class="r" style="color:rgba(255,255,255,.88)">05 / 41</div></div>
       <div data-anim="title-block" style="position:absolute;left:5vw;top:13vh;background:var(--paper);padding:3vh 2.8vw;max-width:40vw">
-        <div style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(4.8vw,8.4vh);line-height:1.06;letter-spacing:-.03em;color:var(--text-primary)">先點給您看</div>
-        <div class="t-meta" style="margin-top:1.4vh">LIVE DEMO · 現場展示</div>
+        <div style="font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(4.8vw,8.4vh);line-height:1.06;letter-spacing:-.03em;color:var(--text-primary)">先看畫面，再談架構</div>
+        <div class="t-meta" style="margin-top:1.4vh">LIVE DEMO · 雛形導覽</div>
       </div>
     </div>
     <div data-anim="kpi" class="image-hero-body" style="padding-top:5vh">
@@ -1823,13 +1845,13 @@
 <!-- ============ 06 · div1 ============ -->
 <section class="slide dark" data-layout="S17" data-animate="system-diagram">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l dl-trail"><span>總覽</span><span>回顧</span><span class="on">01 架構</span><span>02 網站</span><span>03 旅程</span><span>04 客服</span><span>05 電商</span><span>06 數據</span><span>閉環</span></div><div class="r">06 / 34</div></div>
+    <div class="chrome-min"><div class="l dl-trail"><span>總覽</span><span>回顧</span><span class="on">01 架構</span><span>02 網站</span><span>03 旅程</span><span>04 客服</span><span>05 電商</span><span>06 App</span><span>07 數據</span><span>閉環</span></div><div class="r">06 / 41</div></div>
     <div class="dl-main" style="grid-template-rows:1fr">
       <div data-anim="up" class="dl-div">
         <div class="ov"><div class="ov-l" style="grid-column:1">觸點<small>TOUCH</small></div><div class="ov-r" style="grid-column:2"><div class="ov-c">企業官網</div><div class="ov-c">MuRu 三語站</div><div class="ov-c">LINE</div><div class="ov-c">MuRu App</div><div class="ov-c">Email</div></div><div class="ov-l on" style="grid-column:1">前台<small>FRONTEND</small></div><div class="ov-r" style="grid-column:2"><div class="ov-c on">預先產生頁面</div><div class="ov-c on">互動元件</div><div class="ov-c on">對話視窗</div><div class="ov-c on">結帳頁</div><div class="ov-c on">CDN · WAF</div></div><div class="ov-l on" style="grid-column:1">API<small>GATEWAY</small></div><div class="ov-r" style="grid-column:2"><div class="ov-c on">統一 API</div><div class="ov-c on">身分與權限</div><div class="ov-c on">防濫用 · 冪等</div></div><div class="ov-l on" style="grid-column:1">後台<small>BACKEND</small></div><div class="ov-r" style="grid-column:2"><div class="ov-c on">內容管理</div><div class="ov-c on">表單名單</div><div class="ov-c on">會員</div><div class="ov-c on">商務訂單</div><div class="ov-c on">訂閱權益</div><div class="ov-c on">智慧客服</div><div class="ov-c on">推薦</div></div><div class="ov-l on" style="grid-column:1">資料<small>DATA</small></div><div class="ov-r" style="grid-column:2"><div class="ov-c on">業務資料庫</div><div class="ov-c on">知識庫向量</div><div class="ov-c on">快取 · 佇列</div><div class="ov-c on">事件收集</div></div><div class="ov-l" style="grid-column:1">營運<small>OPS</small></div><div class="ov-r" style="grid-column:2"><div class="ov-c">數據看板</div><div class="ov-c">CRM</div><div class="ov-c">客服平台</div><div class="ov-c">金流 · 發票 · 物流</div></div><div class="ov-loop"><span>數據回饋 · 持續優化</span></div></div>
         <div class="dl-div-r">
           <div class="dl-div-no"><span class="dl-num">01</span><span class="t-meta">ARCHITECTURE</span></div>
-          <div><h2 class="dl-h4" style="color:#fff">技術架構</h2><p class="dl-q">「這套系統怎麼搭，才能快、穩、安全，又能一直長大？」</p></div>
+          <div><h2 class="dl-h4" style="color:#fff">技術架構</h2><p class="dl-q">「系統如何兼顧效能、穩定、安全與後續擴充？」</p></div>
           <dl class="dl-io"><dt>承接</dt><dd>您的兩份規劃、網站雛形、多產品與三語的需求</dd><dt>產出</dt><dd>前後台分離的平台：一組 API，給網站、App、LINE、客服共用</dd><dt>交給</dt><dd class="to">→ 02 網站與頁面</dd></dl>
           <div class="dl-chips"><span class="chip">分層架構</span><span class="chip">為什麼分離</span><span class="chip">前台與後台</span><span class="chip">請求路徑</span><span class="chip">部署與安全</span></div>
         </div>
@@ -1841,25 +1863,25 @@
 <!-- ============ 07 · layers ============ -->
 <section class="slide" data-layout="S20" data-animate="stacked-ledger">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l dl-trail"><span>總覽</span><span>回顧</span><span class="on">01 架構</span><span>02 網站</span><span>03 旅程</span><span>04 客服</span><span>05 電商</span><span>06 數據</span><span>閉環</span></div><div class="r">07 / 34</div></div>
+    <div class="chrome-min"><div class="l dl-trail"><span>總覽</span><span>回顧</span><span class="on">01 架構</span><span>02 網站</span><span>03 旅程</span><span>04 客服</span><span>05 電商</span><span>06 App</span><span>07 數據</span><span>閉環</span></div><div class="r">07 / 41</div></div>
     <div class="dl-main dl-dense" style="grid-template-rows:auto 1fr;gap:2.6vh">
       <div data-anim="line" class="dl-head-row">
         <div class="dl-head">
           <div class="t-cat">LAYERED ARCHITECTURE · 分層架構</div>
-          <h2 class="dl-h4">六層架構，<br/>每一層只做一件事</h2>
+          <h2 class="dl-h4">六層架構，<br/>各層職責明確</h2>
         </div>
-        <p class="dl-note" style="max-width:56ch">藍色的前台與後台是本案的核心：前台負責「呈現」，後台負責「資料與規則」，中間只透過 API 溝通。標籤可移入看每個元件負責什麼。</p>
+        <p class="dl-note" style="max-width:56ch">藍色標示的前台與後台為本案核心：前台負責呈現，後台負責資料與規則，兩者僅透過 API 溝通。標籤可移入查看各元件的職責。</p>
       </div>
       <div data-anim="ledger" class="dl-ledger dl-layers">
         <div class="ledger-row"><div class="ledger-num">觸點</div>
           <div class="dl-chips"><span class="chip">企業官網</span><span class="chip">MuRu 三語站</span><span class="chip hv">LINE 官方帳號<span class="tip">台灣、日本主要溝通管道；客服與通知都接同一個平台。</span></span><span class="chip hv">MuRu App<span class="tip">App 團隊既有系統；透過會員帳號與權益 API 串接。</span></span><span class="chip">Email／電子報</span></div>
-          <div class="ledger-label">每個觸點都接同一個平台：資料不重複，說法一致。<span class="dl-tech">Web · LINE · App · Email</span></div></div>
+          <div class="ledger-label">各觸點皆串接同一個平台：資料不重複，對外說明一致。<span class="dl-tech">Web · LINE · App · Email</span></div></div>
         <div class="ledger-row key"><div class="ledger-num">前台</div>
           <div class="dl-chips"><span class="chip hv">預先產生的公開頁<span class="tip">發布時把每一頁產生成完整網頁，放在 CDN；不需要每次瀏覽都向後台要資料。</span></span><span class="chip hv">會員與購物車<span class="tip">需要登入或即時資料的頁面，在瀏覽器執行，透過 API 取資料。</span></span><span class="chip">對話視窗</span><span class="chip">三語網址</span><span class="chip hv">CDN 與 WAF<span class="tip left">全球節點就近送出；網站防火牆、機器人防護、速率限制擋在最外層。</span></span></div>
           <div class="ledger-label">公開頁是靜態網頁、就近送出；後台維護時網站照常瀏覽。<span class="dl-tech">React · React Router · Vite</span></div></div>
         <div class="ledger-row"><div class="ledger-num">API</div>
           <div class="dl-chips"><span class="chip">/api/v1 版本化</span><span class="chip hv">身分與權限<span class="tip">員工、會員、外部服務各用不同的驗證方式，權限最小化。</span></span><span class="chip hv">冪等與重試<span class="tip">每個寫入請求帶唯一鍵；網路不穩重送時，不會重複建立名單或訂單。</span></span><span class="chip">速率限制</span></div>
-          <div class="ledger-label">網站、App、LINE、客服共用同一組 API，規則只寫一次。<span class="dl-tech">REST · OpenAPI</span></div></div>
+          <div class="ledger-label">網站、App、LINE、客服共用同一組 API，業務規則集中管理。<span class="dl-tech">REST · OpenAPI</span></div></div>
         <div class="ledger-row key"><div class="ledger-num">後台</div>
           <div class="dl-chips"><span class="chip">內容管理</span><span class="chip">表單與名單</span><span class="chip">會員</span><span class="chip">商務訂單</span><span class="chip">訂閱權益</span><span class="chip">智慧客服</span><span class="chip">推薦</span></div>
           <div class="ledger-label">一個專案、模組分工：一種語言、一套部署、一套權限。<span class="dl-tech">Python · Django · Wagtail</span></div></div>
@@ -1877,14 +1899,14 @@
 <!-- ============ 08 · compare ============ -->
 <section class="slide" data-layout="S08" data-animate="duo-mirror">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l dl-trail"><span>總覽</span><span>回顧</span><span class="on">01 架構</span><span>02 網站</span><span>03 旅程</span><span>04 客服</span><span>05 電商</span><span>06 數據</span><span>閉環</span></div><div class="r">08 / 34</div></div>
+    <div class="chrome-min"><div class="l dl-trail"><span>總覽</span><span>回顧</span><span class="on">01 架構</span><span>02 網站</span><span>03 旅程</span><span>04 客服</span><span>05 電商</span><span>06 App</span><span>07 數據</span><span>閉環</span></div><div class="r">08 / 41</div></div>
     <div class="dl-main dl-dense" style="grid-template-rows:auto 1fr">
       <div data-anim="line" class="dl-head-row">
         <div class="dl-head">
           <div class="t-cat">DECOUPLED · 為什麼前後台分離</div>
-          <h2 class="dl-h4">前後台分離，<br/>快、穩、安全、能擴充</h2>
+          <h2 class="dl-h4">前後台分離：<br/>效能、穩定、安全與擴充</h2>
         </div>
-        <p class="dl-note" style="max-width:56ch">這是本案最重要的架構決策。前台只負責呈現，後台只負責資料與規則，兩邊透過 API 溝通，各自升級、各自擴充。右欄項目可移入看細節。</p>
+        <p class="dl-note" style="max-width:56ch">此為本案最重要的架構決策。下表就六個面向，對照一體式網站與前後台分離的差異。右欄部分項目可移入查看細節。</p>
       </div>
       <div class="dl-recap duo-compare" style="margin-top:0">
         <div class="col">
@@ -1894,7 +1916,7 @@
         <span class="vrule"></span>
         <div class="col accent">
           <div class="col-head"><span class="col-ttl">前後台分離</span><span class="t-meta">本案</span></div>
-          <div class="dl-row"><span class="k hv">速度<span class="tip left">發布時就把頁面做好，瀏覽時不需要任何運算；開賣日流量暴增也不受影響。</span></span><span class="v">頁面預先產生、從最近的 CDN 節點送出；開賣日流量暴增也不受影響</span></div><div class="dl-row"><span class="k hv">穩定<span class="tip left">公開頁與後台完全獨立；後台短暫中斷時，表單請求排隊，恢復後自動處理。</span></span><span class="v">後台維護或短暫中斷時，公開頁照常瀏覽；表單排隊，恢復後自動處理</span></div><div class="dl-row"><span class="k hv">安全<span class="tip left">攻擊面只剩 API，且經過防火牆、速率限制、輸入驗證與簽章檢查。</span></span><span class="v">公開頁不碰資料庫；後台只開 API，前面有防火牆、速率限制與驗證</span></div><div class="dl-row"><span class="k hv">搜尋與 AI<span class="tip left up">三語網址、結構化資料、sitemap 在建置時一起產生，GEO 也從這裡開始。</span></span><span class="v">每頁都是完整網頁；三語網址、結構化資料、sitemap 建置時一起產生</span></div><div class="dl-row"><span class="k hv">多端共用<span class="tip left up">資料與規則只寫一次；新增管道時只需要新的前台，不必重寫後台。</span></span><span class="v">網站、App、LINE、客服共用同一組 API；新增管道只需要新的前台</span></div><div class="dl-row"><span class="k hv">擴充改版<span class="tip left up">新產品用既有模板與內容上架；前台改版不影響資料，後台升級不影響畫面。</span></span><span class="v">前台改版不影響資料、後台升級不影響畫面；新產品用模板上架</span></div>
+          <div class="dl-row"><span class="k hv">速度<span class="tip left">發布時就把頁面做好，瀏覽時不需要任何運算；開賣日流量增加時仍可維持服務。</span></span><span class="v">頁面預先產生、從最近的 CDN 節點送出；開賣日流量增加時仍可維持服務</span></div><div class="dl-row"><span class="k hv">穩定<span class="tip left">公開頁與後台完全獨立；後台短暫中斷時，表單請求排隊，恢復後自動處理。</span></span><span class="v">後台維護或短暫中斷時，公開頁照常瀏覽；表單排隊，恢復後自動處理</span></div><div class="dl-row"><span class="k hv">安全<span class="tip left">攻擊面只剩 API，且經過防火牆、速率限制、輸入驗證與簽章檢查。</span></span><span class="v">公開頁不碰資料庫；後台只開 API，前面有防火牆、速率限制與驗證</span></div><div class="dl-row"><span class="k">搜尋與 AI</span><span class="v">每頁都是完整網頁；三語網址、結構化資料、sitemap 建置時一起產生</span></div><div class="dl-row"><span class="k">多端共用</span><span class="v">網站、App、LINE、客服共用同一組 API；新增管道只需要新的前台</span></div><div class="dl-row"><span class="k">擴充改版</span><span class="v">前台改版不影響資料、後台升級不影響畫面；新產品用模板上架</span></div>
         </div>
       </div>
     </div>
@@ -1907,13 +1929,13 @@
     <div class="split-half">
       <div class="half b-ink" style="padding:5.6vh 3.6vw 4.4vh;gap:2.4vh">
         <div class="chrome-min" style="margin-bottom:0;color:rgba(255,255,255,.62)"><div class="l dl-trail"><span>總覽</span><span class="on">01 架構</span><span>前台與後台</span></div><div class="r"></div></div>
-        <div><div class="t-meta">FRONTEND · 前台負責呈現</div><h2 class="dl-h4" style="color:#fff;margin-top:1vh">前台</h2><div class="dl-tech" style="margin-top:.8vh">React · React Router v7 · Vite · TypeScript · Tailwind CSS</div></div>
-        <ul class="dl-sl"><li><b>預先產生</b>公開頁在發布時產生完整網頁、放上 <span class="hv">CDN<span class="tip">內容傳遞網路：全球節點就近送出網頁；靜態頁長時間快取，發布時切換版本並清除。</span></span>；瀏覽時不需要後台運算，搜尋引擎與 AI 助理直接讀到內容。</li><li><b>前端應用</b>會員中心、購物車在瀏覽器執行，透過 API 取得即時資料。</li><li><b>區塊化頁面</b>編輯用固定區塊組頁：主視覺、特色、規格表、FAQ；每個區塊有資料規格，版面不會被改壞。</li><li><b>型別一致</b>後端的資料格式自動產生前端型別；欄位一改，建置時就會發現，不會等上線才壞。</li><li><b>多語與在地化</b>語言寫在網址；日期、幣別、地址、姓名順序依市場格式。</li><li><b>效能與無障礙</b>圖片自動轉成適合的尺寸與格式；以 <span class="hv">WCAG 2.2 AA<span class="tip up">國際網頁無障礙標準：對比、鍵盤操作、替代文字、表單標示；長輩使用者也更容易閱讀。</span></span> 為目標。</li><li><b>草稿預覽</b>編輯用正式版面預覽草稿；預覽環境只對登入的編輯開放。</li></ul><div class="dl-deliv">→ 交付：每次發布產生一個可回滾的網站版本</div>
+        <div><div class="t-meta">FRONTEND · 前台</div><h2 class="dl-h4" style="color:#fff;margin-top:1vh">前台</h2><div class="dl-tech" style="margin-top:.8vh">React · React Router v7 · Vite · TypeScript · Tailwind CSS</div></div>
+        <ul class="dl-sl"><li><b>前端應用</b>會員中心、購物車在瀏覽器執行，透過 API 取得即時資料。</li><li><b>區塊化頁面</b>編輯用固定區塊組頁：主視覺、特色、規格表、FAQ；每個區塊有資料規格，避免版面被誤改。</li><li><b>型別一致</b>後端的資料格式自動產生前端型別；欄位一改，建置時就會發現，不必等到上線才發現問題。</li><li><b>多語與在地化</b>語言寫在網址；日期、幣別、地址、姓名順序依市場格式。</li><li><b>效能與無障礙</b>圖片自動轉成適合的尺寸與格式；以 <span class="hv">WCAG 2.2 AA<span class="tip up">國際網頁無障礙標準：對比、鍵盤操作、替代文字、表單標示；長輩使用者也更容易閱讀。</span></span> 為目標。</li><li><b>草稿預覽</b>編輯用正式版面預覽草稿；預覽環境只對登入的編輯開放。</li></ul><div class="dl-deliv">→ 交付：每次發布產生一個可回滾的網站版本</div>
       </div>
       <div class="half b-grey" style="padding:5.6vh 3.6vw 4.4vh;gap:2.4vh">
-        <div class="chrome-min" style="margin-bottom:0"><div class="l">透過 /api/v1 溝通</div><div class="r">09 / 34</div></div>
-        <div><div class="t-meta">BACKEND · 後台負責資料與規則</div><h2 class="dl-h4" style="margin-top:1vh">後台</h2><div class="dl-tech" style="margin-top:.8vh">Python · Django · Django Ninja · Wagtail · Celery · PostgreSQL</div></div>
-        <ul class="dl-sl"><li><b>模組分工</b>內容、表單名單、會員、商務、權益、客服、推薦、稽核各自獨立，可分開開發與測試。</li><li><b>API 規範</b>路徑帶版本號；寫入請求帶<span class="hv">冪等鍵<span class="tip left">每個寫入請求帶唯一鍵；網路不穩重送時，不會重複建立名單或訂單。</span></span>；錯誤格式統一並附請求編號，問題追得到。</li><li><b>背景工作</b>寄信、轉交 CRM、同步、對帳交給佇列；失敗自動重試，超過次數告警。</li><li><b>內容管理</b>三語、審核流程；規格與宣稱附核准紀錄；發布自動觸發建置與知識庫同步。</li><li><b>權限與稽核</b>員工用企業單一登入＋多因素；角色分權；後台每個操作都留紀錄。</li><li><b>功能開關</b>開賣、預購、會員登入由開關控制；變更需核准，內容發布不會意外開啟收款。</li><li><b>資料隔離</b>個資與業務資料只在台灣區域；客服系統與平台資料庫分開。</li></ul><div class="dl-deliv">→ 交付：一份文件化的 API（OpenAPI），網站、App、LINE 共用</div>
+        <div class="chrome-min" style="margin-bottom:0"><div class="l">透過 /api/v1 溝通</div><div class="r">09 / 41</div></div>
+        <div><div class="t-meta">BACKEND · 後台</div><h2 class="dl-h4" style="margin-top:1vh">後台</h2><div class="dl-tech" style="margin-top:.8vh">Python · Django · Django Ninja · Wagtail · Celery · PostgreSQL</div></div>
+        <ul class="dl-sl"><li><b>模組分工</b>內容、表單名單、會員、商務、權益、客服、推薦、稽核各自獨立，可分開開發與測試。</li><li><b>API 規範</b>路徑帶版本號；寫入請求帶<span class="hv">冪等鍵<span class="tip left">每個寫入請求帶唯一鍵；網路不穩重送時，不會重複建立名單或訂單。</span></span>；錯誤格式統一並附請求編號，問題追得到。</li><li><b>背景工作</b>寄信、轉交 CRM、同步、對帳交給佇列；失敗自動重試，超過次數告警。</li><li><b>內容管理</b>三語、審核流程；規格與宣稱附核准紀錄；發布自動觸發建置與知識庫同步。</li><li><b>權限與稽核</b>員工用企業單一登入＋多因素；角色分權；後台每個操作都留紀錄。</li><li><b>功能開關</b>開賣、預購、會員登入由開關控制；變更需核准，內容發布不會意外開啟收款。</li></ul><div class="dl-deliv">→ 交付：一份文件化的 API（OpenAPI），網站、App、LINE 共用</div>
       </div>
     </div>
   </div>
@@ -1922,16 +1944,16 @@
 <!-- ============ 10 · paths ============ -->
 <section class="slide" data-layout="S16" data-animate="field-notes">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l dl-trail"><span>總覽</span><span>回顧</span><span class="on">01 架構</span><span>02 網站</span><span>03 旅程</span><span>04 客服</span><span>05 電商</span><span>06 數據</span><span>閉環</span></div><div class="r">10 / 34</div></div>
+    <div class="chrome-min"><div class="l dl-trail"><span>總覽</span><span>回顧</span><span class="on">01 架構</span><span>02 網站</span><span>03 旅程</span><span>04 客服</span><span>05 電商</span><span>06 App</span><span>07 數據</span><span>閉環</span></div><div class="r">10 / 41</div></div>
     <div class="dl-main dl-dense" style="grid-template-rows:auto 1fr;gap:3vh">
       <div data-anim="line" class="dl-head-row">
         <div class="dl-head">
           <div class="t-meta">REQUEST PATHS · 請求路徑</div>
-          <h2 class="dl-h4">六個最常見的請求，<br/>在系統裡怎麼走</h2>
+          <h2 class="dl-h4">六項主要請求的<br/>處理路徑</h2>
         </div>
-        <p class="dl-note" style="max-width:54ch">每一條路徑都設計了「出錯時怎麼辦」：重送不重複、故障先排隊、檢查不過就保留上一版。標籤可移入看細節。</p>
+        <p class="dl-note" style="max-width:54ch">每條路徑皆設計異常處理：重送時不重複建立、故障時先排隊、檢查未通過時保留上一版。標籤可移入查看細節。</p>
       </div>
-      <div data-anim="up" class="dl-brief dl-tight" style="gap:1.2vh 1.2vw"><div class="card-fill"><div class="dl-ttl"><span class="t-meta" style="margin-right:.8em">01 · 瀏覽頁面</span>「不經過後台」</div><div class="dl-chain"><span class="chip">使用者</span><span class="arr">→</span><span class="chip hv">CDN 節點<span class="tip ">依所在地就近回應；靜態頁長時間快取，發布時切換版本並清除。</span></span><span class="arr">→</span><span class="chip">預先產生的網頁</span></div><p class="dl-txt">發布時已把每一頁做好放在全球節點；瀏覽時不需要運算，也不會碰到資料庫。</p><div class="kp2">後台維護、流量高峰都不影響瀏覽</div></div><div class="card-fill"><div class="dl-ttl"><span class="t-meta" style="margin-right:.8em">02 · 登記上市通知</span>「先存再回應」</div><div class="dl-chain"><span class="chip">表單</span><span class="arr">→</span><span class="chip hv">API 驗證<span class="tip ">格式、防機器人、速率限制；帶冪等鍵，重送也只建立一筆。</span></span><span class="arr">→</span><span class="chip">寫入資料庫</span><span class="arr">→</span><span class="chip">佇列</span><span class="arr">→</span><span class="chip">確認信 · CRM</span></div><p class="dl-txt">先寫入資料庫再回應使用者；寄信與轉交 CRM 交給背景工作，失敗自動重試。</p><div class="kp2">CRM 暫時故障時排隊，恢復後自動補送</div></div><div class="card-fill"><div class="dl-ttl"><span class="t-meta" style="margin-right:.8em">03 · 發布內容</span>「檢查通過才上線」</div><div class="dl-chain"><span class="chip">編輯</span><span class="arr">→</span><span class="chip">審核</span><span class="arr">→</span><span class="chip hv">建置與檢查<span class="tip left">區塊格式、內部連結、三語對應、頁面大小都檢查；不通過就保留上一版並通知。</span></span><span class="arr">→</span><span class="chip">CDN 切換版本</span><span class="arr">→</span><span class="chip">AI 知識庫同步</span></div><p class="dl-txt">建置時檢查格式、連結與三語對應；通過才切換 CDN 版本，並同步 AI 知識庫。</p><div class="kp2">每次發布都是一個版本，可一鍵回滾</div></div><div class="card-fill"><div class="dl-ttl"><span class="t-meta" style="margin-right:.8em">04 · 問 AI 客服</span>「只用核准內容回答」</div><div class="dl-chain"><span class="chip">對話視窗</span><span class="arr">→</span><span class="chip">客服平台</span><span class="arr">→</span><span class="chip">AI 服務</span><span class="arr">→</span><span class="chip hv">檢索<span class="tip up">關鍵字＋語意混合搜尋，再重新排序，只取已核准的內容段落。</span></span><span class="arr">→</span><span class="chip">生成與檢查</span><span class="arr">→</span><span class="chip">回覆／轉真人</span></div><p class="dl-txt">只檢索已核准內容；回答附來源並經規則檢查；沒把握或敏感主題直接轉真人。</p><div class="kp2">AI 服務故障時，對話全數轉真人</div></div><div class="card-fill"><div class="dl-ttl"><span class="t-meta" style="margin-right:.8em">05 · 結帳付款</span>「卡號不經過我們」</div><div class="dl-chain"><span class="chip">購物車</span><span class="arr">→</span><span class="chip">商務 API</span><span class="arr">→</span><span class="chip hv">託管付款頁<span class="tip up">付款頁由金流服務提供，信用卡資料不經過我們的伺服器，降低資安負擔。</span></span><span class="arr">→</span><span class="chip hv">付款通知<span class="tip up">驗證簽章；同一筆通知重複送達也只處理一次。</span></span><span class="arr">→</span><span class="chip">訂單</span><span class="arr">→</span><span class="chip">發票 · 物流</span></div><p class="dl-txt">付款在金流服務的託管頁完成；付款通知驗證簽章後，才更新訂單、開立發票。</p><div class="kp2">付款通知重複送達也只處理一次</div></div><div class="card-accent"><div class="dl-ttl"><span class="t-meta" style="margin-right:.8em">06 · App 查權益</span>「只問一個地方」</div><div class="dl-chain"><span class="chip">官網 · App Store · Google Play</span><span class="arr">→</span><span class="chip hv">權益服務<span class="tip up left">三個管道的訂閱都整合成同一筆權益紀錄，記錄方案、到期日與購買管道。</span></span><span class="arr">→</span><span class="chip">App 後端</span></div><p class="dl-txt">三個管道的訂閱都寫進同一筆權益紀錄；App 後端用服務憑證查詢。</p><div class="kp2">退款、取消、續訂即時同步到 App</div></div></div>
+      <div data-anim="up" class="dl-brief dl-tight" style="gap:1.2vh 1.2vw"><div class="card-fill"><div class="dl-ttl"><span class="t-meta" style="margin-right:.8em">01 · 瀏覽頁面</span>「不經過後台」</div><div class="dl-chain"><span class="chip">使用者</span><span class="arr">→</span><span class="chip hv">CDN 節點<span class="tip ">依所在地就近回應；靜態頁長時間快取，發布時切換版本並清除。</span></span><span class="arr">→</span><span class="chip">預先產生的網頁</span></div><p class="dl-txt">發布時已把每一頁做好放在全球節點；瀏覽時不需要運算，也不會碰到資料庫。</p><div class="kp2">後台維護或流量高峰時，瀏覽不受影響</div></div><div class="card-fill"><div class="dl-ttl"><span class="t-meta" style="margin-right:.8em">02 · 登記上市通知</span>「先存再回應」</div><div class="dl-chain"><span class="chip">表單</span><span class="arr">→</span><span class="chip hv">API 驗證<span class="tip ">格式、防機器人、速率限制；帶冪等鍵，重送也只建立一筆。</span></span><span class="arr">→</span><span class="chip">寫入資料庫</span><span class="arr">→</span><span class="chip">佇列</span><span class="arr">→</span><span class="chip">確認信 · CRM</span></div><p class="dl-txt">先寫入資料庫再回應使用者；寄信與轉交 CRM 交給背景工作，失敗自動重試。</p><div class="kp2">CRM 暫時故障時排隊，恢復後自動補送</div></div><div class="card-fill"><div class="dl-ttl"><span class="t-meta" style="margin-right:.8em">03 · 發布內容</span>「檢查通過才上線」</div><div class="dl-chain"><span class="chip">編輯</span><span class="arr">→</span><span class="chip">審核</span><span class="arr">→</span><span class="chip hv">建置與檢查<span class="tip left">區塊格式、內部連結、三語對應、頁面大小都檢查；不通過就保留上一版並通知。</span></span><span class="arr">→</span><span class="chip">CDN 切換版本</span><span class="arr">→</span><span class="chip">AI 知識庫同步</span></div><p class="dl-txt">建置時檢查格式、連結與三語對應；通過才切換 CDN 版本，並同步 AI 知識庫。</p><div class="kp2">每次發布皆為獨立版本，可快速回滾</div></div><div class="card-fill"><div class="dl-ttl"><span class="t-meta" style="margin-right:.8em">04 · 問 AI 客服</span>「只用核准內容回答」</div><div class="dl-chain"><span class="chip">對話視窗</span><span class="arr">→</span><span class="chip">客服平台</span><span class="arr">→</span><span class="chip">AI 服務</span><span class="arr">→</span><span class="chip hv">檢索<span class="tip up">關鍵字＋語意混合搜尋，再重新排序，只取已核准的內容段落。</span></span><span class="arr">→</span><span class="chip">生成與檢查</span><span class="arr">→</span><span class="chip">回覆／轉真人</span></div><p class="dl-txt">只檢索已核准內容；回答附來源並經規則檢查；信心不足或屬敏感主題直接轉真人。</p><div class="kp2">AI 服務故障時，對話全數轉真人</div></div><div class="card-fill"><div class="dl-ttl"><span class="t-meta" style="margin-right:.8em">05 · 結帳付款</span>「卡號不經過我們」</div><div class="dl-chain"><span class="chip">購物車</span><span class="arr">→</span><span class="chip">商務 API</span><span class="arr">→</span><span class="chip hv">託管付款頁<span class="tip up">付款頁由金流服務提供，信用卡資料不經過我們的伺服器，降低資安負擔。</span></span><span class="arr">→</span><span class="chip hv">付款通知<span class="tip up">驗證簽章；同一筆通知重複送達也只處理一次。</span></span><span class="arr">→</span><span class="chip">訂單</span><span class="arr">→</span><span class="chip">發票 · 物流</span></div><p class="dl-txt">付款在金流服務的託管頁完成；付款通知驗證簽章後，才更新訂單、開立發票。</p><div class="kp2">付款通知重複送達也只處理一次</div></div><div class="card-accent"><div class="dl-ttl"><span class="t-meta" style="margin-right:.8em">06 · App 查權益</span>「只問一個地方」</div><div class="dl-chain"><span class="chip">官網 · App Store · Google Play</span><span class="arr">→</span><span class="chip hv">權益服務<span class="tip up left">三個管道的訂閱都整合成同一筆權益紀錄，記錄方案、到期日與購買管道。</span></span><span class="arr">→</span><span class="chip">App 後端</span></div><p class="dl-txt">三個管道的訂閱都寫進同一筆權益紀錄；App 後端用服務憑證查詢。</p><div class="kp2">退款、取消、續訂同步更新至 App</div></div></div>
     </div>
   </div>
 </section>
@@ -1939,16 +1961,16 @@
 <!-- ============ 11 · deploy ============ -->
 <section class="slide dark" data-layout="S04" data-animate="grid-reveal">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l dl-trail"><span>總覽</span><span>回顧</span><span class="on">01 架構</span><span>02 網站</span><span>03 旅程</span><span>04 客服</span><span>05 電商</span><span>06 數據</span><span>閉環</span></div><div class="r">11 / 34</div></div>
+    <div class="chrome-min"><div class="l dl-trail"><span>總覽</span><span>回顧</span><span class="on">01 架構</span><span>02 網站</span><span>03 旅程</span><span>04 客服</span><span>05 電商</span><span>06 App</span><span>07 數據</span><span>閉環</span></div><div class="r">11 / 41</div></div>
     <div class="dl-main dl-dense" style="grid-template-rows:auto 1fr">
       <div data-anim="line" class="dl-head-row">
         <div class="dl-head">
           <div class="t-meta">DEPLOY · SECURITY · QUALITY</div>
-          <h2 class="dl-h4">部署、安全與品質，<br/>從第一天就做好</h2>
+          <h2 class="dl-h4">部署、安全與<br/>品質管理</h2>
         </div>
-        <p class="dl-note" style="max-width:54ch">企業級網站的差別不在看得到的畫面，而在看不到的地方：流量怎麼擋、資料放哪裡、每次修改怎麼確保不出錯、出錯時多快發現。</p>
+        <p class="dl-note" style="max-width:54ch">網站的可靠度取決於畫面以外的機制：流量如何過濾、資料存放位置、每次修改如何驗證，以及異常發生時多快發現。</p>
       </div>
-      <div class="sub-grid-3-2" style="margin-top:0"><div class="sub-card"><span class="nb-corner">01</span><div class="ttl">邊緣層</div><div class="dl-chips"><span class="chip">CDN</span><span class="chip">網站防火牆</span><span class="chip">機器人防護</span><span class="chip">速率限制</span></div><dl class="dl-kv dl-kv2"><dt>做法</dt><dd>所有流量先經過 CDN 與防火牆，異常流量在最外層攔下。</dd><dt>效果</dt><dd>公開頁就近回應；攻擊打不到後台。</dd></dl></div><div class="sub-card"><span class="nb-corner">02</span><div class="ttl">運算層</div><div class="dl-chips"><span class="chip">容器部署</span><span class="chip">水平擴充</span><span class="chip">出口白名單</span></div><dl class="dl-kv dl-kv2"><dt>做法</dt><dd>應用以容器部署，流量高時自動加開。</dd><dt>效果</dt><dd>開賣日流量暴增不當機；只有背景工作能對外連線。</dd></dl></div><div class="sub-card"><span class="nb-corner">03</span><div class="ttl">資料層</div><div class="dl-chips"><span class="chip">台灣區域</span><span class="chip">個資加密</span><span class="chip">遮蔽</span><span class="chip">備份還原</span></div><dl class="dl-kv dl-kv2"><dt>做法</dt><dd>個資加密、送出前遮蔽、最小權限；每日備份並演練還原。</dd><dt>效果</dt><dd>個資只在台灣區域；出事時資料救得回來。</dd></dl></div><div class="sub-card"><span class="nb-corner">04</span><div class="ttl">三套環境</div><div class="dl-chips"><span class="chip">預覽</span><span class="chip">測試</span><span class="chip">正式</span></div><dl class="dl-kv dl-kv2"><dt>做法</dt><dd>每次修改都有獨立預覽網址，測試環境用匿名資料。</dd><dt>效果</dt><dd>您先看過再上線；正式資料不外流。</dd></dl></div><div class="sub-card"><span class="nb-corner">05</span><div class="ttl">發布流程</div><div class="dl-chips"><span class="chip">自動檢查</span><span class="chip">自動測試</span><span class="chip">程式審查</span><span class="chip">一鍵回滾</span></div><dl class="dl-kv dl-kv2"><dt>做法</dt><dd>語法、單元、端對端、無障礙、效能檢查全部通過才合併。</dd><dt>效果</dt><dd>每次上線都可追溯；異常一鍵回滾。</dd></dl></div><div class="sub-card accent"><span class="nb-corner">06</span><div class="ttl">監控與稽核</div><div class="dl-chips"><span class="chip">合成監測</span><span class="chip">錯誤告警</span><span class="chip">稽核紀錄</span><span class="chip">弱點掃描</span></div><dl class="dl-kv dl-kv2"><dt>做法</dt><dd>關鍵頁面全天自動巡檢；錯誤即時告警；定期弱點掃描。</dd><dt>效果</dt><dd>使用者發現之前，我們先發現。</dd></dl></div></div>
+      <div class="sub-grid-3-2" style="margin-top:0"><div class="sub-card"><span class="nb-corner">01</span><div class="ttl">邊緣層</div><div class="dl-chips"><span class="chip">CDN</span><span class="chip">網站防火牆</span><span class="chip">機器人防護</span><span class="chip">速率限制</span></div><dl class="dl-kv dl-kv2"><dt>做法</dt><dd>所有流量先經過 CDN 與防火牆，異常流量在最外層攔下。</dd><dt>效果</dt><dd>公開頁就近回應；異常流量於最外層先行過濾，降低對後台的衝擊。</dd></dl></div><div class="sub-card"><span class="nb-corner">02</span><div class="ttl">運算層</div><div class="dl-chips"><span class="chip">容器部署</span><span class="chip">水平擴充</span><span class="chip">出口白名單</span></div><dl class="dl-kv dl-kv2"><dt>做法</dt><dd>應用以容器部署，流量高時自動加開。</dd><dt>效果</dt><dd>開賣日流量增加時自動擴充；僅背景工作可對外連線。</dd></dl></div><div class="sub-card"><span class="nb-corner">03</span><div class="ttl">資料層</div><div class="dl-chips"><span class="chip">台灣區域</span><span class="chip">個資加密</span><span class="chip">遮蔽</span><span class="chip">備份還原</span></div><dl class="dl-kv dl-kv2"><dt>做法</dt><dd>個資加密、送出前遮蔽、最小權限；每日備份並演練還原。</dd><dt>效果</dt><dd>個資僅存放於台灣區域；發生事故時可依備份還原。</dd></dl></div><div class="sub-card"><span class="nb-corner">04</span><div class="ttl">三套環境</div><div class="dl-chips"><span class="chip">預覽</span><span class="chip">測試</span><span class="chip">正式</span></div><dl class="dl-kv dl-kv2"><dt>做法</dt><dd>每次修改都有獨立預覽網址，測試環境用匿名資料。</dd><dt>效果</dt><dd>上線前可先行檢視；正式資料不用於測試環境。</dd></dl></div><div class="sub-card"><span class="nb-corner">05</span><div class="ttl">發布流程</div><div class="dl-chips"><span class="chip">自動檢查</span><span class="chip">自動測試</span><span class="chip">程式審查</span><span class="chip">快速回滾</span></div><dl class="dl-kv dl-kv2"><dt>做法</dt><dd>語法、單元、端對端、無障礙、效能檢查全部通過才合併。</dd><dt>效果</dt><dd>每次上線皆可追溯；異常時可快速回滾。</dd></dl></div><div class="sub-card accent"><span class="nb-corner">06</span><div class="ttl">監控與稽核</div><div class="dl-chips"><span class="chip">合成監測</span><span class="chip">錯誤告警</span><span class="chip">稽核紀錄</span><span class="chip">弱點掃描</span></div><dl class="dl-kv dl-kv2"><dt>做法</dt><dd>關鍵頁面全天自動巡檢；錯誤即時告警；定期弱點掃描。</dd><dt>效果</dt><dd>力求在使用者察覺之前先發現問題。</dd></dl></div></div>
     </div>
   <div class="dl-next">→ 下一段 02 網站：平台與 API 已就緒</div>
   </div>
@@ -1957,13 +1979,13 @@
 <!-- ============ 12 · div2 ============ -->
 <section class="slide dark" data-layout="S17" data-animate="system-diagram">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l dl-trail"><span>總覽</span><span>回顧</span><span>01 架構</span><span class="on">02 網站</span><span>03 旅程</span><span>04 客服</span><span>05 電商</span><span>06 數據</span><span>閉環</span></div><div class="r">12 / 34</div></div>
+    <div class="chrome-min"><div class="l dl-trail"><span>總覽</span><span>回顧</span><span>01 架構</span><span class="on">02 網站</span><span>03 旅程</span><span>04 客服</span><span>05 電商</span><span>06 App</span><span>07 數據</span><span>閉環</span></div><div class="r">12 / 41</div></div>
     <div class="dl-main" style="grid-template-rows:1fr">
       <div data-anim="up" class="dl-div">
         <div class="ov"><div class="ov-l on" style="grid-column:1">觸點<small>TOUCH</small></div><div class="ov-r" style="grid-column:2"><div class="ov-c on">企業官網</div><div class="ov-c on">MuRu 三語站</div><div class="ov-c">LINE</div><div class="ov-c">MuRu App</div><div class="ov-c">Email</div></div><div class="ov-l on" style="grid-column:1">前台<small>FRONTEND</small></div><div class="ov-r" style="grid-column:2"><div class="ov-c on">預先產生頁面</div><div class="ov-c on">互動元件</div><div class="ov-c">對話視窗</div><div class="ov-c">結帳頁</div><div class="ov-c on">CDN · WAF</div></div><div class="ov-l on" style="grid-column:1">API<small>GATEWAY</small></div><div class="ov-r" style="grid-column:2"><div class="ov-c on">統一 API</div><div class="ov-c">身分與權限</div><div class="ov-c">防濫用 · 冪等</div></div><div class="ov-l on" style="grid-column:1">後台<small>BACKEND</small></div><div class="ov-r" style="grid-column:2"><div class="ov-c on">內容管理</div><div class="ov-c">表單名單</div><div class="ov-c">會員</div><div class="ov-c">商務訂單</div><div class="ov-c">訂閱權益</div><div class="ov-c">智慧客服</div><div class="ov-c">推薦</div></div><div class="ov-l" style="grid-column:1">資料<small>DATA</small></div><div class="ov-r" style="grid-column:2"><div class="ov-c">業務資料庫</div><div class="ov-c">知識庫向量</div><div class="ov-c">快取 · 佇列</div><div class="ov-c">事件收集</div></div><div class="ov-l" style="grid-column:1">營運<small>OPS</small></div><div class="ov-r" style="grid-column:2"><div class="ov-c">數據看板</div><div class="ov-c">CRM</div><div class="ov-c">客服平台</div><div class="ov-c">金流 · 發票 · 物流</div></div><div class="ov-loop"><span>數據回饋 · 持續優化</span></div></div>
         <div class="dl-div-r">
           <div class="dl-div-no"><span class="dl-num">02</span><span class="t-meta">WEBSITE</span></div>
-          <div><h2 class="dl-h4" style="color:#fff">網站與頁面</h2><p class="dl-q">「使用者看到什麼？每一頁要帶他去哪裡？」</p></div>
+          <div><h2 class="dl-h4" style="color:#fff">網站與頁面</h2><p class="dl-q">「使用者看到什麼內容？各頁面引導至哪一個下一步？」</p></div>
           <dl class="dl-io"><dt>承接</dt><dd>平台提供的內容管理、預先產生頁面與 API</dd><dt>產出</dt><dd>六個區塊的網站地圖；每一頁的下一步與追蹤點</dd><dt>交給</dt><dd class="to">→ 03 使用者旅程</dd></dl>
           <div class="dl-chips"><span class="chip">網站地圖</span><span class="chip">頁面設計</span><span class="chip">支援與資源中心</span></div>
         </div>
@@ -1975,14 +1997,14 @@
 <!-- ============ 13 · 網站地圖 · S04 ============ -->
 <section class="slide" data-layout="S04" data-animate="grid-reveal">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l dl-trail"><span>總覽</span><span>回顧</span><span>01 架構</span><span class="on">02 網站</span><span>03 旅程</span><span>04 客服</span><span>05 電商</span><span>06 數據</span><span>閉環</span></div><div class="r">13 / 34</div></div>
+    <div class="chrome-min"><div class="l dl-trail"><span>總覽</span><span>回顧</span><span>01 架構</span><span class="on">02 網站</span><span>03 旅程</span><span>04 客服</span><span>05 電商</span><span>06 App</span><span>07 數據</span><span>閉環</span></div><div class="r">13 / 41</div></div>
     <div class="dl-main dl-dense" style="grid-template-rows:auto 1fr">
       <div data-anim="line" class="dl-head-row">
         <div class="dl-head">
           <div class="t-meta">SITEMAP · 網站地圖</div>
           <h2 class="dl-h4">一個網域，六個區塊</h2>
         </div>
-        <p class="dl-note" style="max-width:56ch">網址規則 dlinkrobotics.com/{語言}/products/{產品}/。產品再多也不會與企業頁面衝突；短網址 /muru 永久轉址。每個頁面標籤都可移入看用途。</p>
+        <p class="dl-note" style="max-width:56ch">網址規則 dlinkrobotics.com/{語言}/products/{產品}/。新增產品不會與企業頁面的網址衝突；短網址 /muru 永久轉址。每個頁面標籤都可移入看用途。</p>
       </div>
       <div class="sub-grid-3-2" style="margin-top:0">
         <div class="sub-card"><span class="nb-corner">01</span><div class="ttl">企業官網</div><div class="dl-path">/zh-tw/ · /about/ · /trust/</div>
@@ -1995,7 +2017,7 @@
             <span class="chip hv">商務合作<span class="tip">B2B、經銷、媒體三種表單分流到不同窗口。</span></span>
             <span class="chip hv on">信任中心<span class="tip">網站資料怎麼用、產品資料哪些在本機、哪些上雲端、保存多久、怎麼刪除——回應「會不會監視我」。</span></span>
           </div>
-          <div class="desc">講信任：D-Link 背景、技術與資安原則</div></div>
+          <div class="desc">重點：D-Link 背景、技術與資安原則</div></div>
         <div class="sub-card"><span class="nb-corner">02</span><div class="ttl">MuRu 產品站</div><div class="dl-path">/zh-tw/products/muru/…</div>
           <div class="dl-chips">
             <span class="chip hv">MuRu 首頁<span class="tip">主視覺、產品理念、成長摘要、五項情境、智慧設計、方案、FAQ、上市通知。</span></span>
@@ -2006,14 +2028,14 @@
             <span class="chip hv">常見問題<span class="tip">購前疑慮：隱私、價格、長輩使用、寵物與孩童、續航。</span></span>
             <span class="chip hv on">上市通知／購買<span class="tip">首發為免費上市通知；開賣後同一個網址切換成購買。</span></span>
           </div>
-          <div class="desc">講陪伴：開賣前收名單，開賣後同頁購買</div></div>
+          <div class="desc">重點：開賣前收集名單，開賣後於同一頁購買</div></div>
         <div class="sub-card"><span class="nb-corner">03</span><div class="ttl">其他產品</div><div class="dl-path">/zh-tw/products/{產品}/</div>
           <div class="dl-chips">
             <span class="chip hv">單頁產品模板<span class="tip">價值、特色、規格、相容與限制、支援、按鈕；適合靈犀等產品快速上線。</span></span>
             <span class="chip hv">機構方案模板<span class="tip left">需求、能力、導入流程、案例、詢價；適合機器狗的教育、長照情境。</span></span>
             <span class="chip hv">產品比較<span class="tip left">公開產品達 3 款以上時啟用，由規格資料自動產生。</span></span>
           </div>
-          <div class="desc" style="margin-top:auto">新產品選模板、填內容，不需工程師改程式</div></div>
+          <div class="desc" style="margin-top:auto">新產品選用模板並填入內容，無需修改程式</div></div>
         <div class="sub-card"><span class="nb-corner">04</span><div class="ttl">支援中心</div><div class="dl-path">/zh-tw/support/{產品}/</div>
           <div class="dl-chips">
             <span class="chip hv">依產品分流<span class="tip up">先選產品，再看該產品的所有支援內容；不需登入。</span></span>
@@ -2051,14 +2073,14 @@
 <!-- ============ 14 · 每一頁都有下一步 · S16 ============ -->
 <section class="slide dark" data-layout="S16" data-animate="field-notes">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l dl-trail"><span>總覽</span><span>回顧</span><span>01 架構</span><span class="on">02 網站</span><span>03 旅程</span><span>04 客服</span><span>05 電商</span><span>06 數據</span><span>閉環</span></div><div class="r">14 / 34</div></div>
+    <div class="chrome-min"><div class="l dl-trail"><span>總覽</span><span>回顧</span><span>01 架構</span><span class="on">02 網站</span><span>03 旅程</span><span>04 客服</span><span>05 電商</span><span>06 App</span><span>07 數據</span><span>閉環</span></div><div class="r">14 / 41</div></div>
     <div class="dl-main dl-dense" style="grid-template-rows:auto 1fr">
       <div data-anim="line" class="dl-head-row">
         <div class="dl-head">
           <div class="t-meta">PAGE DESIGN · 頁面設計原則</div>
-          <h2 class="dl-h4">每一頁回答一個問題，<br/>再給一個下一步</h2>
+          <h2 class="dl-h4">每個頁面對應一個問題，<br/>並提供下一步</h2>
         </div>
-        <p class="dl-note">頁面不是內容的堆疊，而是一連串「疑問 → 回答 → 下一步」。每個下一步都有事件可追蹤，知道使用者在哪裡停下來。</p>
+        <p class="dl-note">頁面依「疑問 → 回答 → 下一步」設計，每個下一步皆有事件可追蹤，以了解使用者在哪個環節停留或離開。</p>
       </div>
       <div data-anim="up" class="dl-brief dl-tight">
         <div class="card-fill"><div><div class="t-meta">企業首頁</div><div class="dl-ttl" style="margin-top:.6vh">「這家公司可信嗎？」</div></div>
@@ -2081,20 +2103,20 @@
 <!-- ============ 15 · support ============ -->
 <section class="slide" data-layout="S13" data-animate="three-forces">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l dl-trail"><span>總覽</span><span>回顧</span><span>01 架構</span><span class="on">02 網站</span><span>03 旅程</span><span>04 客服</span><span>05 電商</span><span>06 數據</span><span>閉環</span></div><div class="r">15 / 34</div></div>
+    <div class="chrome-min"><div class="l dl-trail"><span>總覽</span><span>回顧</span><span>01 架構</span><span class="on">02 網站</span><span>03 旅程</span><span>04 客服</span><span>05 電商</span><span>06 App</span><span>07 數據</span><span>閉環</span></div><div class="r">15 / 41</div></div>
     <div class="dl-main" style="grid-template-rows:1fr;gap:0">
       <div data-anim="up" class="dl-forces">
         <div class="card-accent">
           <div class="dl-head" style="gap:2.4vh">
             <div class="t-cat">SUPPORT · 支援與資源</div>
-            <h2 class="dl-hero-t">買了之後，<br/>也要用得順</h2>
-            <p class="dl-txt" style="max-width:30ch">使用手冊、手冊 AI 助理、資源中心三件事，共用同一個內容庫：手冊改一次，網頁、搜尋、AI 與客服一起更新。</p>
+            <h2 class="dl-hero-t">購買後的使用<br/>與支援</h2>
+            <p class="dl-txt" style="max-width:30ch">使用手冊、手冊 AI 助理與資源中心共用同一個內容庫：手冊更新一次，網頁、搜尋、AI 與客服同步更新。</p>
           </div>
           <span class="dot-mat" style="position:absolute;right:2vw;bottom:9vh;width:10vw;height:10vw;color:#fff;opacity:.3"></span>
           <div class="t-meta" style="color:rgba(255,255,255,.72)">/support/{產品}/</div>
         </div>
         <div>
-          <div class="card-fill"><div class="dl-num" style="font-size:min(4.4vw,7.6vh);color:var(--accent)">01</div><div><div class="dl-ttl">線上使用手冊</div><p class="dl-txt" style="margin-top:.4vh">依產品與型號分章節，隨韌體與 App 版本更新。</p><dl class="dl-kv"><dt>結構</dt><dd>開箱、配對、日常使用、照護、疑難排解</dd><dt>標示</dt><dd>每章標示 <span class="hv">適用版本<span class="tip">每章註明適用的機器韌體與 App 版本；使用者不會照著舊版說明操作新版機器。</span></span>、語言、更新日期</dd><dt>功能</dt><dd>站內搜尋、三語、列印與 PDF、大字版；章節網址穩定，可被客服與 AI 引用</dd><dt>指標</dt><dd>手冊搜尋無結果率、章節有幫助比例</dd></dl></div></div><div class="card-fill"><div class="dl-num" style="font-size:min(4.4vw,7.6vh);color:var(--accent)">02</div><div><div class="dl-ttl">手冊 AI 助理</div><p class="dl-txt" style="margin-top:.4vh">在手冊頁內直接問，不必翻章節。</p><dl class="dl-kv"><dt>回答</dt><dd>只依同型號、同語言的已發布手冊與 FAQ，並附章節連結</dd><dt>不夠用</dt><dd><span class="hv">依據不足就轉客服<span class="tip">不會硬答：找不到依據、涉及安全或保固爭議時，轉真人並附上對話摘要。</span></span></dd><dt>共用</dt><dd>與客服 AI 同一套檢查、個資遮蔽與評價機制</dd><dt>指標</dt><dd>自助解決率、手冊缺口（問了卻找不到的主題）</dd></dl></div></div><div class="card-fill"><div class="dl-num" style="font-size:min(4.4vw,7.6vh);color:var(--accent)">03</div><div><div class="dl-ttl">資源中心</div><p class="dl-txt" style="margin-top:.4vh">依產品集中提供，所有檔案都經過核准。</p><dl class="dl-kv"><dt>內容</dt><dd>手冊 PDF、快速上手、<span class="hv">App 下載入口<span class="tip">連到 App Store 與 Google Play；依使用者的語言與地區顯示對應商店。</span></span>、規格書、媒體素材</dd><dt>韌體</dt><dd>更新說明、適用型號、版本與注意事項；<span class="hv">升級包的提供方式待確認<span class="tip left">升級多半在 App 或機器內完成。網站可放說明與入口，或直接提供檔案，需與 App 團隊確認；若提供檔案，附版本、校驗碼與發布日。</span></span></dd><dt>顯示</dt><dd>版本、大小、語言、發布日；舊版說明保留</dd><dt>指標</dt><dd>下載次數、各版本更新完成率</dd></dl></div></div>
+          <div class="card-fill"><div class="dl-num" style="font-size:min(4.4vw,7.6vh);color:var(--accent)">01</div><div><div class="dl-ttl">線上使用手冊</div><p class="dl-txt" style="margin-top:.4vh">依產品與型號分章節，隨韌體與 App 版本更新。</p><dl class="dl-kv"><dt>結構</dt><dd>開箱、配對、日常使用、照護、疑難排解</dd><dt>標示</dt><dd>每章標示 <span class="hv">適用版本<span class="tip">每章註明適用的機器韌體與 App 版本；使用者不會照著舊版說明操作新版機器。</span></span>、語言、更新日期</dd><dt>功能</dt><dd>站內搜尋、三語、列印與 PDF、大字版；章節網址穩定，可被客服與 AI 引用</dd><dt>指標</dt><dd>手冊搜尋無結果率、章節有幫助比例</dd></dl></div></div><div class="card-fill"><div class="dl-num" style="font-size:min(4.4vw,7.6vh);color:var(--accent)">02</div><div><div class="dl-ttl">手冊 AI 助理</div><p class="dl-txt" style="margin-top:.4vh">可在手冊頁內直接提問，不需逐章查找。</p><dl class="dl-kv"><dt>回答</dt><dd>只依同型號、同語言的已發布手冊與 FAQ，並附章節連結</dd><dt>不夠用</dt><dd><span class="hv">依據不足就轉客服<span class="tip">找不到依據、涉及安全或保固爭議時，不直接作答，轉真人處理並附上對話摘要。</span></span></dd><dt>共用</dt><dd>與客服 AI 同一套檢查、個資遮蔽與評價機制</dd><dt>指標</dt><dd>自助解決率、手冊缺口（問了卻找不到的主題）</dd></dl></div></div><div class="card-fill"><div class="dl-num" style="font-size:min(4.4vw,7.6vh);color:var(--accent)">03</div><div><div class="dl-ttl">資源中心</div><p class="dl-txt" style="margin-top:.4vh">依產品集中提供，所有檔案都經過核准。</p><dl class="dl-kv"><dt>內容</dt><dd>手冊 PDF、快速上手、<span class="hv">App 下載入口<span class="tip">連到 App Store 與 Google Play；依使用者的語言與地區顯示對應商店。</span></span>、規格書、媒體素材</dd><dt>韌體</dt><dd>更新說明、適用型號、版本與注意事項；<span class="hv">升級包的提供方式待確認<span class="tip left">升級多半在 App 或機器內完成。網站可放說明與入口，或直接提供檔案，需與 App 團隊確認；若提供檔案，附版本、校驗碼與發布日。</span></span></dd><dt>顯示</dt><dd>版本、大小、語言、發布日；舊版說明保留</dd><dt>指標</dt><dd>下載次數、各版本更新完成率</dd></dl></div></div>
         </div>
       </div>
     </div>
@@ -2105,13 +2127,13 @@
 <!-- ============ 16 · div3 ============ -->
 <section class="slide dark" data-layout="S17" data-animate="system-diagram">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l dl-trail"><span>總覽</span><span>回顧</span><span>01 架構</span><span>02 網站</span><span class="on">03 旅程</span><span>04 客服</span><span>05 電商</span><span>06 數據</span><span>閉環</span></div><div class="r">16 / 34</div></div>
+    <div class="chrome-min"><div class="l dl-trail"><span>總覽</span><span>回顧</span><span>01 架構</span><span>02 網站</span><span class="on">03 旅程</span><span>04 客服</span><span>05 電商</span><span>06 App</span><span>07 數據</span><span>閉環</span></div><div class="r">16 / 41</div></div>
     <div class="dl-main" style="grid-template-rows:1fr">
       <div data-anim="up" class="dl-div">
         <div class="ov"><div class="ov-l on" style="grid-column:1">觸點<small>TOUCH</small></div><div class="ov-r" style="grid-column:2"><div class="ov-c on">企業官網</div><div class="ov-c on">MuRu 三語站</div><div class="ov-c on">LINE</div><div class="ov-c on">MuRu App</div><div class="ov-c on">Email</div></div><div class="ov-l on" style="grid-column:1">前台<small>FRONTEND</small></div><div class="ov-r" style="grid-column:2"><div class="ov-c on">預先產生頁面</div><div class="ov-c on">互動元件</div><div class="ov-c">對話視窗</div><div class="ov-c">結帳頁</div><div class="ov-c">CDN · WAF</div></div><div class="ov-l" style="grid-column:1">API<small>GATEWAY</small></div><div class="ov-r" style="grid-column:2"><div class="ov-c">統一 API</div><div class="ov-c">身分與權限</div><div class="ov-c">防濫用 · 冪等</div></div><div class="ov-l" style="grid-column:1">後台<small>BACKEND</small></div><div class="ov-r" style="grid-column:2"><div class="ov-c">內容管理</div><div class="ov-c">表單名單</div><div class="ov-c">會員</div><div class="ov-c">商務訂單</div><div class="ov-c">訂閱權益</div><div class="ov-c">智慧客服</div><div class="ov-c">推薦</div></div><div class="ov-l on" style="grid-column:1">資料<small>DATA</small></div><div class="ov-r" style="grid-column:2"><div class="ov-c">業務資料庫</div><div class="ov-c">知識庫向量</div><div class="ov-c">快取 · 佇列</div><div class="ov-c on">事件收集</div></div><div class="ov-l" style="grid-column:1">營運<small>OPS</small></div><div class="ov-r" style="grid-column:2"><div class="ov-c">數據看板</div><div class="ov-c">CRM</div><div class="ov-c">客服平台</div><div class="ov-c">金流 · 發票 · 物流</div></div><div class="ov-loop"><span>數據回饋 · 持續優化</span></div></div>
         <div class="dl-div-r">
           <div class="dl-div-no"><span class="dl-num">03</span><span class="t-meta">JOURNEY</span></div>
-          <div><h2 class="dl-h4" style="color:#fff">使用者旅程</h2><p class="dl-q">「使用者在哪裡猶豫？需要什麼才會往前？」</p></div>
+          <div><h2 class="dl-h4" style="color:#fff">使用者旅程</h2><p class="dl-q">「使用者在各階段有哪些疑慮？需要什麼資訊才會進入下一步？」</p></div>
           <dl class="dl-io"><dt>承接</dt><dd>網站頁面與每一頁的追蹤點</dd><dt>產出</dt><dd>六個階段的想法與低點；六個購前疑慮與對應內容</dd><dt>交給</dt><dd class="to">→ 04 智慧客服、05 電商與會員</dd></dl>
           <div class="dl-chips"><span class="chip">旅程地圖</span><span class="chip">購前疑慮</span></div>
         </div>
@@ -2123,14 +2145,14 @@
 <!-- ============ 17 · 旅程地圖 · S15 ============ -->
 <section class="slide" data-layout="S15" data-animate="matrix-fill">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l dl-trail"><span>總覽</span><span>回顧</span><span>01 架構</span><span>02 網站</span><span class="on">03 旅程</span><span>04 客服</span><span>05 電商</span><span>06 數據</span><span>閉環</span></div><div class="r">17 / 34</div></div>
+    <div class="chrome-min"><div class="l dl-trail"><span>總覽</span><span>回顧</span><span>01 架構</span><span>02 網站</span><span class="on">03 旅程</span><span>04 客服</span><span>05 電商</span><span>06 App</span><span>07 數據</span><span>閉環</span></div><div class="r">17 / 41</div></div>
     <div class="dl-main dl-dense" style="grid-template-rows:auto 1fr;gap:3vh">
       <div data-anim="line" class="dl-head-row">
         <div class="dl-head">
           <div class="t-cat">JOURNEY MAP · 使用者旅程地圖</div>
-          <h2 class="dl-h4">從看到廣告，<br/>到成為長期用戶</h2>
+          <h2 class="dl-h4">使用者旅程：<br/>從接觸廣告到長期使用</h2>
         </div>
-        <p class="dl-note" style="max-width:54ch">以林小姐為例：六個階段的想法、接觸點、我們的設計與追蹤事件。底部是她的情緒起伏——兩個低點，就是網站最該補強的地方。</p>
+        <p class="dl-note" style="max-width:54ch">以林小姐為例，說明六個階段的想法、接觸點、設計對策與追蹤事件。底部為情緒變化，兩個低點是網站優先需要補強之處。</p>
       </div>
       <div data-anim="up" class="dl-jmap">
         <div></div>
@@ -2168,7 +2190,7 @@
         <div class="rh">追蹤事件</div>
         <div class="dl-cell m"><span class="hv">page_view＋UTM<span class="tip up">記錄來源、媒介、活動、內容四個欄位；同意 Cookie 後才記錄到個別瀏覽，未同意只做匿名總數。</span></span></div>
         <div class="dl-cell m"><span class="hv">section_view<span class="tip up">區塊可見 50% 且停留 1 秒以上才記錄；知道哪一段故事最吸引人、看到哪裡就離開。</span></span>、media_progress</div>
-        <div class="dl-cell m"><span class="hv">faq_open<span class="tip up">記錄被點開的題目 ID；排名前三的疑慮會被寫進產品頁本文，不讓使用者自己去找。</span></span>、chat_open</div>
+        <div class="dl-cell m"><span class="hv">faq_open<span class="tip up">記錄被點開的題目 ID；排名前三的疑慮會被寫進產品頁本文，讓使用者不必自行尋找。</span></span>、chat_open</div>
         <div class="dl-cell m"><span class="hv">waitlist_submit<span class="tip up">送出由瀏覽器記錄；Email 確認與付款成功由伺服器記錄，以業務資料為準。</span></span>、purchase</div>
         <div class="dl-cell m"><span class="hv">device_activated<span class="tip up left">App 配對成功時由後端送出；這一刻「顧客」變成「裝置擁有者」，保固與推薦從這裡開始。</span></span></div>
         <div class="dl-cell m"><span class="hv">subscription_start<span class="tip up left">Plus 開通、續訂、取消都記錄；取消時詢問原因，回到產品與內容待辦。</span></span></div>
@@ -2195,14 +2217,14 @@
 <!-- ============ 18 · 六個疑慮 · S04 ============ -->
 <section class="slide dark" data-layout="S04" data-animate="grid-reveal">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l dl-trail"><span>總覽</span><span>回顧</span><span>01 架構</span><span>02 網站</span><span class="on">03 旅程</span><span>04 客服</span><span>05 電商</span><span>06 數據</span><span>閉環</span></div><div class="r">18 / 34</div></div>
+    <div class="chrome-min"><div class="l dl-trail"><span>總覽</span><span>回顧</span><span>01 架構</span><span>02 網站</span><span class="on">03 旅程</span><span>04 客服</span><span>05 電商</span><span>06 App</span><span>07 數據</span><span>閉環</span></div><div class="r">18 / 41</div></div>
     <div class="dl-main dl-dense" style="grid-template-rows:auto 1fr">
       <div data-anim="line" class="dl-head-row">
         <div class="dl-head">
           <div class="t-meta">OBJECTIONS · 購前疑慮</div>
-          <h2 class="dl-h4">六個疑慮，<br/>網站都要先回答</h2>
+          <h2 class="dl-h4">六項購前疑慮，<br/>與網站的對應內容</h2>
         </div>
-        <p class="dl-note" style="max-width:56ch">疑慮整理自您的 FAQ 規劃與產品特色。每一個都對應一個頁面區塊、一段 AI 客服知識，以及一個追蹤訊號。</p>
+        <p class="dl-note" style="max-width:56ch">疑慮整理自貴公司的 FAQ 規劃與產品特色，每項皆對應頁面區塊、AI 客服知識與追蹤指標。</p>
       </div>
       <div class="sub-grid-3-2" style="margin-top:0">
         <div class="sub-card"><span class="nb-corner">01</span><div class="ttl">「會不會監視我？」</div>
@@ -2219,21 +2241,21 @@
           <dl class="dl-kv"><dt>訊號</dt><dd>日本訪客先看品牌精神、新聞，才進產品頁</dd><dt>回答</dt><dd>D-Link 母公司背景、資安原則、里程碑；日文版首發即提供</dd><dt>位置</dt><dd>品牌精神、新聞、頁尾「關於我們」</dd><dt>追蹤</dt><dd><span class="hv">about_view → 產品頁<span class="tip up left">從品牌頁導向產品頁的比例；日本市場若偏低，就在品牌頁加入產品入口與媒體報導。</span></span></dd></dl></div>
       </div>
     </div>
-  <div class="dl-next">→ 交給 04 客服、05 電商：疑慮變答案</div>
+  <div class="dl-next">→ 交給 04 客服、05 電商：將疑慮對應為回答內容</div>
   </div>
 </section>
 
 <!-- ============ 19 · div4 ============ -->
 <section class="slide dark" data-layout="S17" data-animate="system-diagram">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l dl-trail"><span>總覽</span><span>回顧</span><span>01 架構</span><span>02 網站</span><span>03 旅程</span><span class="on">04 客服</span><span>05 電商</span><span>06 數據</span><span>閉環</span></div><div class="r">19 / 34</div></div>
+    <div class="chrome-min"><div class="l dl-trail"><span>總覽</span><span>回顧</span><span>01 架構</span><span>02 網站</span><span>03 旅程</span><span class="on">04 客服</span><span>05 電商</span><span>06 App</span><span>07 數據</span><span>閉環</span></div><div class="r">19 / 41</div></div>
     <div class="dl-main" style="grid-template-rows:1fr">
       <div data-anim="up" class="dl-div">
         <div class="ov"><div class="ov-l on" style="grid-column:1">觸點<small>TOUCH</small></div><div class="ov-r" style="grid-column:2"><div class="ov-c">企業官網</div><div class="ov-c">MuRu 三語站</div><div class="ov-c on">LINE</div><div class="ov-c">MuRu App</div><div class="ov-c on">Email</div></div><div class="ov-l on" style="grid-column:1">前台<small>FRONTEND</small></div><div class="ov-r" style="grid-column:2"><div class="ov-c">預先產生頁面</div><div class="ov-c">互動元件</div><div class="ov-c on">對話視窗</div><div class="ov-c">結帳頁</div><div class="ov-c">CDN · WAF</div></div><div class="ov-l" style="grid-column:1">API<small>GATEWAY</small></div><div class="ov-r" style="grid-column:2"><div class="ov-c">統一 API</div><div class="ov-c">身分與權限</div><div class="ov-c">防濫用 · 冪等</div></div><div class="ov-l on" style="grid-column:1">後台<small>BACKEND</small></div><div class="ov-r" style="grid-column:2"><div class="ov-c on">內容管理</div><div class="ov-c">表單名單</div><div class="ov-c">會員</div><div class="ov-c">商務訂單</div><div class="ov-c">訂閱權益</div><div class="ov-c on">智慧客服</div><div class="ov-c">推薦</div></div><div class="ov-l on" style="grid-column:1">資料<small>DATA</small></div><div class="ov-r" style="grid-column:2"><div class="ov-c">業務資料庫</div><div class="ov-c on">知識庫向量</div><div class="ov-c">快取 · 佇列</div><div class="ov-c">事件收集</div></div><div class="ov-l on" style="grid-column:1">營運<small>OPS</small></div><div class="ov-r" style="grid-column:2"><div class="ov-c">數據看板</div><div class="ov-c">CRM</div><div class="ov-c on">客服平台</div><div class="ov-c">金流 · 發票 · 物流</div></div><div class="ov-loop"><span>數據回饋 · 持續優化</span></div></div>
         <div class="dl-div-r">
           <div class="dl-div-no"><span class="dl-num">04</span><span class="t-meta">SERVICE</span></div>
-          <div><h2 class="dl-h4" style="color:#fff">智慧客服</h2><p class="dl-q">「問題怎麼被接住，又怎麼越來越少？」</p></div>
-          <dl class="dl-io"><dt>承接</dt><dd>旅程中的疑慮、已核准的答案（FAQ、照護指南、使用手冊）</dd><dt>產出</dt><dd>即時回答與真人接手；問題主題與解決率</dd><dt>交給</dt><dd class="to">→ 06 數據賦能；補強內容回到 02 網站</dd></dl>
+          <div><h2 class="dl-h4" style="color:#fff">智慧客服</h2><p class="dl-q">「問題如何被受理與處理，並隨內容補強逐步減少？」</p></div>
+          <dl class="dl-io"><dt>承接</dt><dd>旅程中的疑慮、已核准的答案（FAQ、照護指南、使用手冊）</dd><dt>產出</dt><dd>即時回答與真人接手；問題主題與解決率</dd><dt>交給</dt><dd class="to">→ 07 數據賦能；補強內容回到 02 網站</dd></dl>
           <div class="dl-chips"><span class="chip">客服運作</span><span class="chip">AI 回答管線</span></div>
         </div>
       </div>
@@ -2244,18 +2266,18 @@
 <!-- ============ 20 · 智慧客服 · S08 ============ -->
 <section class="slide" data-layout="S08" data-animate="duo-mirror">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l dl-trail"><span>總覽</span><span>回顧</span><span>01 架構</span><span>02 網站</span><span>03 旅程</span><span class="on">04 客服</span><span>05 電商</span><span>06 數據</span><span>閉環</span></div><div class="r">20 / 34</div></div>
+    <div class="chrome-min"><div class="l dl-trail"><span>總覽</span><span>回顧</span><span>01 架構</span><span>02 網站</span><span>03 旅程</span><span class="on">04 客服</span><span>05 電商</span><span>06 App</span><span>07 數據</span><span>閉環</span></div><div class="r">20 / 41</div></div>
     <div class="dl-main dl-dense" style="grid-template-rows:auto 1fr auto auto;gap:2.6vh">
       <div data-anim="line" class="dl-head-row">
         <div class="dl-head">
           <div class="t-cat">CUSTOMER SERVICE · 智慧客服</div>
-          <h2 class="dl-h4">AI 先回答，<br/>真人接得住</h2>
+          <h2 class="dl-h4">AI 優先回覆，<br/>必要時由真人接手</h2>
         </div>
         <div style="display:flex;flex-direction:column;gap:1.4vh">
-          <p class="dl-note" style="max-width:56ch">網站、LINE、Email 進同一個收件匣。AI 只用已核准的內容回答，沒把握就轉真人。分四步上線：</p>
+          <p class="dl-note" style="max-width:56ch">網站、LINE、Email 進入同一個收件匣。AI 僅依已核准內容回答，信心不足時轉真人處理。分四個階段上線：</p>
           <div class="dl-chips">
             <span class="chip hv">A0 收件匣＋真人<span class="tip">首發即上線：網站表單、Email、LINE 都進同一個客服平台，由真人回覆；先把流程與分類建立起來。</span></span>
-            <span class="chip hv on">A1 網站 AI 客服<span class="tip">依已核准內容回答並附來源；沒把握就轉真人。繁中先上線，英文、日文完成評測後開放。</span></span>
+            <span class="chip hv on">A1 網站 AI 客服<span class="tip">依已核准內容回答並附來源；信心不足時轉真人。繁中先上線，英文、日文完成評測後開放。</span></span>
             <span class="chip hv">A2 LINE＋查訂單<span class="tip left">LINE 官方帳號接入同一套 AI；驗證身分後可查訂單、出貨與保固。</span></span>
             <span class="chip hv">A3 主動服務<span class="tip left">依保固期限與裝置狀態主動提醒，例如保固即將到期、耗材更換（需 App 團隊配合）。</span></span>
           </div>
@@ -2267,7 +2289,7 @@
           <ul class="dl-list">
             <li><span>01</span><span><b>24 小時、三語即時回答</b>——網站與 LINE 都能問</span></li>
             <li><span>02</span><span><b>答案附來源</b>，點進去就是完整的官方說明</span></li>
-            <li><span>03</span><span><b>轉真人不用重講</b>：<span class="hv">對話摘要<span class="tip up">AI 把對話整理成摘要：問題、已提供的回答、尚未解決的部分；客服人員接手時直接看到。</span></span>自動帶給客服人員</span></li>
+            <li><span>03</span><span><b>轉真人時不必重複說明</b>：<span class="hv">對話摘要<span class="tip up">AI 把對話整理成摘要：問題、已提供的回答、尚未解決的部分；客服人員接手時直接看到。</span></span>自動帶給客服人員</span></li>
             <li><span>04</span><span><b><span class="hv">驗證身分後<span class="tip up">以訂單 Email 收到的一次性驗證碼確認身分；驗證前，AI 不會透露任何訂單資訊。</span></span></b>可查訂單、出貨、保固與訂閱</span></li>
             <li><span>05</span><span><b>非營業時間留言</b>，隔天由真人主動回覆</span></li>
           </ul>
@@ -2277,25 +2299,25 @@
           <div class="col-ttl" style="font-family:var(--sans),var(--sans-zh);font-weight:300;font-size:max(22px,1.8vw);border-bottom:1px solid var(--accent);padding-bottom:1vh">團隊得到什麼</div>
           <ul class="dl-list">
             <li><span>01</span><span><b>單一收件匣</b>：網站、LINE、Email 不必切換系統</span></li>
-            <li><span>02</span><span><b>接手時一眼看到</b>：摘要、產品、訂單、保固狀態</span></li>
+            <li><span>02</span><span><b>接手時可直接看到</b>：摘要、產品、訂單、保固狀態</span></li>
             <li><span>03</span><span><b><span class="hv">每週問題報表<span class="tip up left">依主題統計問題量、自助解決率與評價；AI 答不了的問題列成內容待辦，指派給內容負責人。</span></span></b>，直接變成 FAQ 與照護指南待辦</span></li>
-            <li><span>04</span><span><b>品質看得見</b>：評價、轉真人比例、<span class="hv">答錯案例逐題檢討<span class="tip up left">每週抽查對話；答錯的題目修正內容或調整轉真人規則，並加入評測題庫，避免再犯。</span></span></span></li>
+            <li><span>04</span><span><b>品質可量化追蹤</b>：評價、轉真人比例、<span class="hv">答錯案例逐題檢討<span class="tip up left">每週抽查對話；答錯的題目修正內容或調整轉真人規則，並加入評測題庫，避免再犯。</span></span></span></li>
             <li><span>05</span><span><b>商務詢問自動分流</b>：B2B、經銷、媒體進 CRM</span></li>
           </ul>
         </div>
       </div>
       <div class="dl-strip">
-        <span class="t-meta">一則問題怎麼走</span>
+        <span class="t-meta">單一問題的處理流程</span>
         <div class="dl-chips dl-arrows">
           <span class="chip hv">使用者提問<span class="tip up">網站、LINE、Email 任一管道；AI 會帶入目前頁面的產品與語言。</span></span><span class="arr">→</span>
           <span class="chip hv">檢索核准內容<span class="tip up">只從內容管理系統裡已核准的產品內容、FAQ、照護指南找答案。</span></span><span class="arr">→</span>
-          <span class="chip hv on">有把握：回答＋來源<span class="tip up">答案附上官方頁面連結，使用者可以點進去看完整說明。</span></span><span class="arr">／</span>
-          <span class="chip hv">沒把握：轉真人<span class="tip up">涉及訂單爭議、健康、安全，或使用者要求時，一律轉真人；摘要自動帶過去。</span></span><span class="arr">→</span>
+          <span class="chip hv on">信心足夠：回答＋來源<span class="tip up">答案附上官方頁面連結，使用者可以點進去看完整說明。</span></span><span class="arr">／</span>
+          <span class="chip hv">信心不足：轉真人<span class="tip up">涉及訂單爭議、健康、安全，或使用者要求時，一律轉真人；摘要自動帶過去。</span></span><span class="arr">→</span>
           <span class="chip hv">結案分類<span class="tip up left">每則對話自動標上主題與是否解決，供每週報表使用。</span></span><span class="arr">→</span>
-          <span class="chip hv">補進知識庫<span class="tip up left">答不好的主題列為內容待辦，補寫發布後 AI 立即會答。</span></span>
+          <span class="chip hv">補進知識庫<span class="tip up left">答不好的主題列為內容待辦，補寫並發布後，AI 即可引用。</span></span>
         </div>
       </div>
-      <div class="t-meta" style="text-transform:none;letter-spacing:.04em">知識來源只有一個：內容管理系統裡已核准的產品內容、FAQ、照護指南、使用手冊。內容改了，AI 的答案跟著改。</div>
+      <div class="t-meta" style="text-transform:none;letter-spacing:.04em">知識來源只有一個：內容管理系統裡已核准的產品內容、FAQ、照護指南、使用手冊。內容更新後，AI 的回答同步更新。</div>
     </div>
   </div>
 </section>
@@ -2303,14 +2325,14 @@
 <!-- ============ 21 · aipipe ============ -->
 <section class="slide" data-layout="S11" data-animate="timeline-walk">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l dl-trail"><span>總覽</span><span>回顧</span><span>01 架構</span><span>02 網站</span><span>03 旅程</span><span class="on">04 客服</span><span>05 電商</span><span>06 數據</span><span>閉環</span></div><div class="r">21 / 34</div></div>
+    <div class="chrome-min"><div class="l dl-trail"><span>總覽</span><span>回顧</span><span>01 架構</span><span>02 網站</span><span>03 旅程</span><span class="on">04 客服</span><span>05 電商</span><span>06 App</span><span>07 數據</span><span>閉環</span></div><div class="r">21 / 41</div></div>
     <div class="dl-main dl-dense" style="grid-template-rows:auto 1fr auto;gap:2.6vh">
       <div data-anim="line" class="dl-head-row">
         <div class="dl-head">
           <div class="t-cat">AI PIPELINE · AI 回答管線</div>
-          <h2 class="dl-h4">每一個回答，<br/>都經過七道工序</h2>
+          <h2 class="dl-h4">AI 回答流程，<br/>共七個步驟</h2>
         </div>
-        <p class="dl-note" style="max-width:52ch">AI 不是自由發揮，而是在已核准的內容裡找答案、附上來源、通過檢查才回覆。每一次回答都可追蹤，答不好的就變成內容待辦。</p>
+        <p class="dl-note" style="max-width:52ch">AI 僅在已核准內容中檢索答案並附上來源，通過檢查後才回覆；每次回答皆可追蹤，答得不好的主題列為內容待辦。</p>
       </div>
       <div class="timeline-h dl-tl7">
         <div class="tl-row">
@@ -2319,27 +2341,27 @@
           <div class="th-node up"><span class="dot"></span><div class="label"><span class="yr">03</span><span class="name hv">檢索<span class="tip">產品名、型號用關鍵字比對；換句話說的問題用語意比對；兩者合併後重新排序，只取核准內容。</span></span><span class="desc">型號用關鍵字、口語用語意，合併後再排序</span><span class="sys">知識庫向量</span></div></div>
           <div class="th-node down"><span class="dot"></span><div class="label"><span class="yr">04</span><span class="name hv">生成<span class="tip">模型只能根據檢索到的段落回答並附來源；找不到就說不知道。模型供應商可替換，不綁定。</span></span><span class="desc">只根據檢索到的段落回答，並附來源連結</span><span class="sys">語言模型</span></div></div>
           <div class="th-node up"><span class="dot"></span><div class="label"><span class="yr">05</span><span class="name hv">檢查<span class="tip">來源必須存在；不承諾價格與上市日；不做醫療判斷；不透露未驗證的訂單資訊。</span></span><span class="desc">來源要存在、不承諾價格日期、不做醫療判斷、不洩漏個資</span><span class="sys">輸出規則</span></div></div>
-          <div class="th-node down"><span class="dot"></span><div class="label"><span class="yr">06</span><span class="name hv">回覆或轉真人<span class="tip left">沒把握、敏感主題、使用者要求時轉真人；對話摘要自動帶給客服人員。</span></span><span class="desc">沒把握、敏感主題或使用者要求，轉真人並帶摘要</span><span class="sys">客服平台</span></div></div>
-          <div class="th-node up accent"><span class="dot"></span><div class="label"><span class="yr">07</span><span class="name hv">評測與回饋<span class="tip left">每次回答都留追蹤紀錄；固定題庫定期評測；答不好的主題列為內容待辦，補寫後 AI 立即會答。</span></span><span class="desc">每次回答可追蹤；答不好的主題變成內容待辦</span><span class="sys">數據 · 內容</span></div></div>
+          <div class="th-node down"><span class="dot"></span><div class="label"><span class="yr">06</span><span class="name hv">回覆或轉真人<span class="tip left">信心不足、敏感主題、使用者要求時轉真人；對話摘要自動帶給客服人員。</span></span><span class="desc">信心不足、敏感主題或使用者要求，轉真人並帶摘要</span><span class="sys">客服平台</span></div></div>
+          <div class="th-node up accent"><span class="dot"></span><div class="label"><span class="yr">07</span><span class="name hv">評測與回饋<span class="tip left">每次回答都留追蹤紀錄；固定題庫定期評測；答不好的主題列為內容待辦，補寫後 AI 即可引用。</span></span><span class="desc">每次回答可追蹤；答不好的主題變成內容待辦</span><span class="sys">數據 · 內容</span></div></div>
         </div>
       </div>
-      <div class="dl-strip"><span class="t-meta">四個保障</span><div class="dl-chips"><span class="chip hv">AI 故障時全數轉真人<span class="tip up">AI 服務或模型無法回應時，對話自動進入真人佇列，使用者不會卡住。</span></span><span class="chip hv">模型供應商可替換<span class="tip up">生成模組透過統一介面呼叫模型；未來要換模型或供應商，不必改其他模組。</span></span><span class="chip hv">每次回答都可追蹤<span class="tip up">記錄檢索到哪些段落、用了哪個版本的內容與提示，答錯時找得到原因。</span></span><span class="chip hv on">每次修改都跑題庫評測<span class="tip up left">固定的三語題庫，涵蓋產品、隱私、售後與不該回答的問題；分數下降就不能上線。</span></span></div></div>
+      <div class="dl-strip"><span class="t-meta">四個保障</span><div class="dl-chips"><span class="chip hv">AI 故障時全數轉真人<span class="tip up">AI 服務或模型無法回應時，對話自動進入真人佇列，使用者不會無人回應。</span></span><span class="chip hv">模型供應商可替換<span class="tip up">生成模組透過統一介面呼叫模型；未來要換模型或供應商，不必改其他模組。</span></span><span class="chip hv">每次回答都可追蹤<span class="tip up">記錄檢索到哪些段落、用了哪個版本的內容與提示，答錯時找得到原因。</span></span><span class="chip hv on">每次修改都跑題庫評測<span class="tip up left">固定的三語題庫，涵蓋產品、隱私、售後與不該回答的問題；分數下降就不能上線。</span></span></div></div>
     </div>
-  <div class="dl-next">→ 交給 06 數據：問題主題與解決率</div>
+  <div class="dl-next">→ 交給 07 數據：問題主題與解決率</div>
   </div>
 </section>
 
 <!-- ============ 22 · div5 ============ -->
 <section class="slide dark" data-layout="S17" data-animate="system-diagram">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l dl-trail"><span>總覽</span><span>回顧</span><span>01 架構</span><span>02 網站</span><span>03 旅程</span><span>04 客服</span><span class="on">05 電商</span><span>06 數據</span><span>閉環</span></div><div class="r">22 / 34</div></div>
+    <div class="chrome-min"><div class="l dl-trail"><span>總覽</span><span>回顧</span><span>01 架構</span><span>02 網站</span><span>03 旅程</span><span>04 客服</span><span class="on">05 電商</span><span>06 App</span><span>07 數據</span><span>閉環</span></div><div class="r">22 / 41</div></div>
     <div class="dl-main" style="grid-template-rows:1fr">
       <div data-anim="up" class="dl-div">
         <div class="ov"><div class="ov-l on" style="grid-column:1">觸點<small>TOUCH</small></div><div class="ov-r" style="grid-column:2"><div class="ov-c">企業官網</div><div class="ov-c">MuRu 三語站</div><div class="ov-c">LINE</div><div class="ov-c on">MuRu App</div><div class="ov-c">Email</div></div><div class="ov-l on" style="grid-column:1">前台<small>FRONTEND</small></div><div class="ov-r" style="grid-column:2"><div class="ov-c">預先產生頁面</div><div class="ov-c">互動元件</div><div class="ov-c">對話視窗</div><div class="ov-c on">結帳頁</div><div class="ov-c">CDN · WAF</div></div><div class="ov-l" style="grid-column:1">API<small>GATEWAY</small></div><div class="ov-r" style="grid-column:2"><div class="ov-c">統一 API</div><div class="ov-c">身分與權限</div><div class="ov-c">防濫用 · 冪等</div></div><div class="ov-l on" style="grid-column:1">後台<small>BACKEND</small></div><div class="ov-r" style="grid-column:2"><div class="ov-c">內容管理</div><div class="ov-c">表單名單</div><div class="ov-c on">會員</div><div class="ov-c on">商務訂單</div><div class="ov-c on">訂閱權益</div><div class="ov-c">智慧客服</div><div class="ov-c on">推薦</div></div><div class="ov-l" style="grid-column:1">資料<small>DATA</small></div><div class="ov-r" style="grid-column:2"><div class="ov-c">業務資料庫</div><div class="ov-c">知識庫向量</div><div class="ov-c">快取 · 佇列</div><div class="ov-c">事件收集</div></div><div class="ov-l on" style="grid-column:1">營運<small>OPS</small></div><div class="ov-r" style="grid-column:2"><div class="ov-c">數據看板</div><div class="ov-c">CRM</div><div class="ov-c">客服平台</div><div class="ov-c on">金流 · 發票 · 物流</div></div><div class="ov-loop"><span>數據回饋 · 持續優化</span></div></div>
         <div class="dl-div-r">
           <div class="dl-div-no"><span class="dl-num">05</span><span class="t-meta">COMMERCE</span></div>
-          <div><h2 class="dl-h4" style="color:#fff">電商與會員</h2><p class="dl-q">「怎麼把興趣變成訂單、訂閱與回購？」</p></div>
-          <dl class="dl-io"><dt>承接</dt><dd>上市通知名單、疑慮的解答、推薦</dd><dt>產出</dt><dd>訂單、訂閱、裝置歸屬與保固</dd><dt>交給</dt><dd class="to">→ 06 數據賦能</dd></dl>
+          <div><h2 class="dl-h4" style="color:#fff">電商與會員</h2><p class="dl-q">「如何將使用者的興趣轉化為訂單、訂閱與回購？」</p></div>
+          <dl class="dl-io"><dt>承接</dt><dd>上市通知名單、疑慮的解答、推薦</dd><dt>產出</dt><dd>訂單、訂閱、裝置歸屬與保固</dd><dt>交給</dt><dd class="to">→ 06 App 聯動、07 數據賦能</dd></dl>
           <div class="dl-chips"><span class="chip">購買流程</span><span class="chip">會員與訂閱</span></div>
         </div>
       </div>
@@ -2350,12 +2372,12 @@
 <!-- ============ 23 · 電商流程 · S11 ============ -->
 <section class="slide" data-layout="S11" data-animate="timeline-walk">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l dl-trail"><span>總覽</span><span>回顧</span><span>01 架構</span><span>02 網站</span><span>03 旅程</span><span>04 客服</span><span class="on">05 電商</span><span>06 數據</span><span>閉環</span></div><div class="r">23 / 34</div></div>
+    <div class="chrome-min"><div class="l dl-trail"><span>總覽</span><span>回顧</span><span>01 架構</span><span>02 網站</span><span>03 旅程</span><span>04 客服</span><span class="on">05 電商</span><span>06 App</span><span>07 數據</span><span>閉環</span></div><div class="r">23 / 41</div></div>
     <div class="dl-main dl-dense" style="grid-template-rows:auto 1fr auto">
       <div data-anim="line" class="dl-head-row">
         <div class="dl-head">
           <div class="t-cat">COMMERCE · 電商流程</div>
-          <h2 class="dl-h4">從商品頁到訂閱，<br/>一條線走完</h2>
+          <h2 class="dl-h4">從商品頁到訂閱的<br/>完整流程</h2>
         </div>
         <p class="dl-note" style="max-width:54ch">實體商品走官網商店；Plus 訂閱不論在哪裡購買，都寫進同一個權益服務。台灣與日本的金流、發票、物流各自在地化。</p>
       </div>
@@ -2382,37 +2404,259 @@
 <!-- ============ 24 · member ============ -->
 <section class="slide" data-layout="S19" data-animate="four-cards">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l dl-trail"><span>總覽</span><span>回顧</span><span>01 架構</span><span>02 網站</span><span>03 旅程</span><span>04 客服</span><span class="on">05 電商</span><span>06 數據</span><span>閉環</span></div><div class="r">24 / 34</div></div>
+    <div class="chrome-min"><div class="l dl-trail"><span>總覽</span><span>回顧</span><span>01 架構</span><span>02 網站</span><span>03 旅程</span><span>04 客服</span><span class="on">05 電商</span><span>06 App</span><span>07 數據</span><span>閉環</span></div><div class="r">24 / 41</div></div>
     <div class="dl-main dl-dense" style="grid-template-rows:auto 1fr">
       <div data-anim="line" class="dl-head" style="gap:2.4vh">
         <div class="dl-rule"></div>
         <div class="dl-head-row">
           <div class="dl-head">
             <div class="t-meta">MEMBER · SUBSCRIPTION · REPURCHASE</div>
-            <h2 class="dl-h4">買完之後，<br/>關係才真正開始</h2>
+            <h2 class="dl-h4">購買之後的<br/>會員與長期經營</h2>
           </div>
-          <p class="dl-note">會員、訂閱、推薦、保固四個模組，讓一次購買變成長期的關係；它們也是數據最豐富的地方。</p>
+          <p class="dl-note">會員、訂閱、推薦與保固四個模組，支援購買後的長期經營，也是累積使用資料最多的環節。</p>
         </div>
       </div>
       <div data-anim="up" class="dl-fc" style="gap:1.8vw">
-        <div><div class="t-meta">— 01 / MEMBER</div><h3>會員帳號</h3><p class="dl-txt">一個帳號通用官網、App、客服；用 Email 驗證連結舊訂單。</p><dl class="dl-kv"><dt>技術</dt><dd>標準登入協定，與 App 共用</dd><dt>資料</dt><dd>帳號、同意紀錄、偏好語言</dd><dt>串接</dt><dd>會員中心、App、客服</dd><dt>規則</dt><dd>連結帳號需驗證，不自動合併</dd><dt>指標</dt><dd>會員註冊率、帳號連結率</dd></dl></div><div><div class="t-meta">— 02 / ENTITLEMENT</div><h3>訂閱權益</h3><p class="dl-txt">Plus 不論在官網、App Store、Google Play 購買，都寫進同一處。</p><dl class="dl-kv"><dt>技術</dt><dd>權益 API＋各商店通知</dd><dt>資料</dt><dd>方案、到期日、購買管道</dd><dt>串接</dt><dd>App 後端只查這一個 API</dd><dt>規則</dt><dd>退款、取消、續訂即時同步</dd><dt>指標</dt><dd>Plus 訂閱率、續訂率</dd></dl></div><div><div class="t-meta">— 03 / RECOMMEND</div><h3>推薦</h3><p class="dl-txt">先依頁面內容，再依規則，最後依擁有的裝置推薦。</p><dl class="dl-kv"><dt>技術</dt><dd>內容關聯＋規則；之後加行為</dd><dt>資料</dt><dd>頁面、購物車、擁有的裝置</dd><dt>串接</dt><dd>網站、通知信、會員中心</dd><dt>規則</dt><dd>個人化需同意，並顯示理由</dd><dt>指標</dt><dd>推薦點擊率、加購率</dd></dl></div><div style="border-top-color:var(--accent)"><div class="t-meta" style="color:var(--accent)">— 04 / WARRANTY</div><h3>保固與回購</h3><p class="dl-txt">裝置配對後自動登錄保固；配件與耗材依裝置推薦。</p><dl class="dl-kv"><dt>技術</dt><dd>裝置序號綁定會員帳號</dd><dt>資料</dt><dd>裝置、保固期限、購買紀錄</dd><dt>串接</dt><dd>客服查詢、到期主動提醒</dd><dt>規則</dt><dd>送禮時以配對帳號為保固歸屬</dd><dt>指標</dt><dd>保固登錄率、配件回購率</dd></dl></div>
+        <div><div class="t-meta">— 01 / MEMBER</div><h3>會員帳號</h3><p class="dl-txt">一個帳號通用官網、App、客服；用 Email 驗證連結舊訂單。</p><dl class="dl-kv"><dt>技術</dt><dd>標準登入協定，與 App 共用</dd><dt>資料</dt><dd>帳號、同意紀錄、偏好語言</dd><dt>串接</dt><dd>會員中心、App、客服</dd><dt>規則</dt><dd>連結帳號需驗證，不自動合併</dd><dt>指標</dt><dd>會員註冊率、帳號連結率</dd></dl></div><div><div class="t-meta">— 02 / ENTITLEMENT</div><h3>訂閱權益</h3><p class="dl-txt">Plus 不論在官網、App Store、Google Play 購買，都寫進同一處。</p><dl class="dl-kv"><dt>技術</dt><dd>權益 API＋各商店通知</dd><dt>資料</dt><dd>方案、到期日、購買管道</dd><dt>串接</dt><dd>App 後端只查這一個 API</dd><dt>規則</dt><dd>退款、取消、續訂皆同步更新</dd><dt>指標</dt><dd>Plus 訂閱率、續訂率</dd></dl></div><div><div class="t-meta">— 03 / RECOMMEND</div><h3>推薦</h3><p class="dl-txt">先依頁面內容，再依規則，最後依擁有的裝置推薦。</p><dl class="dl-kv"><dt>技術</dt><dd>內容關聯＋規則；之後加行為</dd><dt>資料</dt><dd>頁面、購物車、擁有的裝置</dd><dt>串接</dt><dd>網站、通知信、會員中心</dd><dt>規則</dt><dd>個人化需同意，並顯示理由</dd><dt>指標</dt><dd>推薦點擊率、加購率</dd></dl></div><div style="border-top-color:var(--accent)"><div class="t-meta" style="color:var(--accent)">— 04 / WARRANTY</div><h3>保固與回購</h3><p class="dl-txt">裝置配對後自動登錄保固；配件與耗材依裝置推薦。</p><dl class="dl-kv"><dt>技術</dt><dd>裝置序號綁定會員帳號</dd><dt>資料</dt><dd>裝置、保固期限、購買紀錄</dd><dt>串接</dt><dd>客服查詢、到期主動提醒</dd><dt>規則</dt><dd>送禮時以配對帳號為保固歸屬</dd><dt>指標</dt><dd>保固登錄率、配件回購率</dd></dl></div>
       </div>
     </div>
-  <div class="dl-next">→ 交給 06 數據：訂單、訂閱、裝置、推薦</div>
+  <div class="dl-next">→ 交給 06 App 聯動：帳號、權益、裝置歸屬；07 數據：訂單、訂閱、推薦</div>
+  </div>
+</section>
+
+<!-- ============ 25 · div-app · 06 App 聯動 ============ -->
+<section class="slide dark" data-layout="S17" data-animate="system-diagram">
+  <div class="canvas-card">
+    <div class="chrome-min"><div class="l dl-trail"><span>總覽</span><span>回顧</span><span>01 架構</span><span>02 網站</span><span>03 旅程</span><span>04 客服</span><span>05 電商</span><span class="on">06 App</span><span>07 數據</span><span>閉環</span></div><div class="r">25 / 41</div></div>
+    <div class="dl-main" style="grid-template-rows:1fr">
+      <div data-anim="up" class="dl-div">
+        <div class="ov"><div class="ov-l on" style="grid-column:1">觸點<small>TOUCH</small></div><div class="ov-r" style="grid-column:2"><div class="ov-c">企業官網</div><div class="ov-c">MuRu 三語站</div><div class="ov-c">LINE</div><div class="ov-c on">MuRu App</div><div class="ov-c">Email</div></div><div class="ov-l" style="grid-column:1">前台<small>FRONTEND</small></div><div class="ov-r" style="grid-column:2"><div class="ov-c">預先產生頁面</div><div class="ov-c">互動元件</div><div class="ov-c">對話視窗</div><div class="ov-c">結帳頁</div><div class="ov-c">CDN · WAF</div></div><div class="ov-l on" style="grid-column:1">API<small>GATEWAY</small></div><div class="ov-r" style="grid-column:2"><div class="ov-c on">統一 API</div><div class="ov-c on">身分與權限</div><div class="ov-c">防濫用 · 冪等</div></div><div class="ov-l on" style="grid-column:1">後台<small>BACKEND</small></div><div class="ov-r" style="grid-column:2"><div class="ov-c on">內容管理</div><div class="ov-c">表單名單</div><div class="ov-c on">會員</div><div class="ov-c">商務訂單</div><div class="ov-c on">訂閱權益</div><div class="ov-c on">智慧客服</div><div class="ov-c on">推薦</div></div><div class="ov-l on" style="grid-column:1">資料<small>DATA</small></div><div class="ov-r" style="grid-column:2"><div class="ov-c">業務資料庫</div><div class="ov-c">知識庫向量</div><div class="ov-c">快取 · 佇列</div><div class="ov-c on">事件收集</div></div><div class="ov-l" style="grid-column:1">營運<small>OPS</small></div><div class="ov-r" style="grid-column:2"><div class="ov-c">數據看板</div><div class="ov-c">CRM</div><div class="ov-c">客服平台</div><div class="ov-c">金流 · 發票 · 物流</div></div><div class="ov-loop"><span>數據回饋 · 持續優化</span></div></div>
+        <div class="dl-div-r">
+          <div class="dl-div-no"><span class="dl-num">06</span><span class="t-meta">COMPANION APP</span></div>
+          <div><h2 class="dl-h4" style="color:#fff">App 聯動</h2><p class="dl-q">「機器人日常運作的功能，使用者如何透過 App 查看與管理？」</p></div>
+          <dl class="dl-io"><dt>承接</dt><dd>配對後的裝置歸屬、會員帳號、Basic／Plus 權益</dd><dt>產出</dt><dd>配對開通、日常控制、通知與關心、更新與支援的平台側串接；App 範圍的確認清單</dd><dt>交給</dt><dd class="to">→ 07 數據賦能（App 與裝置事件）</dd></dl>
+          <div class="dl-chips"><span class="chip">角色分工</span><span class="chip">功能地圖</span><span class="chip">配對旅程</span><span class="chip">介面與範圍</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 26 · 角色分工 · S20 ============ -->
+<section class="slide" data-layout="S20" data-animate="stacked-ledger">
+  <div class="canvas-card">
+    <div class="chrome-min"><div class="l dl-trail"><span>總覽</span><span>回顧</span><span>01 架構</span><span>02 網站</span><span>03 旅程</span><span>04 客服</span><span>05 電商</span><span class="on">06 App</span><span>07 數據</span><span>閉環</span></div><div class="r">26 / 41</div></div>
+    <div class="dl-main dl-dense" style="grid-template-rows:auto 1fr;gap:2.6vh">
+      <div data-anim="line" class="dl-head-row">
+        <div class="dl-head">
+          <div class="t-cat">ROLES · 網站、App、機器人的分工</div>
+          <h2 class="dl-h4">網站負責購買與說明，<br/>App 負責日常使用</h2>
+        </div>
+        <p class="dl-note" style="max-width:58ch">MuRu 為陪伴型機器人，購買後使用者日常面對的是 App 而非網站。因此 App 不是附屬功能，而是機器人的另一個操作入口，並與網站共用同一個平台。</p>
+      </div>
+      <div data-anim="ledger" class="dl-ledger dl-layers">
+        <div class="ledger-row"><div class="ledger-num">網站</div>
+          <div class="dl-chips"><span class="chip">認識 MuRu</span><span class="chip">信任與隱私說明</span><span class="chip">購買與訂閱</span><span class="chip hv">售後入口<span class="tip">支援中心、手冊、照護指南、FAQ、客服；也放 App 下載入口。</span></span></div>
+          <div class="ledger-label">購買前提供產品資訊與信任說明；購買後提供說明與支援入口。<span class="dl-tech">官網 · 商店 · 支援中心</span></div></div>
+        <div class="ledger-row key"><div class="ledger-num">App</div>
+          <div class="dl-chips"><span class="chip hv on">配對開通<span class="tip">掃碼、連 Wi-Fi、綁定帳號；保固與權益隨之開通。這是使用者開始使用機器人的第一步。</span></span><span class="chip hv">日常控制<span class="tip">喚醒詞、虛擬牆、睡眠模式、互動 60 分鐘後回充電座的邊界設定、遠端視角。</span></span><span class="chip hv">家人與寵物<span class="tip">聲紋建立與擴充、寵物資料與進階辨識、自訂情境。</span></span><span class="chip hv">通知與關心<span class="tip">健康預警、成長軌跡、時光膠囊、雲端記憶、問候。</span></span><span class="chip">方案與隱私</span><span class="chip">更新與支援</span></div>
+          <div class="ledger-label">機器人到家後，使用者日常操作與查看的入口。<span class="dl-tech">iOS · Android</span></div></div>
+        <div class="ledger-row"><div class="ledger-num" style="font-size:min(2.9vw,5vh);white-space:nowrap">機器人</div>
+          <div class="dl-chips"><span class="chip hv">感知與移動<span class="tip">2D 光達、毫米波雷達、觸覺感測；避障與回充。</span></span><span class="chip hv">語音與聲紋<span class="tip">語音情緒與聲紋辨識在本機處理，不必全部上雲。</span></span><span class="chip">OLED 與表情</span><span class="chip">充電與回充</span></div>
+          <div class="ledger-label">負責在家中實際運作；敏感的感知資料盡量在本機處理。<span class="dl-tech">Edge AI · Wi-Fi · 藍牙 · 4G／5G</span></div></div>
+        <div class="ledger-row key"><div class="ledger-num">平台</div>
+          <div class="dl-chips"><span class="chip hv">會員帳號<span class="tip">一個帳號通用官網、App、客服。</span></span><span class="chip hv">訂閱權益<span class="tip">Basic／Plus 的唯一紀錄；不論在官網、App Store 或 Google Play 購買。</span></span><span class="chip hv">內容與知識庫<span class="tip">FAQ、手冊、照護指南同一份，網站、AI 客服、App 都用它。</span></span><span class="chip">智慧客服</span><span class="chip">通知規則</span><span class="chip">事件收集</span></div>
+          <div class="ledger-label">網站與 App 共用的帳號、權益、內容與客服；業務規則集中管理。<span class="dl-tech">統一 API · OIDC</span></div></div>
+        <div class="ledger-row"><div class="ledger-num" style="font-size:min(2.9vw,5vh);white-space:nowrap">裝置雲</div>
+          <div class="dl-chips"><span class="chip">裝置連線</span><span class="chip">遠端指令</span><span class="chip">雲端記憶</span><span class="chip hv">韌體派送<span class="tip up">升級多半在 App 或機器內完成；網站只放說明與入口。</span></span></div>
+          <div class="ledger-label"><span class="hv">App 與機器人之間的通道<span class="tip up left">目前假設由 App 與裝置團隊維護，平台只透過 API 交換必要資料。此假設將於本章最後請貴公司確認。</span></span>；本案假設不在範圍內。<span class="dl-tech">待確認 · 見本章最後兩頁</span></div></div>
+      </div>
+    </div>
+  <div class="dl-next">→ 下一頁：App 的六項主要功能</div>
+  </div>
+</section>
+
+<!-- ============ 27 · 功能地圖 · S04 ============ -->
+<section class="slide dark" data-layout="S04" data-animate="grid-reveal">
+  <div class="canvas-card">
+    <div class="chrome-min"><div class="l dl-trail"><span>總覽</span><span>回顧</span><span>01 架構</span><span>02 網站</span><span>03 旅程</span><span>04 客服</span><span>05 電商</span><span class="on">06 App</span><span>07 數據</span><span>閉環</span></div><div class="r">27 / 41</div></div>
+    <div class="dl-main dl-dense" style="grid-template-rows:auto 1fr">
+      <div data-anim="line" class="dl-head-row">
+        <div class="dl-head">
+          <div class="t-meta">APP CAPABILITIES · 功能地圖</div>
+          <h2 class="dl-h4">App 的六項<br/>主要功能</h2>
+        </div>
+        <p class="dl-note" style="max-width:58ch">功能整理自貴公司兩份文件，並補充我們認為必要的串接項目。「您的規劃」表示文件已載明；「建議補上」表示文件尚未提及、但建議納入。</p>
+      </div>
+      <div class="sub-grid-3-2" style="margin-top:0">
+        <div class="sub-card accent"><span class="nb-corner">01</span><div class="ttl">配對開通</div>
+          <dl class="dl-kv"><dt>功能</dt><dd>掃碼配對、連 Wi-Fi、選語言、逐項同意隱私</dd><dt>平台</dt><dd>帳號登入、保固自動登錄、Basic／Plus 權益開通</dd><dt>來源</dt><dd>您的規劃（配對、保固）；<span class="hv">建議補上同意流程<span class="tip">聲紋、影像、雲端記憶逐項說明、逐項同意，並記錄同意版本；與信任中心對隱私的說明一致。</span></span></dd><dt>追蹤</dt><dd><span class="hv">device_activated<span class="tip left">配對成功由後端送出；「顧客」從這一刻變成「裝置擁有者」。看配對成功率與開通時間。</span></span></dd></dl></div>
+        <div class="sub-card"><span class="nb-corner">02</span><div class="ttl">日常控制</div>
+          <dl class="dl-kv"><dt>功能</dt><dd>喚醒詞、虛擬牆、睡眠模式、互動邊界、遠端視角</dd><dt>平台</dt><dd>由裝置雲處理；平台提供說明與疑難排解</dd><dt>來源</dt><dd>您的規劃（Basic 隨機附贈）</dd><dt>追蹤</dt><dd><span class="hv">功能使用率<span class="tip">同意後才記錄「哪些功能被開啟」，不記錄內容；用來調整照護指南的重點。</span></span></dd></dl></div>
+        <div class="sub-card"><span class="nb-corner">03</span><div class="ttl">家人與寵物</div>
+          <dl class="dl-kv"><dt>功能</dt><dd>聲紋與寵物建立、進階辨識、自訂情境</dd><dt>平台</dt><dd>權益判斷：Plus 才開放的功能，在 App 清楚標示</dd><dt>來源</dt><dd>您的規劃（Plus 訂閱）</dd><dt>追蹤</dt><dd><span class="hv">Plus 功能點擊 → 升級<span class="tip left">Basic 使用者點到 Plus 功能的次數與後續升級比例，校正方案說明與定價。</span></span></dd></dl></div>
+        <div class="sub-card"><span class="nb-corner">04</span><div class="ttl">關心與記憶</div>
+          <dl class="dl-kv"><dt>功能</dt><dd>健康預警、成長軌跡、雲端記憶、問候</dd><dt>平台</dt><dd>同一事件只通知一次；記憶期限依權益</dd><dt>來源</dt><dd>您的規劃；<span class="hv">建議補上統一通知規則<span class="tip">否則同一事件可能被 App 推播、LINE、Email 重複通知。</span></span></dd><dt>追蹤</dt><dd><span class="hv">通知開啟率<span class="tip up">依通知類型與語言統計送達與開啟，調整頻率與時段。</span></span></dd></dl></div>
+        <div class="sub-card"><span class="nb-corner">05</span><div class="ttl">方案與隱私</div>
+          <dl class="dl-kv"><dt>功能</dt><dd>方案比較與升級、錄影與雲端開關、資料匯出刪除</dd><dt>平台</dt><dd>權益服務、同意紀錄、刪除請求</dd><dt>來源</dt><dd>您的規劃（方案）；<span class="hv">建議補上資料控制<span class="tip up">FAQ 對「是否錄影」的說明，需要 App 內可查看、關閉與刪除的功能作為對應。</span></span></dd><dt>追蹤</dt><dd><span class="hv">select_plan → 訂閱率<span class="tip up">在 App 內比較方案後的訂閱比例，與官網結帳對照。</span></span></dd></dl></div>
+        <div class="sub-card"><span class="nb-corner">06</span><div class="ttl">更新與支援</div>
+          <dl class="dl-kv"><dt>功能</dt><dd>韌體更新、耗材、App 內問答與客服</dd><dt>平台</dt><dd>同一份知識庫、AI 與真人客服、保固提醒</dd><dt>來源</dt><dd>您的規劃（韌體說明、支援中心）；<span class="hv">建議補上 App 內入口<span class="tip up left">使用者遇到問題時通常已在 App 內；於 App 內提供客服與說明，可減少切換至網站的步驟。</span></span></dd><dt>追蹤</dt><dd><span class="hv">自助解決率<span class="tip up left">App 內提問中，AI 自行解決、不必轉真人的比例。</span></span></dd></dl></div>
+      </div>
+    </div>
+  <div class="dl-next">→ 其中配對開通最為關鍵，下一頁說明其流程</div>
+  </div>
+</section>
+
+<!-- ============ 28 · 配對旅程 · S11 ============ -->
+<section class="slide" data-layout="S11" data-animate="timeline-walk">
+  <div class="canvas-card">
+    <div class="chrome-min"><div class="l dl-trail"><span>總覽</span><span>回顧</span><span>01 架構</span><span>02 網站</span><span>03 旅程</span><span>04 客服</span><span>05 電商</span><span class="on">06 App</span><span>07 數據</span><span>閉環</span></div><div class="r">28 / 41</div></div>
+    <div class="dl-main dl-dense" style="grid-template-rows:auto 1fr auto;gap:2.6vh">
+      <div data-anim="line" class="dl-head-row">
+        <div class="dl-head">
+          <div class="t-cat">ONBOARDING · 配對旅程</div>
+          <h2 class="dl-h4">配對開通流程<br/>（共七個步驟）</h2>
+        </div>
+        <p class="dl-note" style="max-width:54ch">使用者完成購買後，由 App 接手開箱後的使用流程。這七個步驟是否順暢，會影響使用者的初期體驗，也是網站、App 與機器人首次共同運作的環節。</p>
+      </div>
+      <div class="timeline-h dl-tl7">
+        <div class="tl-row">
+          <div class="th-node up"><span class="dot"></span><div class="label"><span class="yr">01</span><span class="name hv">掃碼下載<span class="tip">盒內說明卡與官網資源中心都放下載入口，自動導向 App Store 或 Google Play；點擊記為 app_store_click。</span></span><span class="desc">盒內 QR 與官網入口，依手機導向對應商店</span><span class="sys">網站 · 商店</span></div></div>
+          <div class="th-node down"><span class="dot"></span><div class="label"><span class="yr">02</span><span class="name hv">登入或註冊<span class="tip">與官網同一個帳號；訪客結帳的人，用購買時的 Email 驗證後，就能連結訂單。</span></span><span class="desc">同一個帳號；訪客結帳者以 Email 驗證連結訂單</span><span class="sys">會員 · 登入協定</span></div></div>
+          <div class="th-node up"><span class="dot"></span><div class="label"><span class="yr">03</span><span class="name hv">裝置配對<span class="tip">藍牙找到機器人，再把 Wi-Fi 交給它；機器人序號綁定到這個帳號。</span></span><span class="desc">藍牙發現機器人、輸入 Wi-Fi，序號綁定帳號</span><span class="sys">App · 裝置雲</span></div></div>
+          <div class="th-node down"><span class="dot"></span><div class="label"><span class="yr">04</span><span class="name hv">同意與隱私<span class="tip">聲紋、影像、雲端記憶是否開啟，逐項說明、逐項同意，預設取最少；記錄同意的版本與時間。</span></span><span class="desc">聲紋、影像、雲端記憶逐項說明、逐項同意</span><span class="sys">同意管理</span></div></div>
+          <div class="th-node up"><span class="dot"></span><div class="label"><span class="yr">05</span><span class="name hv">設定家人與偏好<span class="tip">建立家人聲紋、選擇喚醒詞與語言、加入寵物；長輩可以先跳過，之後再補。</span></span><span class="desc">家人聲紋、喚醒詞、語言、寵物；可先跳過</span><span class="sys">App · 機器人</span></div></div>
+          <div class="th-node down"><span class="dot"></span><div class="label"><span class="yr">06</span><span class="name hv">保固與權益開通<span class="tip left">配對成功由後端送出事件，保固自動登錄、Basic 權益開通；已購 Plus 的同步開通。開通時效（例如 60 秒內）需與 App 團隊共同測試後，才會對外承諾。</span></span><span class="desc">配對成功後自動登錄保固，開通 Basic／Plus</span><span class="sys">權益服務 · 會員</span></div></div>
+          <div class="th-node up accent"><span class="dot"></span><div class="label"><span class="yr">07</span><span class="name hv">首次問候<span class="tip left">機器人迎賓；App 推播「MuRu 已到家」，並在前三天陸續送上上手指引，LINE 與 Email 依使用者偏好補位。</span></span><span class="desc">機器人迎賓；前三天陸續送上手指引</span><span class="sys">通知 · 內容</span></div></div>
+        </div>
+      </div>
+      <div class="dl-strip"><span class="t-meta">三項常見風險</span><div class="dl-chips"><span class="chip hv">長輩配對不順<span class="tip up">App 內提供大字圖文步驟；仍無法完成時，可帶著目前進度轉接 LINE 客服或真人，不需重複說明。</span></span><span class="chip hv">送禮的情境<span class="tip up">付款者與使用者可能是不同人。保固與權益歸屬以「配對的帳號」為準，不是付款者。</span></span><span class="chip hv on">Wi-Fi 連不上<span class="tip up left">明確提示原因（密碼、頻段、訊號），可重試；多次失敗自動出現客服入口。</span></span></div></div>
+    </div>
+  <div class="dl-next">→ 交給 07 數據：配對成功率、開通時間</div>
+  </div>
+</section>
+
+<!-- ============ 29 · 介面與分工 · S08 ============ -->
+<section class="slide" data-layout="S08" data-animate="duo-mirror">
+  <div class="canvas-card">
+    <div class="chrome-min"><div class="l dl-trail"><span>總覽</span><span>回顧</span><span>01 架構</span><span>02 網站</span><span>03 旅程</span><span>04 客服</span><span>05 電商</span><span class="on">06 App</span><span>07 數據</span><span>閉環</span></div><div class="r">29 / 41</div></div>
+    <div class="dl-main dl-dense" style="grid-template-rows:auto 1fr auto auto;gap:2.6vh">
+      <div data-anim="line" class="dl-head-row">
+        <div class="dl-head">
+          <div class="t-cat">INTERFACE · 平台與 App 的介面</div>
+          <h2 class="dl-h4">平台與 App 之間<br/>的資料交換</h2>
+        </div>
+        <p class="dl-note" style="max-width:56ch">兩邊靠一組 API 交換資料，各自獨立開發、各自上線。左邊是 App 從平台拿到的，右邊是平台從 App 拿回的。</p>
+      </div>
+      <div class="dl-duo2 duo-compare" style="margin-top:0">
+        <div class="col">
+          <div class="col-ttl" style="font-family:var(--sans),var(--sans-zh);font-weight:300;font-size:max(22px,1.8vw);border-bottom:1px solid var(--ink);padding-bottom:1vh">平台給 App</div>
+          <ul class="dl-list">
+            <li><span>01</span><span><b>一個帳號</b>：標準登入協定，與官網共用，網站不存密碼</span></li>
+            <li><span>02</span><span><b>一份權益</b>：App 只問<span class="hv">權益服務<span class="tip up">Basic／Plus、到期日、購買管道的唯一紀錄；換商店、退款、續訂，App 都不必另外處理。</span></span>，就知道該開放哪些功能</span></li>
+            <li><span>03</span><span><b>一份內容</b>：FAQ、手冊、照護指南同一份，App 內直接顯示</span></li>
+            <li><span>04</span><span><b>一個客服</b>：App 內提問，AI 先答、真人接手，與網站、LINE 同一收件匣</span></li>
+            <li><span>05</span><span><b>一組通知規則</b>：推播、LINE、Email 統一語言與頻率</span></li>
+          </ul>
+        </div>
+        <span class="vrule"></span>
+        <div class="col accent">
+          <div class="col-ttl" style="font-family:var(--sans),var(--sans-zh);font-weight:300;font-size:max(22px,1.8vw);border-bottom:1px solid var(--accent);padding-bottom:1vh">App 回給平台</div>
+          <ul class="dl-list">
+            <li><span>01</span><span><b>配對成功事件</b>：序號與帳號綁定，觸發保固與推薦</span></li>
+            <li><span>02</span><span><b>商店訂閱通知</b>：App Store、Google Play 的購買、續訂、退款，轉交權益服務</span></li>
+            <li><span>03</span><span><b><span class="hv">裝置狀態摘要<span class="tip up left">型號、韌體版本、是否在線、電量等級。客服接手時看得到，就不必請使用者自己去找。</span></span></b>（同意後）：不含影像、聲紋與居家活動</span></li>
+            <li><span>04</span><span><b>App 事件</b>（同意後）：開通完成、功能開啟、錯誤，進數據看板</span></li>
+            <li><span>05</span><span><b>通知回執</b>：送達與開啟，避免重複通知</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="dl-strip">
+        <span class="t-meta">誰負責哪一段</span>
+        <div class="dl-chips">
+          <span class="chip hv on">本案：平台側<span class="tip up">帳號對接、權益服務、內容與客服 API、通知規則、事件收集、網站；以及提供給 App 的介面規格與測試環境。</span></span>
+          <span class="chip hv">App 團隊<span class="tip up">App 的畫面、配對與控制流程、串接上述 API、商店上架。</span></span>
+          <span class="chip hv">韌體與裝置雲團隊<span class="tip up left">機器人本體、遠端指令、雲端記憶、韌體派送。</span></span>
+          <span class="chip hv">共同驗收<span class="tip up left">配對開通的時效、訂閱同步、通知不重複，三項由雙方一起測過才上線。</span></span>
+        </div>
+      </div>
+      <div class="t-meta" style="text-transform:none;letter-spacing:.04em">資料原則沿用全案：影像、聲紋、居家活動、寵物紀錄不進分析平台，也不用於推薦；只傳狀態摘要與使用者同意後的事件。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 30 · 範圍三層 · S19 ============ -->
+<section class="slide" data-layout="S19" data-animate="four-cards">
+  <div class="canvas-card">
+    <div class="chrome-min"><div class="l dl-trail"><span>總覽</span><span>回顧</span><span>01 架構</span><span>02 網站</span><span>03 旅程</span><span>04 客服</span><span>05 電商</span><span class="on">06 App</span><span>07 數據</span><span>閉環</span></div><div class="r">30 / 41</div></div>
+    <div class="dl-main dl-dense" style="grid-template-rows:auto 1fr">
+      <div data-anim="line" class="dl-head" style="gap:2.4vh">
+        <div class="dl-rule"></div>
+        <div class="dl-head-row">
+          <div class="dl-head">
+            <div class="t-meta">SCOPE · 範圍</div>
+            <h2 class="dl-h4">App 相關範圍的<br/>分層建議</h2>
+          </div>
+          <p class="dl-note">以同一組 API 分層擴充。L1 已包含於原方案；L2、L3 為本次新增建議。建議 L1 與 L2 於 S4 一併上線，L3 於 S5 啟動。</p>
+        </div>
+      </div>
+      <div data-anim="up" class="dl-fc" style="gap:1.8vw">
+        <div><div class="t-meta">— L1 / BASE</div><h3>基礎串接</h3><p class="dl-txt">完成帳號、權益與配對事件的串接。</p><dl class="dl-kv"><dt>內容</dt><dd>一個帳號通用；權益 API；配對成功事件觸發保固</dd><dt>平台</dt><dd>登入對接、權益服務、商店通知</dd><dt>配合</dt><dd>App 串接兩個介面</dd><dt>前提</dt><dd>App 有可對外的帳號與後端</dd><dt>狀態</dt><dd>已含於原方案（S4）</dd></dl></div>
+        <div style="border-top-color:var(--accent)"><div class="t-meta" style="color:var(--accent)">— L2 / SERVICE · 建議</div><h3>內容與客服延伸</h3><p class="dl-txt">App 內提供與網站一致的內容與客服。</p><dl class="dl-kv"><dt>內容</dt><dd>App 內顯示 FAQ、手冊、照護指南；AI 客服入口；統一通知規則；版本公告</dd><dt>平台</dt><dd>內容 API、客服嵌入、通知規則</dd><dt>配合</dt><dd>App 開頁面容器與客服入口</dd><dt>前提</dt><dd>確認 App 內嵌網頁或原生顯示</dd><dt>狀態</dt><dd>建議納入，另列報價</dd></dl></div>
+        <div><div class="t-meta">— L3 / DEVICE</div><h3>裝置聯動</h3><p class="dl-txt">機器人的狀態資料可回傳至平台。</p><dl class="dl-kv"><dt>內容</dt><dd>客服直接看到型號與韌體；依擁有的裝置推薦配件；保固與耗材主動提醒；功能使用進看板</dd><dt>平台</dt><dd>裝置資料模型、主動服務規則</dd><dt>配合</dt><dd>App 與裝置雲回傳狀態摘要</dd><dt>前提</dt><dd>同意機制；裝置雲開放介面</dd><dt>狀態</dt><dd>選配，建議 S5 啟動</dd></dl></div>
+        <div><div class="t-meta">— L4 / APP BUILD</div><h3>App 本體開發</h3><p class="dl-txt">App 的畫面、配對與控制功能。</p><dl class="dl-kv"><dt>內容</dt><dd>App 的設計與開發、商店上架、裝置控制功能</dd><dt>平台</dt><dd>提供介面規格、測試環境與共同驗收</dd><dt>配合</dt><dd>App 團隊，或另行委託</dd><dt>前提</dt><dd>需要另行盤點需求再估算</dd><dt>狀態</dt><dd>不在本案；可另案評估</dd></dl></div>
+      </div>
+    </div>
+  <div class="dl-next">→ 範圍的選擇，將於下一頁與貴公司確認</div>
+  </div>
+</section>
+
+<!-- ============ 31 · 需求確認 · S15 ============ -->
+<section class="slide dark" data-layout="S15" data-animate="matrix-fill">
+  <div class="canvas-card">
+    <div class="chrome-min"><div class="l dl-trail"><span>總覽</span><span>回顧</span><span>01 架構</span><span>02 網站</span><span>03 旅程</span><span>04 客服</span><span>05 電商</span><span class="on">06 App</span><span>07 數據</span><span>閉環</span></div><div class="r">31 / 41</div></div>
+    <div class="dl-main dl-dense" style="grid-template-rows:auto 1fr">
+      <div data-anim="line" class="dl-head-row">
+        <div class="dl-head">
+          <div class="t-cat">TO CONFIRM · 請您確認</div>
+          <h2 class="dl-h4">待確認事項<br/>（共八項）</h2>
+        </div>
+        <p class="dl-note">目前假設 App 由貴公司團隊負責，本案負責平台側串接。此假設是否成立、串接深度為何，請貴公司確認。移入卡片可查看不同答案對應的作法。</p>
+      </div>
+      <div data-anim="up" class="dl-map">
+        <div class="card-fill hvc"><div class="from">01 · 需求</div><div class="arrow">→</div><div class="to">機器人與 App 聯動是否列為首發需求？</div><div class="txt">配對、通知、客服與權益，是否須於上市時提供，或於第二階段加入？</div><div class="kp">決定 · 首發範圍與排程</div>
+          <div class="flip"><b>首發必備</b>：S4 提前，與 S2 並行準備介面規格與測試環境。<br/><b>之後再加</b>：首發只放 App 下載入口與說明，S4 依 App 進度啟動。平台預留介面，不影響首發。</div></div>
+        <div class="card-fill hvc"><div class="from">02 · 現況與窗口</div><div class="arrow">→</div><div class="to">App 目前進度與對口窗口</div><div class="txt">目前為已上架、開發中或規劃中？現有哪些功能？可否指定對口窗口？</div><div class="kp">決定 · S4 時程</div>
+          <div class="flip"><b>已上架</b>：直接盤點既有 API 與帳號。<br/><b>開發中</b>：我們先提供介面規格與測試環境，兩邊並行。<br/><b>規劃中</b>：首發不依賴 App，S4 延後。</div></div>
+        <div class="card-accent hvc"><div class="from" style="color:rgba(255,255,255,.8)">03 · 範圍</div><div class="arrow">→</div><div class="to">合作範圍涵蓋到哪一層？</div><div class="txt">只做 L1 基礎串接，還是含 L2 內容與客服、L3 裝置聯動？App 本體是否另案？</div><div class="kp">決定 · 報價範圍</div>
+          <div class="flip"><b>怎麼做</b><br/>L1 已含於原方案；L2、L3 分別列為報價選項，可分期啟動。L4 另案盤點需求後再估算。</div></div>
+        <div class="card-fill hvc"><div class="from">04 · 帳號</div><div class="arrow">→</div><div class="to">是否沿用 App 現有帳號？</div><div class="txt">是否支援標準登入協定（OIDC），能否讓網站直接對接？</div><div class="kp">決定 · 是否另建身分服務</div>
+          <div class="flip"><b>可沿用</b>：網站直接對接，使用者免重新註冊。<br/><b>不支援</b>：選用開源 Keycloak 或商用服務，並規劃帳號遷移。</div></div>
+        <div class="card-fill hvc"><div class="from">05 · 內容與客服</div><div class="arrow">→</div><div class="to">內容與客服是否需在 App 內提供？</div><div class="txt">FAQ、手冊、AI 客服、通知中心，是否在 App 內提供？</div><div class="kp">決定 · L2 是否納入</div>
+          <div class="flip"><b>要</b>：網站內容同一份提供給 App 嵌入（網頁容器或 API），不必重寫第二份。<br/><b>不要</b>：App 只放連結導回網站。</div></div>
+        <div class="card-fill hvc"><div class="from">06 · 通知</div><div class="arrow">→</div><div class="to">通知管道如何分工？</div><div class="txt">兩個市場是否都以 LINE 為主要管道？App 推播負責哪些訊息？</div><div class="kp">決定 · 通知規則</div>
+          <div class="flip"><b>怎麼做</b><br/>依訊息類型分工，例如配對與安全用推播、問候與活動用 LINE；同一事件只通知一次。台灣與日本分開設定。</div></div>
+        <div class="card-fill hvc"><div class="from">07 · 資料</div><div class="arrow">→</div><div class="to">哪些 App 與裝置資料可進平台？</div><div class="txt">狀態摘要、功能使用、錯誤紀錄，是否在使用者同意下回傳？</div><div class="kp">決定 · L3 與數據範圍</div>
+          <div class="flip"><b>預設</b>：只收狀態摘要與同意後的事件。<br/>影像、聲紋、居家活動、寵物紀錄不進平台，這是全案已定的原則。</div></div>
+        <div class="card-fill hvc"><div class="from">08 · 訂閱</div><div class="arrow">→</div><div class="to">Plus 訂閱的銷售管道</div><div class="txt">是否於官網、App Store、Google Play 並行銷售？退款與取消由誰處理？</div><div class="kp">決定 · 權益服務設計</div>
+          <div class="flip"><b>三處並存</b>：權益服務統一記錄，會員中心標示「在哪裡管理」。<br/><b>僅 App 內購</b>：先接商店通知，官網只顯示入口。</div></div>
+      </div>
+    </div>
+  <div class="dl-next">→ 建議於啟動會議前回覆；答案將影響 S4 的範圍與排程</div>
   </div>
 </section>
 
 <!-- ============ 25 · div6 ============ -->
 <section class="slide dark" data-layout="S17" data-animate="system-diagram">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l dl-trail"><span>總覽</span><span>回顧</span><span>01 架構</span><span>02 網站</span><span>03 旅程</span><span>04 客服</span><span>05 電商</span><span class="on">06 數據</span><span>閉環</span></div><div class="r">25 / 34</div></div>
+    <div class="chrome-min"><div class="l dl-trail"><span>總覽</span><span>回顧</span><span>01 架構</span><span>02 網站</span><span>03 旅程</span><span>04 客服</span><span>05 電商</span><span>06 App</span><span class="on">07 數據</span><span>閉環</span></div><div class="r">32 / 41</div></div>
     <div class="dl-main" style="grid-template-rows:1fr">
       <div data-anim="up" class="dl-div">
         <div class="ov"><div class="ov-l" style="grid-column:1">觸點<small>TOUCH</small></div><div class="ov-r" style="grid-column:2"><div class="ov-c">企業官網</div><div class="ov-c">MuRu 三語站</div><div class="ov-c">LINE</div><div class="ov-c">MuRu App</div><div class="ov-c">Email</div></div><div class="ov-l" style="grid-column:1">前台<small>FRONTEND</small></div><div class="ov-r" style="grid-column:2"><div class="ov-c">預先產生頁面</div><div class="ov-c">互動元件</div><div class="ov-c">對話視窗</div><div class="ov-c">結帳頁</div><div class="ov-c">CDN · WAF</div></div><div class="ov-l" style="grid-column:1">API<small>GATEWAY</small></div><div class="ov-r" style="grid-column:2"><div class="ov-c">統一 API</div><div class="ov-c">身分與權限</div><div class="ov-c">防濫用 · 冪等</div></div><div class="ov-l on" style="grid-column:1">後台<small>BACKEND</small></div><div class="ov-r" style="grid-column:2"><div class="ov-c on">內容管理</div><div class="ov-c">表單名單</div><div class="ov-c">會員</div><div class="ov-c">商務訂單</div><div class="ov-c">訂閱權益</div><div class="ov-c">智慧客服</div><div class="ov-c on">推薦</div></div><div class="ov-l on" style="grid-column:1">資料<small>DATA</small></div><div class="ov-r" style="grid-column:2"><div class="ov-c on">業務資料庫</div><div class="ov-c">知識庫向量</div><div class="ov-c">快取 · 佇列</div><div class="ov-c on">事件收集</div></div><div class="ov-l on" style="grid-column:1">營運<small>OPS</small></div><div class="ov-r" style="grid-column:2"><div class="ov-c on">數據看板</div><div class="ov-c on">CRM</div><div class="ov-c">客服平台</div><div class="ov-c">金流 · 發票 · 物流</div></div><div class="ov-loop on"><span>數據回饋 · 持續優化</span></div></div>
         <div class="dl-div-r">
-          <div class="dl-div-no"><span class="dl-num">06</span><span class="t-meta">DATA</span></div>
-          <div><h2 class="dl-h4" style="color:#fff">數據賦能</h2><p class="dl-q">「哪裡該改？改了有沒有用？」</p></div>
-          <dl class="dl-io"><dt>承接</dt><dd>前五段所有環節的事件與業務資料</dd><dt>產出</dt><dd>內容、推薦、客服、流程的具體改動</dd><dt>交給</dt><dd class="to">→ 回到 02 網站，形成閉環</dd></dl>
+          <div class="dl-div-no"><span class="dl-num">07</span><span class="t-meta">DATA</span></div>
+          <div><h2 class="dl-h4" style="color:#fff">數據賦能</h2><p class="dl-q">「哪些項目需要改善？改善後成效如何？」</p></div>
+          <dl class="dl-io"><dt>承接</dt><dd>前六段所有環節的事件與業務資料，含 App 與裝置事件</dd><dt>產出</dt><dd>內容、推薦、客服、流程的具體改動</dd><dt>交給</dt><dd class="to">→ 回到 02 網站，形成閉環</dd></dl>
           <div class="dl-chips"><span class="chip">數據閉環</span><span class="chip">埋點規劃</span><span class="chip">數據賦能</span><span class="chip">指標體系</span><span class="chip">運作節奏</span></div>
         </div>
       </div>
@@ -2423,14 +2667,14 @@
 <!-- ============ 26 · 數據閉環 · S14 ============ -->
 <section class="slide dark" data-layout="S14" data-animate="loop-form">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l dl-trail"><span>總覽</span><span>回顧</span><span>01 架構</span><span>02 網站</span><span>03 旅程</span><span>04 客服</span><span>05 電商</span><span class="on">06 數據</span><span>閉環</span></div><div class="r">26 / 34</div></div>
+    <div class="chrome-min"><div class="l dl-trail"><span>總覽</span><span>回顧</span><span>01 架構</span><span>02 網站</span><span>03 旅程</span><span>04 客服</span><span>05 電商</span><span>06 App</span><span class="on">07 數據</span><span>閉環</span></div><div class="r">33 / 41</div></div>
     <div class="dl-main dl-dense" style="grid-template-rows:auto 1fr">
       <div data-anim="line" class="dl-head-row">
         <div class="dl-head">
           <div class="t-meta">DATA LOOP · 數據閉環</div>
-          <h2 class="dl-h4">收集、整理、洞察、行動，<br/>每週轉一圈</h2>
+          <h2 class="dl-h4">收集、整理、洞察、行動：<br/>每週循環一次</h2>
         </div>
-        <p class="dl-note" style="max-width:44ch">數據賦能的關鍵不是工具，而是每一筆數據最後都會變成一個具體的改動。</p>
+        <p class="dl-note" style="max-width:44ch">數據運用的重點不在工具，而在於讓數據對應到具體的改善行動。</p>
       </div>
       <div data-anim="up" class="dl-loop dl-loop2">
         <div class="dl-loop-steps">
@@ -2463,7 +2707,7 @@
               <div class="dl-chips">
                 <span class="chip hv on">A/B 測試<span class="tip up">同時把流量分成兩組看不同版本，跑滿兩週、樣本足夠才下結論。</span></span>
                 <span class="chip hv">推薦規則<span class="tip up">依數據調整推薦內容與順序，例如寵物家庭優先推薦寵物追蹤功能。</span></span>
-                <span class="chip hv">知識庫<span class="tip up left">AI 答不了的問題補寫成 FAQ 或照護文章，發布後 AI 立即會答。</span></span>
+                <span class="chip hv">知識庫<span class="tip up left">AI 答不了的問題補寫成 FAQ 或照護文章，發布後 AI 即可引用。</span></span>
               </div></div>
             <p class="dl-txt">改內容、調推薦、補知識庫、名單分群寄送，再回到收集</p></div></div>
         </div>
@@ -2497,12 +2741,12 @@
 <!-- ============ 27 · 埋點規劃 · S16 ============ -->
 <section class="slide" data-layout="S16" data-animate="field-notes">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l dl-trail"><span>總覽</span><span>回顧</span><span>01 架構</span><span>02 網站</span><span>03 旅程</span><span>04 客服</span><span>05 電商</span><span class="on">06 數據</span><span>閉環</span></div><div class="r">27 / 34</div></div>
+    <div class="chrome-min"><div class="l dl-trail"><span>總覽</span><span>回顧</span><span>01 架構</span><span>02 網站</span><span>03 旅程</span><span>04 客服</span><span>05 電商</span><span>06 App</span><span class="on">07 數據</span><span>閉環</span></div><div class="r">34 / 41</div></div>
     <div class="dl-main dl-dense" style="grid-template-rows:auto 1fr auto;gap:2.6vh">
       <div data-anim="line" class="dl-head-row">
         <div class="dl-head">
           <div class="t-meta">TRACKING PLAN · 埋點規劃</div>
-          <h2 class="dl-h4">每個階段記什麼，<br/>先想清楚再埋</h2>
+          <h2 class="dl-h4">各階段需記錄的事件<br/>（埋點規劃）</h2>
         </div>
         <p class="dl-note" style="max-width:54ch">事件依旅程階段設計，每一個都回答一個商業問題。全部事件共用同一組參數，新產品上線不必重做追蹤。</p>
       </div>
@@ -2513,7 +2757,7 @@
             <span class="chip mono hv">ai_referral<span class="tip">從 ChatGPT、Perplexity、Copilot 等 AI 助理點進來的流量獨立標示，觀察 GEO 成效。</span></span>
             <span class="chip mono hv">cta_click<span class="tip">主要按鈕點擊，帶 cta_id 與位置；看首屏導流到產品頁的比例。</span></span>
           </div><div class="kp2">進入看板 · 經營總覽、產品漏斗</div></div>
-        <div class="card-fill"><div class="dl-ttl"><span class="t-meta" style="margin-right:.8em">02 · 了解</span>「哪段內容打動人？」</div>
+        <div class="card-fill"><div class="dl-ttl"><span class="t-meta" style="margin-right:.8em">02 · 了解</span>「哪段內容最受關注？」</div>
           <div class="dl-chips">
             <span class="chip mono hv">section_view<span class="tip">區塊可見 50% 且停留 1 秒以上；比較五個陪伴情境的吸引力。</span></span>
             <span class="chip mono hv">media_progress<span class="tip">影片 25／50／75／100%；決定首頁主打哪一段影片。</span></span>
@@ -2529,16 +2773,16 @@
           <div class="dl-chips">
             <span class="chip mono hv">waitlist_submit<span class="tip up">上市通知送出；Email 確認另由伺服器記錄 waitlist_confirmed。</span></span>
             <span class="chip mono hv">begin_checkout<span class="tip up">進入結帳；與 purchase 對照，就是結帳流失率。</span></span>
-            <span class="chip mono hv">form_error<span class="tip up">哪個欄位出錯，例如日文郵便番號格式；修正後轉換率通常立刻改善。</span></span>
+            <span class="chip mono hv">form_error<span class="tip up">哪個欄位出錯，例如日文郵便番號格式；修正後通常可改善轉換率。</span></span>
             <span class="chip mono hv on">purchase<span class="tip up">付款成功後由伺服器送出；含金額、幣別、商品、優惠碼，不含個資。</span></span>
           </div><div class="kp2">進入看板 · 產品漏斗、電商與訂閱</div></div>
         <div class="card-fill"><div class="dl-ttl"><span class="t-meta" style="margin-right:.8em">05 · 開始使用</span>「順利用起來了嗎？」</div>
           <div class="dl-chips">
             <span class="chip mono hv">device_activated<span class="tip up">App 配對成功；出貨到開通的天數是重要的體驗指標。</span></span>
             <span class="chip mono hv">warranty_register<span class="tip up">保固登錄；首發由客服人工協助，會員上線後自動完成。</span></span>
-            <span class="chip mono hv">guide_view<span class="tip up left">快速上手與照護指南瀏覽；搭配客服主題，看哪個步驟最常卡住。</span></span>
+            <span class="chip mono hv">guide_view<span class="tip up left">快速上手與照護指南瀏覽；搭配客服主題，看哪個步驟最常出現問題。</span></span>
           </div><div class="kp2">進入看板 · 客服洞察</div></div>
-        <div class="card-accent"><div class="dl-ttl"><span class="t-meta" style="margin-right:.8em">06 · 長期陪伴</span>「會留下來嗎？」</div>
+        <div class="card-accent"><div class="dl-ttl"><span class="t-meta" style="margin-right:.8em">06 · 長期陪伴</span>「是否持續使用？」</div>
           <div class="dl-chips">
             <span class="chip mono hv">subscription_start<span class="tip up left">Plus 開通；記錄購買管道：官網、App Store、Google Play。</span></span>
             <span class="chip mono hv">subscription_cancel<span class="tip up left">取消時詢問原因，回到產品與內容待辦。</span></span>
@@ -2553,7 +2797,7 @@
           </div>
         </div>
         <div class="dl-strip" style="border-top-color:var(--border-subtle)">
-          <span class="t-meta">絕不送進分析平台</span>
+          <span class="t-meta">不送進分析平台</span>
           <div class="dl-chips">
             <span class="chip ghost">姓名</span><span class="chip ghost">Email</span><span class="chip ghost">電話</span><span class="chip ghost">地址</span><span class="chip ghost">對話內容</span><span class="chip ghost">健康資訊</span><span class="chip ghost">錄音與影像</span>
           </div>
@@ -2566,24 +2810,24 @@
 <!-- ============ 28 · 優化情境 · S13 ============ -->
 <section class="slide dark" data-layout="S13" data-animate="three-forces">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l dl-trail"><span>總覽</span><span>回顧</span><span>01 架構</span><span>02 網站</span><span>03 旅程</span><span>04 客服</span><span>05 電商</span><span class="on">06 數據</span><span>閉環</span></div><div class="r">28 / 34</div></div>
+    <div class="chrome-min"><div class="l dl-trail"><span>總覽</span><span>回顧</span><span>01 架構</span><span>02 網站</span><span>03 旅程</span><span>04 客服</span><span>05 電商</span><span>06 App</span><span class="on">07 數據</span><span>閉環</span></div><div class="r">35 / 41</div></div>
     <div class="dl-main" style="grid-template-rows:1fr;gap:0">
       <div data-anim="up" class="dl-forces">
         <div class="card-accent">
           <div class="dl-head" style="gap:2.4vh">
             <div class="t-cat">DATA EMPOWERMENT · 數據賦能</div>
-            <h2 class="dl-hero-t">數據不是報表，<br/>是下一個動作</h2>
-            <p class="dl-txt" style="max-width:30ch">每次優化都用同一個格式：看到什麼訊號 → 做什麼改動 → 用哪個指標驗證。右邊是網站、客服、電商各一個例子。</p>
+            <h2 class="dl-hero-t">從數據到行動：<br/>三個應用範例</h2>
+            <p class="dl-txt" style="max-width:30ch">每次優化皆採相同格式：觀察訊號 → 採取改動 → 以指標驗證。右側為網站、客服、電商各一例。</p>
           </div>
           <span class="dot-mat" style="position:absolute;right:2vw;bottom:9vh;width:10vw;height:10vw;color:#fff;opacity:.3"></span>
           <div class="t-meta" style="color:rgba(255,255,255,.72)">訊號 → 改動 → 驗證</div>
         </div>
         <div>
           <div class="card-fill"><div class="dl-num" style="font-size:min(4.4vw,7.6vh);color:var(--accent)">01</div><div>
-            <div class="dl-ttl"><span class="dl-mod">網站</span>隱私疑慮擋住了轉換</div>
+            <div class="dl-ttl"><span class="dl-mod">網站</span>隱私疑慮影響轉換</div>
             <dl class="dl-kv">
               <dt>訊號</dt><dd>智慧設計頁停留很長，但轉換偏低；FAQ「是否錄影」點開排名第一</dd>
-              <dt>改動</dt><dd>把「影像在本機處理」移到首頁第二屏，<span class="hv">A/B 測試<span class="tip">同時讓一半訪客看新版、一半看舊版，跑滿兩週、樣本足夠才下結論，避免憑感覺改版。</span></span>兩種寫法</dd>
+              <dt>改動</dt><dd>把「影像在本機處理」移到首頁第二屏，<span class="hv">A/B 測試<span class="tip">同時讓一半訪客看新版、一半看舊版，跑滿兩週、樣本足夠才下結論，避免憑主觀判斷改版。</span></span>兩種寫法</dd>
               <dt>驗證</dt><dd>上市通知轉換率；看過信任中心的人的登記率</dd>
               <dt>資料</dt><dd>section_view、faq_open、trust_view、waitlist_confirmed</dd>
               <dt>負責</dt><dd>行銷＋內容</dd>
@@ -2592,7 +2836,7 @@
             <div class="dl-ttl"><span class="dl-mod">客服</span>AI 客服答不好「續航」</div>
             <dl class="dl-kv">
               <dt>訊號</dt><dd>續航相關對話評價偏低、轉真人比例高；問題集中在「多久要充一次電」</dd>
-              <dt>改動</dt><dd>補寫「續航與回充」照護文章與規格說明；發布後 <span class="hv">AI 立即引用<span class="tip">內容發布即同步到 AI 知識庫，不需要重新訓練模型；AI 回答時會附上這篇文章的連結。</span></span></dd>
+              <dt>改動</dt><dd>補寫「續航與回充」照護文章與規格說明；發布後 <span class="hv">AI 即可引用<span class="tip">內容發布即同步到 AI 知識庫，不需要重新訓練模型；AI 回答時會附上這篇文章的連結。</span></span></dd>
               <dt>驗證</dt><dd>該主題的 AI 自助解決率、轉真人比例</dd>
               <dt>資料</dt><dd>客服平台的主題分類、評價、轉真人紀錄</dd>
               <dt>負責</dt><dd>客服＋內容</dd>
@@ -2615,24 +2859,24 @@
 <!-- ============ 29 · 指標體系 · S05 ============ -->
 <section class="slide" data-layout="S05" data-animate="stack-build">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l dl-trail"><span>總覽</span><span>回顧</span><span>01 架構</span><span>02 網站</span><span>03 旅程</span><span>04 客服</span><span>05 電商</span><span class="on">06 數據</span><span>閉環</span></div><div class="r">29 / 34</div></div>
+    <div class="chrome-min"><div class="l dl-trail"><span>總覽</span><span>回顧</span><span>01 架構</span><span>02 網站</span><span>03 旅程</span><span>04 客服</span><span>05 電商</span><span>06 App</span><span class="on">07 數據</span><span>閉環</span></div><div class="r">36 / 41</div></div>
     <div class="dl-main dl-dense" style="grid-template-rows:auto 1fr auto;gap:3vh">
       <div data-anim="line" class="dl-head-row">
         <div class="dl-head">
           <div class="t-cat">KPI TREE · 指標體系</div>
-          <h2 class="dl-h4">一個北極星，<br/>往下拆成三層</h2>
+          <h2 class="dl-h4">核心指標，<br/>與三層指標架構</h2>
         </div>
-        <p class="dl-note" style="max-width:54ch">北極星指標：<b style="color:var(--accent);font-weight:600">每月有互動的 MuRu 家庭數</b>。它同時反映「賣得出去、用得起來、留得下來」。每個指標都有定義、資料來源與負責人。</p>
+        <p class="dl-note" style="max-width:54ch">核心指標：<b style="color:var(--accent);font-weight:600">每月有互動的 MuRu 家庭數</b>，同時反映銷售、使用與留存。每項指標皆有定義、資料來源與負責人。</p>
       </div>
       <div class="stack-row" style="margin-top:0">
         <div class="stack-block b-grey">
           <div class="layer-nb">LAYER 01 · 經營團隊</div>
-          <div class="layer-ttl">經營結果</div><div class="layer-desc">回答「生意有沒有變好」。每月看趨勢，決定資源投向哪個市場、哪個產品。</div>
+          <div class="layer-ttl">經營結果</div><div class="layer-desc">回答「整體經營成果如何」。每月看趨勢，決定資源投向哪個市場、哪個產品。</div>
           <ul class="dl-mlist">
             <li><span class="hv">上市通知有效名單<span class="tip">完成 Email 確認的名單數；依市場、語言、興趣分群。</span></span><span class="src">CRM</span></li>
             <li><span class="hv">銷售台數與營收<span class="tip">以訂單系統為準，扣除取消與退貨；台灣、日本分開看。</span></span><span class="src">訂單系統</span></li>
             <li><span class="hv">Plus 訂閱率與續訂率<span class="tip">開通 Plus 的擁有者比例，以及到期後續訂的比例；合併三個購買管道。</span></span><span class="src">權益服務</span></li>
-            <li><span class="hv">每月互動家庭數<span class="tip up">北極星：當月至少與 MuRu 互動一次的家庭數，由 App 團隊提供匯總數據。</span></span><span class="src">App 匯總</span></li>
+            <li><span class="hv">每月互動家庭數<span class="tip up">核心指標：當月至少與 MuRu 互動一次的家庭數，由 App 團隊提供匯總數據。</span></span><span class="src">App 匯總</span></li>
           </ul>
           <div class="layer-tag">每月 · 經營總覽看板</div>
         </div>
@@ -2654,7 +2898,7 @@
             <li><span class="hv">區塊觀看與影片完播<span class="tip left">哪段內容有人看、哪段沒人看；決定內容改版順序。</span></span><span class="src">分析平台</span></li>
             <li><span class="hv">AI 自助解決率<span class="tip left">對話未轉真人且使用者未再詢問同一主題的比例；依主題拆開。</span></span><span class="src">客服平台</span></li>
             <li><span class="hv">表單錯誤與付款失敗<span class="tip left">依欄位與付款方式統計錯誤，直接對應到工程待辦。</span></span><span class="src">後端紀錄</span></li>
-            <li><span class="hv">頁面速度<span class="tip up left">實際使用者的載入與互動速度（LCP、INP）；速度變慢會直接影響轉換與搜尋排名。</span></span><span class="src">實測數據</span></li>
+            <li><span class="hv">頁面速度<span class="tip up left">實際使用者的載入與互動速度（LCP、INP）；速度變慢可能影響轉換與搜尋排名。</span></span><span class="src">實測數據</span></li>
           </ul>
           <div class="layer-tag">每日／每週 · 內容與客服看板</div>
         </div>
@@ -2667,14 +2911,14 @@
 <!-- ============ 30 · 運作節奏 · S20 ============ -->
 <section class="slide" data-layout="S20" data-animate="stacked-ledger">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l dl-trail"><span>總覽</span><span>回顧</span><span>01 架構</span><span>02 網站</span><span>03 旅程</span><span>04 客服</span><span>05 電商</span><span class="on">06 數據</span><span>閉環</span></div><div class="r">30 / 34</div></div>
+    <div class="chrome-min"><div class="l dl-trail"><span>總覽</span><span>回顧</span><span>01 架構</span><span>02 網站</span><span>03 旅程</span><span>04 客服</span><span>05 電商</span><span>06 App</span><span class="on">07 數據</span><span>閉環</span></div><div class="r">37 / 41</div></div>
     <div class="dl-main dl-dense" style="grid-template-rows:auto 1fr;gap:3vh">
       <div data-anim="line" class="dl-head-row">
         <div class="dl-head">
           <div class="t-cat">CADENCE · 運作節奏</div>
-          <h2 class="dl-h4">誰、多久、看什麼，<br/>都排進固定節奏</h2>
+          <h2 class="dl-h4">固定的檢視節奏：<br/>對象、頻率與內容</h2>
         </div>
-        <p class="dl-note" style="max-width:52ch">持續優化靠的不是熱情，而是固定的回顧節奏與看板。每個節奏都有負責人，也都有明確的產出。標籤可移入看看板內容。</p>
+        <p class="dl-note" style="max-width:52ch">持續優化依靠固定的檢視節奏與看板。每個節奏皆有負責人與明確產出。標籤可移入查看看板內容。</p>
       </div>
       <div data-anim="ledger" class="dl-ledger dl-cad">
         <div class="dl-cad-head"><span>節奏</span><div class="in"><span>誰</span><span>看什麼</span><span>產出</span><span>看板</span></div><span></span></div>
@@ -2682,7 +2926,7 @@
           <div class="ledger-label"><span class="who">工程值班</span><span>網站可用性、表單送出失敗、付款異常</span><span class="o">自動告警給負責人，當下處理</span><span class="chip hv">技術監控<span class="tip left">網站與 API 是否正常、錯誤率、表單轉交是否失敗、付款回呼是否異常。</span></span></div>
           <i data-lucide="bell-ring" class="ledger-icon"></i></div>
         <div class="ledger-row"><div class="ledger-num">每日</div>
-          <div class="ledger-label"><span class="who">營運主管</span><span>新名單、訂單、客服轉真人數量</span><span class="o">營運日報自動寄送</span><span class="chip hv">經營總覽<span class="tip left">名單、銷售、訂閱、北極星指標的每日走勢，台灣與日本並列。</span></span></div>
+          <div class="ledger-label"><span class="who">營運主管</span><span>新名單、訂單、客服轉真人數量</span><span class="o">營運日報自動寄送</span><span class="chip hv">經營總覽<span class="tip left">名單、銷售、訂閱、核心指標的每日走勢，台灣與日本並列。</span></span></div>
           <i data-lucide="calendar-days" class="ledger-icon"></i></div>
         <div class="ledger-row"><div class="ledger-num" style="color:var(--accent)">每週</div>
           <div class="ledger-label"><span class="who">行銷、內容、客服</span><span>產品漏斗、內容成效、客服高頻問題</span><span class="o">內容與推薦待辦、AI 知識庫補強</span><span class="chip hv on">漏斗＋內容＋客服<span class="tip up left">產品漏斗看板：各層轉換。內容成效看板：區塊觀看、影片完播、FAQ 排行。客服洞察看板：主題排行、自助解決率、AI 答不了的問題。</span></span></div>
@@ -2695,31 +2939,32 @@
           <i data-lucide="compass" class="ledger-icon"></i></div>
       </div>
     </div>
-  <div class="dl-next">↺ 回到 02 網站：改動上線，下一圈開始</div>
+  <div class="dl-next">↺ 回到 02 網站：改動上線後，進入下一個循環</div>
   </div>
 </section>
 
 <!-- ============ 31 · closure ============ -->
 <section class="slide dark" data-layout="S17" data-animate="system-diagram">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l dl-trail"><span>總覽</span><span>回顧</span><span>01 架構</span><span>02 網站</span><span>03 旅程</span><span>04 客服</span><span>05 電商</span><span>06 數據</span><span class="on">閉環</span></div><div class="r">31 / 34</div></div>
+    <div class="chrome-min"><div class="l dl-trail"><span>總覽</span><span>回顧</span><span>01 架構</span><span>02 網站</span><span>03 旅程</span><span>04 客服</span><span>05 電商</span><span>06 App</span><span>07 數據</span><span class="on">閉環</span></div><div class="r">38 / 41</div></div>
     <div class="dl-main" style="grid-template-rows:1fr">
       <div data-anim="up" class="dl-div">
         <div class="ov"><div class="ov-l on" style="grid-column:1">觸點<small>TOUCH</small></div><div class="ov-r" style="grid-column:2"><div class="ov-c on">企業官網</div><div class="ov-c on">MuRu 三語站</div><div class="ov-c on">LINE</div><div class="ov-c on">MuRu App</div><div class="ov-c on">Email</div></div><div class="ov-l on" style="grid-column:1">前台<small>FRONTEND</small></div><div class="ov-r" style="grid-column:2"><div class="ov-c on">預先產生頁面</div><div class="ov-c on">互動元件</div><div class="ov-c on">對話視窗</div><div class="ov-c on">結帳頁</div><div class="ov-c on">CDN · WAF</div></div><div class="ov-l on" style="grid-column:1">API<small>GATEWAY</small></div><div class="ov-r" style="grid-column:2"><div class="ov-c on">統一 API</div><div class="ov-c on">身分與權限</div><div class="ov-c on">防濫用 · 冪等</div></div><div class="ov-l on" style="grid-column:1">後台<small>BACKEND</small></div><div class="ov-r" style="grid-column:2"><div class="ov-c on">內容管理</div><div class="ov-c on">表單名單</div><div class="ov-c on">會員</div><div class="ov-c on">商務訂單</div><div class="ov-c on">訂閱權益</div><div class="ov-c on">智慧客服</div><div class="ov-c on">推薦</div></div><div class="ov-l on" style="grid-column:1">資料<small>DATA</small></div><div class="ov-r" style="grid-column:2"><div class="ov-c on">業務資料庫</div><div class="ov-c on">知識庫向量</div><div class="ov-c on">快取 · 佇列</div><div class="ov-c on">事件收集</div></div><div class="ov-l on" style="grid-column:1">營運<small>OPS</small></div><div class="ov-r" style="grid-column:2"><div class="ov-c on">數據看板</div><div class="ov-c on">CRM</div><div class="ov-c on">客服平台</div><div class="ov-c on">金流 · 發票 · 物流</div></div><div class="ov-loop on"><span>數據回饋 · 持續優化</span></div></div>
         <div class="dl-div-r">
-          <div><div class="t-meta">CLOSED LOOP · 全局閉環</div><h2 class="dl-h4" style="color:#fff;margin-top:1.4vh">六段接成一圈，<br/>每一圈都更好</h2></div>
+          <div><div class="t-meta">CLOSED LOOP · 全局閉環</div><h2 class="dl-h4" style="color:#fff;margin-top:1.4vh">七個章節構成<br/>持續優化的閉環</h2></div>
           <div class="dl-chainlist">
             <div><span class="n">01</span><b>技術架構</b><span>提供一組 API 與共用資料</span></div>
-            <div><span class="n">02</span><b>網站與頁面</b><span>把人帶進來，留下行為與名單</span></div>
-            <div><span class="n">03</span><b>使用者旅程</b><span>找出低點與疑慮</span></div>
-            <div><span class="n">04</span><b>智慧客服</b><span>接住問題，回饋內容缺口</span></div>
+            <div><span class="n">02</span><b>網站與頁面</b><span>吸引訪客，累積行為與名單資料</span></div>
+            <div><span class="n">03</span><b>使用者旅程</b><span>找出使用者疑慮與流失點</span></div>
+            <div><span class="n">04</span><b>智慧客服</b><span>受理問題，回饋內容缺口</span></div>
             <div><span class="n">05</span><b>電商與會員</b><span>成交、訂閱、裝置歸屬</span></div>
-            <div class="back"><span class="n">06</span><b>數據賦能</b><span>改動回到網站 ↺</span></div>
+            <div><span class="n">06</span><b>App 聯動</b><span>配對、控制與通知，延伸產品使用</span></div>
+            <div class="back"><span class="n">07</span><b>數據賦能</b><span>改動回到網站 ↺</span></div>
           </div>
           <div class="dl-chips">
             <span class="chip hv">內容線<span class="tip up">一份核准內容，同時供網頁、搜尋結果、AI 客服、推薦與通知信使用。</span></span>
             <span class="chip hv">身分線<span class="tip up">匿名訪客 → 名單 → 顧客 → 會員 → 裝置擁有者 → 訂閱者；每一步都經過驗證。</span></span>
-            <span class="chip hv">事件線<span class="tip up left">每個行為都帶產品、語言、市場；從看見到回購都接得起來。</span></span>
+            <span class="chip hv">事件線<span class="tip up left">每個行為都帶產品、語言、市場；從初次接觸到回購皆可串連分析。</span></span>
             <span class="chip hv on">服務線<span class="tip up left">問題 → AI 回答 → 真人接手 → 補進知識庫 → 下次自助解決。</span></span>
           </div>
         </div>
@@ -2731,14 +2976,14 @@
 <!-- ============ 32 · 林小姐的 30 天 · S11 ============ -->
 <section class="slide" data-layout="S11" data-animate="timeline-walk">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l dl-trail"><span>總覽</span><span>回顧</span><span>01 架構</span><span>02 網站</span><span>03 旅程</span><span>04 客服</span><span>05 電商</span><span>06 數據</span><span class="on">閉環</span></div><div class="r">32 / 34</div></div>
+    <div class="chrome-min"><div class="l dl-trail"><span>總覽</span><span>回顧</span><span>01 架構</span><span>02 網站</span><span>03 旅程</span><span>04 客服</span><span>05 電商</span><span>06 App</span><span>07 數據</span><span class="on">閉環</span></div><div class="r">39 / 41</div></div>
     <div class="dl-main dl-dense" style="grid-template-rows:auto 1fr">
       <div data-anim="line" class="dl-head-row">
         <div class="dl-head">
           <div class="t-cat">ONE STORY · 一位使用者的 30 天</div>
-          <h2 class="dl-h4">林小姐的 30 天，<br/>系統在背後做了什麼</h2>
+          <h2 class="dl-h4">使用者案例：<br/>30 天內的系統運作</h2>
         </div>
-        <p class="dl-note" style="max-width:52ch">同一個人從廣告走到訂閱，網站、埋點、客服、電商如何接力。移到每一步的標題，可看資料怎麼流動。</p>
+        <p class="dl-note" style="max-width:52ch">以同一位使用者從廣告到訂閱的過程，說明網站、埋點、客服與電商如何銜接。移入各步驟標題可查看資料流向。</p>
       </div>
       <div class="timeline-h dl-tl7">
         <div class="tl-row">
@@ -2747,7 +2992,7 @@
           <div class="th-node up"><span class="dot"></span><div class="label"><span class="yr">DAY 1 · 21:40</span><span class="name hv">問 AI「會錄影嗎？」<span class="tip">分析平台只記錄問題主題與是否解決，不記錄對話內容；對話存在客服平台，到期自動刪除。</span></span><span class="desc">AI 依信任中心內容回答，附來源連結</span><span class="ev">chat_open · privacy</span><span class="sys">AI 客服 · 知識庫</span></div></div>
           <div class="th-node down"><span class="dot"></span><div class="label"><span class="yr">DAY 1 · 21:46</span><span class="name hv">用 LINE 傳給哥哥<span class="tip">分享連結自動加上 utm_medium＝share；哥哥點開時，我們就能看到「家人轉傳」帶來多少名單。</span></span><span class="desc">分享連結自動帶上來源</span><span class="ev">share · line</span><span class="sys">埋點 · 分享連結</span></div></div>
           <div class="th-node up"><span class="dot"></span><div class="label"><span class="yr">DAY 3</span><span class="name hv">登記上市通知<span class="tip">「送出」由瀏覽器記錄；「Email 確認」由伺服器記錄，以業務資料為準。名單依語言與興趣分群：繁中、長輩陪伴。</span></span><span class="desc">Email 確認後寫入 CRM 並分群</span><span class="ev">waitlist_submit → confirmed</span><span class="sys">表單 · CRM</span></div></div>
-          <div class="th-node down"><span class="dot"></span><div class="label"><span class="yr">開賣日</span><span class="name hv">下單送給媽媽<span class="tip left">購買事件由訂單系統在付款成功後送出，不會重複計算；訂單編號就是「名單」變成「顧客」的那把鑰匙。</span></span><span class="desc">付款者與收件人分開填；開立電子發票</span><span class="ev">begin_checkout → purchase</span><span class="sys">電商 · 發票</span></div></div>
+          <div class="th-node down"><span class="dot"></span><div class="label"><span class="yr">開賣日</span><span class="name hv">下單送給媽媽<span class="tip left">購買事件由訂單系統在付款成功後送出，不會重複計算；訂單編號是「名單」轉為「顧客」的對應依據。</span></span><span class="desc">付款者與收件人分開填；開立電子發票</span><span class="ev">begin_checkout → purchase</span><span class="sys">電商 · 發票</span></div></div>
           <div class="th-node up accent"><span class="dot"></span><div class="label"><span class="yr">DAY 30</span><span class="name hv">媽媽配對 App<span class="tip left">裝置序號連到會員帳號後，推薦才開始依「擁有的產品」運作；行銷用途需另外取得同意。</span></span><span class="desc">保固自動登錄；推薦配件與 Plus</span><span class="ev">device_activated</span><span class="sys">會員 · App · 推薦</span></div></div>
         </div>
       </div>
@@ -2758,14 +3003,14 @@
 <!-- ============ 33 · 分期 · S15 ============ -->
 <section class="slide" data-layout="S15" data-animate="matrix-fill">
   <div class="canvas-card">
-    <div class="chrome-min"><div class="l dl-trail"><span>總覽</span><span>回顧</span><span>01 架構</span><span>02 網站</span><span>03 旅程</span><span>04 客服</span><span>05 電商</span><span>06 數據</span><span class="on">閉環</span></div><div class="r">33 / 34</div></div>
+    <div class="chrome-min"><div class="l dl-trail"><span>總覽</span><span>回顧</span><span>01 架構</span><span>02 網站</span><span>03 旅程</span><span>04 客服</span><span>05 電商</span><span>06 App</span><span>07 數據</span><span class="on">閉環</span></div><div class="r">40 / 41</div></div>
     <div class="dl-main dl-dense" style="grid-template-rows:auto 1fr">
       <div data-anim="line" class="dl-head-row">
         <div class="dl-head">
           <div class="t-cat">ROADMAP · 分期上線</div>
-          <h2 class="dl-h4">每一期，<br/>四條線一起往前</h2>
+          <h2 class="dl-h4">各期程與<br/>五條工作線</h2>
         </div>
-        <p class="dl-note" style="max-width:56ch">網站、數據、客服、電商不是做完一個再做下一個，而是每一期一起長大。最下面一列，是那一期新接上的「串接點」。</p>
+        <p class="dl-note" style="max-width:56ch">網站、數據、客服、電商與 App 並非依序完成，而是每一期同步推進。最下方一列為該期新增的「串接點」。</p>
       </div>
       <div data-anim="up" class="dl-phase">
         <div></div>
@@ -2798,6 +3043,12 @@
         <div class="dl-cell"><span class="hv">Plus 訂閱與權益服務<span class="tip up">官網訂閱與 App 內購整合到同一個權益紀錄；App 團隊只需串接一個 API。</span></span></div>
         <div class="dl-cell">配件回購、多產品組合</div>
 
+        <div class="rh">App</div>
+        <div class="dl-cell">資源中心放 App 下載入口；記錄下載點擊</div>
+        <div class="dl-cell">盒內與商店頁的下載導引；確認 App 聯動範圍</div>
+        <div class="dl-cell"><span class="hv">帳號與權益串接、配對開通<span class="tip up">配對成功後自動登錄保固、開通權益；若納入 L2，同步提供 App 內客服與內容入口。範圍依「請您確認」的答案而定。</span></span></div>
+        <div class="dl-cell">裝置狀態摘要、主動服務、依擁有的裝置個人化</div>
+
         <div class="rh" style="color:var(--accent)">串接點</div>
         <div class="dl-cell link">內容 → AI 知識庫；事件 → 看板</div>
         <div class="dl-cell link">訂單 → 名單變顧客；付款 → 廣告</div>
@@ -2815,13 +3066,13 @@
       <div class="half b-accent" style="padding:5.6vh 3.6vw 4.4vh;justify-content:space-between;position:relative;overflow:hidden">
         <canvas class="ascii-bg" aria-hidden="true"></canvas>
         <div class="chrome-min" style="margin-bottom:0;position:relative;z-index:1">
-          <div class="l">34 / 34</div>
+          <div class="l">41 / 41</div>
           <div class="r">CLOSING</div>
         </div>
         <div data-anim="manifesto" style="display:flex;flex-direction:column;gap:2vh;position:relative;z-index:1">
           <div class="t-meta" style="color:rgba(255,255,255,.78);letter-spacing:.22em;margin-bottom:1.6vh">THANK YOU</div>
-          <h2 style="font-family:var(--sans),var(--sans-zh);font-size:min(5.8vw,10.2vh);line-height:1.06;letter-spacing:-.03em;font-weight:200;color:#fff">從第一次看見，<br/>到每天的<span style="font-style:italic;font-weight:300">陪伴</span>。</h2>
-          <div style="font-family:var(--sans),var(--sans-zh);font-size:max(18px,1.1vw);line-height:1.6;color:rgba(255,255,255,.86);font-weight:400;max-width:36ch;margin-top:1.4vh">網站讓人看見 MuRu，數據告訴我們下一步，客服與電商讓陪伴延續下去。我們想和 D-Link Robotics 一起，把這條線做出來。</div>
+          <h2 style="font-family:var(--sans),var(--sans-zh);font-size:min(5.8vw,10.2vh);line-height:1.06;letter-spacing:-.03em;font-weight:200;color:#fff">總結與<br/><span style="font-style:italic;font-weight:300">後續步驟</span></h2>
+          <div style="font-family:var(--sans),var(--sans-zh);font-size:max(18px,1.1vw);line-height:1.6;color:rgba(255,255,255,.86);font-weight:400;max-width:36ch;margin-top:1.4vh">本提案涵蓋網站、App 聯動、智慧客服、電商與會員，並以數據回饋支持持續優化。期待與 D-Link Robotics 共同推動後續的規劃與建置。</div>
         </div>
         <div data-anim="signature" style="display:flex;justify-content:space-between;align-items:end;border-top:1px solid rgba(255,255,255,.22);padding-top:2vh;position:relative;z-index:1">
           <div class="t-meta" style="color:rgba(255,255,255,.62)">提案團隊</div>
@@ -2835,7 +3086,7 @@
             <div style="font-family:var(--sans);font-weight:200;font-size:min(4.4vw,7.8vh);line-height:.9;color:var(--text-primary)">01</div>
             <div>
               <h3 style="font-family:var(--sans),var(--sans-zh);font-weight:400;font-size:max(20px,1.7vw);line-height:1.25;color:var(--text-primary);margin-bottom:1vh">第 1 週 · 啟動會議</h3>
-              <p style="font-family:var(--sans),var(--sans-zh);font-size:max(16px,.98vw);line-height:1.6;color:var(--text-secondary);font-weight:400">確認網域、首發語言與市場；盤點既有的廣告、CRM、客服與 App 系統。</p>
+              <p style="font-family:var(--sans),var(--sans-zh);font-size:max(16px,.98vw);line-height:1.6;color:var(--text-secondary);font-weight:400">確認網域、首發語言與市場；盤點既有的廣告、CRM、客服與 App 系統，並確認 App 聯動的範圍與窗口。</p>
             </div>
           </div>
           <div style="display:grid;grid-template-columns:5.4vw 1fr;gap:1.6vw;align-items:start;padding:2.6vh 0;border-top:1px solid var(--border-subtle)">
@@ -2848,7 +3099,7 @@
           <div style="display:grid;grid-template-columns:5.4vw 1fr;gap:1.6vw;align-items:start;padding:2.6vh 0;border-top:1px solid var(--border-subtle);border-bottom:2px solid var(--accent)">
             <div style="font-family:var(--sans);font-weight:200;font-size:min(4.4vw,7.8vh);line-height:.9;color:var(--accent)">03</div>
             <div>
-              <h3 style="font-family:var(--sans),var(--sans-zh);font-weight:400;font-size:max(20px,1.7vw);line-height:1.25;color:var(--accent);margin-bottom:1vh">第 3 週起 · 動手建置</h3>
+              <h3 style="font-family:var(--sans),var(--sans-zh);font-weight:400;font-size:max(20px,1.7vw);line-height:1.25;color:var(--accent);margin-bottom:1vh">第 3 週起 · 開始建置</h3>
               <p style="font-family:var(--sans),var(--sans-zh);font-size:max(16px,.98vw);line-height:1.6;color:var(--text-secondary);font-weight:400">以雛形為基礎，用真實 MuRu 內容建置首發頁面、追蹤與客服收件匣。</p>
             </div>
           </div>
@@ -3080,8 +3331,64 @@ function toggleOverview(){
   else{ov.style.display='none';}
 }
 
+/* =============== 全屏播放 =============== */
+(function(){
+  const btn=document.getElementById('fs-btn');
+  const root=document.documentElement;
+  const fsEl=()=>document.fullscreenElement||document.webkitFullscreenElement||null;
+  if(!btn)return;
+  function sync(){
+    const on=!!fsEl();
+    document.body.classList.toggle('is-fs',on);
+    btn.querySelector('.fs-label').textContent=on?'退出全屏':'全屏播放';
+    btn.setAttribute('aria-label',on?'退出全屏（快捷鍵 F）':'全屏播放（快捷鍵 F）');
+    btn.title=on?'退出全屏（F）':'全屏播放（F）';
+  }
+  const toast=document.getElementById('fs-toast');
+  let toastTO=null;
+  function showToast(reason){
+    if(!toast)return;
+    const mac=/Mac/i.test(navigator.platform||navigator.userAgent);
+    const keys=mac?'<b>Control + ⌘ + F</b>':'<b>F11</b>';
+    const embedded=window.top!==window;
+    toast.innerHTML='<div>'+(embedded?'目前的預覽視窗不允許網頁全屏。':'瀏覽器未允許網頁全屏。')+'請按 '+keys+' 使用瀏覽器自帶的全屏，或在 Chrome／Safari 中直接開啟此檔案。</div>'
+      +'<div class="act"><a href="'+location.href+'" target="_blank" rel="noopener">在新分頁開啟</a><button type="button" id="fs-toast-close">關閉</button></div>';
+    toast.classList.add('on');
+    const c=document.getElementById('fs-toast-close');
+    if(c)c.onclick=()=>{toast.classList.remove('on');};
+    clearTimeout(toastTO);
+    toastTO=setTimeout(()=>toast.classList.remove('on'),12000);
+    if(reason)console.warn('[fullscreen]',reason);
+  }
+  window.__toggleFullscreen=function(){
+    if(toast)toast.classList.remove('on');
+    try{
+      if(fsEl()){
+        const p=(document.exitFullscreen||document.webkitExitFullscreen).call(document);
+        if(p&&p.catch)p.catch(()=>{});
+        return;
+      }
+      const req=root.requestFullscreen||root.webkitRequestFullscreen;
+      const p=req.call(root);
+      if(p&&p.catch)p.catch(err=>showToast(err&&err.message));
+      // 舊版 WebKit 沒有 Promise：稍後檢查是否真的進入全屏
+      setTimeout(()=>{if(!fsEl()&&!(toast&&toast.classList.contains('on')))showToast('no fullscreen element');},700);
+    }catch(err){showToast(err&&err.message);}
+  };
+  btn.addEventListener('click',e=>{e.stopPropagation();window.__toggleFullscreen();btn.blur();});
+  btn.addEventListener('keydown',e=>e.stopPropagation());
+  document.addEventListener('fullscreenchange',sync);
+  document.addEventListener('webkitfullscreenchange',sync);
+  sync();
+})();
+
 addEventListener('keydown',e=>{
   if(e.key==='Escape'){e.preventDefault();toggleOverview();return;}
+  if(e.key && e.key.toLowerCase()==='f' && !e.metaKey && !e.ctrlKey && !e.altKey){
+    e.preventDefault();
+    if(window.__toggleFullscreen)window.__toggleFullscreen();
+    return;
+  }
   if(e.key && e.key.toLowerCase()==='b' && !e.metaKey && !e.ctrlKey && !e.altKey){
     e.preventDefault();
     window.__setLowPowerMode(!window.__lowPowerMode);

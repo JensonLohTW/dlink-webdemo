@@ -35,16 +35,15 @@ function Header() {
           D-Link <span className={light ? 'font-normal' : 'font-normal text-signal'}>Robotics</span>
         </Link>
         <nav className="hidden items-center gap-8 lg:flex">
-          {nav.map(({ id, en, zh }) => (
+          {nav.map(({ id, zh }) => (
             <Link
               key={id}
               to={`/robotics#${id}`}
-              className={`group flex flex-col no-underline transition-colors ${
+              className={`font-corp-body text-[0.9375rem] font-semibold tracking-wide no-underline transition-colors ${
                 light ? 'text-paper' : 'text-lagoon hover:text-signal'
               }`}
             >
-              <span className="font-corp text-sm font-semibold">{en}</span>
-              <span className={`font-corp-body text-[0.6875rem] ${light ? 'text-paper/75' : 'text-slate'}`}>{zh}</span>
+              {zh}
             </Link>
           ))}
         </nav>
@@ -53,7 +52,7 @@ function Header() {
             to="/muru"
             className="group hidden items-center gap-1.5 rounded-full bg-sun px-5 py-2.5 font-corp text-sm font-bold text-lagoon no-underline transition-colors hover:bg-paper sm:inline-flex"
           >
-            Store / Meet MuRu
+            商店／探索 MuRu
             <ArrowUpRight size={15} className="transition-transform duration-300 group-hover:-translate-y-0.5" />
           </Link>
           <button
@@ -69,22 +68,21 @@ function Header() {
       </div>
       {menuOpen && (
         <nav className="flex flex-col gap-1 border-t border-lagoon/10 bg-paper px-6 pt-3 pb-6 lg:hidden">
-          {nav.map(({ id, en, zh }) => (
+          {nav.map(({ id, zh }) => (
             <Link
               key={id}
               to={`/robotics#${id}`}
               onClick={close}
-              className="flex items-baseline justify-between py-3 font-corp text-lg font-semibold text-lagoon no-underline"
+              className="py-3 font-corp-body text-lg font-semibold text-lagoon no-underline"
             >
-              {en}
-              <span className="font-corp-body text-sm font-normal text-slate">{zh}</span>
+              {zh}
             </Link>
           ))}
           <Link
             to="/muru"
             className="mt-3 rounded-full bg-sun px-5 py-3.5 text-center font-corp text-sm font-bold text-lagoon no-underline"
           >
-            Store / Meet MuRu
+            商店／探索 MuRu
           </Link>
         </nav>
       )}
