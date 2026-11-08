@@ -2,8 +2,7 @@ node_modules
 dist
 *.local
 
-# Internal source documents and local tooling stay out of the repository
-docs/
+# Local tooling stays out of the repository
 .claude/
 
 .DS_Store
