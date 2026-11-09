@@ -1,0 +1,313 @@
+{
+  "referencePage": "https://www.1x.tech/neo",
+  "retrieved": "2026-11-09",
+  "rightsHolder": "1X Technologies AS",
+  "license": "All rights reserved by the rights holder. Copied only for this local reference recreation; not licensed for redistribution or publication.",
+  "fonts": [
+    {
+      "file": "assets/fonts/geist-latin.woff2",
+      "family": "Geist (Vercel)",
+      "source": "https://fonts.google.com/specimen/Geist",
+      "license": "SIL Open Font License 1.1",
+      "note": "Substitute for the original commercial typeface ABC Diatype (Dinamo)"
+    },
+    {
+      "file": "assets/fonts/geist-latin-ext.woff2",
+      "family": "Geist (Vercel)",
+      "source": "https://fonts.google.com/specimen/Geist",
+      "license": "SIL Open Font License 1.1"
+    }
+  ],
+  "assets": [
+    {
+      "file": "assets/icons/dlink-robotics-logo.svg",
+      "source": "original D-Link Robotics wordmark"
+    },
+    {
+      "file": "assets/icons/audio-intelligence.svg",
+      "source": "https://cdn.sanity.io/images/qka6yvsc/production/909c055573fadcc8284926ada0e50ec88d0f49ef-24x24.svg"
+    },
+    {
+      "file": "assets/icons/body-language.svg",
+      "source": "https://cdn.sanity.io/images/qka6yvsc/production/66c09daa0373ef6902962cb67560cd2f01bd10ac-24x24.svg"
+    },
+    {
+      "file": "assets/icons/boom-box.svg",
+      "source": "https://cdn.sanity.io/images/qka6yvsc/production/7f528fe2df2f67bacab600e05da810f2382cde90-24x24.svg"
+    },
+    {
+      "file": "assets/icons/comfortable.svg",
+      "source": "https://cdn.sanity.io/images/qka6yvsc/production/24637084772e5d8ad8b0d2cb935c1989a76f67a0-24x24.svg"
+    },
+    {
+      "file": "assets/icons/contextual.svg",
+      "source": "https://cdn.sanity.io/images/qka6yvsc/production/dae47b3fac4cd1c91abc8db04cf9e77495f50396-32x33.svg"
+    },
+    {
+      "file": "assets/icons/ear-rings.svg",
+      "source": "https://cdn.sanity.io/images/qka6yvsc/production/11e01d38c945a1872b04b84bd72ced7d3a964d25-24x24.svg"
+    },
+    {
+      "file": "assets/icons/fully-mobile.svg",
+      "source": "https://cdn.sanity.io/images/qka6yvsc/production/8d4331d652ecf1c8ea4bcd503ab9f9f610c387ad-24x24.svg"
+    },
+    {
+      "file": "assets/icons/fun.svg",
+      "source": "https://cdn.sanity.io/images/qka6yvsc/production/7e32e1004d75c2806b4610515a117e073c7cd5d1-33x33.svg"
+    },
+    {
+      "file": "assets/icons/gentle.svg",
+      "source": "https://cdn.sanity.io/images/qka6yvsc/production/e78ec2bfdef6b299f7e3b9d8f28403818bb4080d-32x33.svg"
+    },
+    {
+      "file": "assets/icons/helpful-intelligence.svg",
+      "source": "https://cdn.sanity.io/images/qka6yvsc/production/1cad2003f602a0ce993764c1b2dd11d3f406bf8c-32x33.svg"
+    },
+    {
+      "file": "assets/icons/helping-hand.svg",
+      "source": "https://cdn.sanity.io/images/qka6yvsc/production/ad689787ccaf71793224267742c14dd585f9a569-32x33.svg"
+    },
+    {
+      "file": "assets/icons/light.svg",
+      "source": "https://cdn.sanity.io/images/qka6yvsc/production/83bc4a46a3019b57b196448362aa251637c0afc4-32x33.svg"
+    },
+    {
+      "file": "assets/icons/memory.svg",
+      "source": "https://cdn.sanity.io/images/qka6yvsc/production/fb9e15b60f55e5084dc38bdec17a182fa4770948-24x24.svg"
+    },
+    {
+      "file": "assets/icons/pinch-proof.svg",
+      "source": "https://cdn.sanity.io/images/qka6yvsc/production/50a6b6d2dccfacde1974692678cecc86a17c7389-24x24.svg"
+    },
+    {
+      "file": "assets/icons/quiet.svg",
+      "source": "https://cdn.sanity.io/images/qka6yvsc/production/495e4270a60647764b276c8a523381c5b7f43552-32x33.svg"
+    },
+    {
+      "file": "assets/icons/reclaim-time.svg",
+      "source": "https://cdn.sanity.io/images/qka6yvsc/production/2d5dab88b3a5012911d5af182bc94e61e79584bd-32x33.svg"
+    },
+    {
+      "file": "assets/icons/remote-control.svg",
+      "source": "https://cdn.sanity.io/images/qka6yvsc/production/74bf89ce9ae0e3703f75501655694919d07a7f29-24x24.svg"
+    },
+    {
+      "file": "assets/icons/self-charge.svg",
+      "source": "https://cdn.sanity.io/images/qka6yvsc/production/4549724c29d16d194ab3acd9d6b4f83eeb021dd0-24x24.svg"
+    },
+    {
+      "file": "assets/icons/smart.svg",
+      "source": "https://cdn.sanity.io/images/qka6yvsc/production/ecf988f869fd1d09def6203eb1bfe136ff4d00ba-33x33.svg"
+    },
+    {
+      "file": "assets/icons/soft.svg",
+      "source": "https://cdn.sanity.io/images/qka6yvsc/production/d3eb4cbc72d585254b65c8fc8069f1746c11a19a-32x33.svg"
+    },
+    {
+      "file": "assets/icons/visual-intelligence.svg",
+      "source": "https://cdn.sanity.io/images/qka6yvsc/production/b5a3d773fb01ddc62a872615b46cc53672be5141-24x24.svg"
+    },
+    {
+      "file": "assets/icons/washable.svg",
+      "source": "https://cdn.sanity.io/images/qka6yvsc/production/7f9fbeda73560c4371e3d16a0780ae7707179145-24x24.svg"
+    },
+    {
+      "file": "assets/img/case.webp",
+      "source": "https://cdn.sanity.io/images/qka6yvsc/production/76fac42858fd1b62ee392b173203a4efd75ed537-1035x1287.webp",
+      "alt": "NEO CASE"
+    },
+    {
+      "file": "assets/img/charger.webp",
+      "source": "https://cdn.sanity.io/images/qka6yvsc/production/6b529ce08cdaf8c439a09b062d9c806d5ae4b491-1316x1317.jpg",
+      "alt": "NEO Charger"
+    },
+    {
+      "file": "assets/img/design-ear-ring.webp",
+      "source": "https://cdn.sanity.io/images/qka6yvsc/production/8353aa0348b725209afd88990b7d51ca050176e2-4096x2730.jpg",
+      "alt": "NEO in leaves"
+    },
+    {
+      "file": "assets/img/design-gentle.webp",
+      "source": "https://cdn.sanity.io/images/qka6yvsc/production/f195d31c59c24f31a4168efdf28526ea9a192ace-3351x2234.webp",
+      "alt": "NEO touching Flowers"
+    },
+    {
+      "file": "assets/img/design-knit-suit.webp",
+      "source": "https://cdn.sanity.io/images/qka6yvsc/production/f0e1b1c66f15e9a25aadc120922d0f6d01dcd1eb-2731x4096.webp",
+      "alt": "NEO and man"
+    },
+    {
+      "file": "assets/img/design-soft-body.webp",
+      "source": "https://cdn.sanity.io/images/qka6yvsc/production/610080b1b2dcbf039e0248b833f7b0cc1414fbb2-3840x2160.webp",
+      "alt": "NEOs suit material"
+    },
+    {
+      "file": "assets/img/design-tendon.webp",
+      "source": "https://cdn.sanity.io/images/qka6yvsc/production/10b45d6f73c81112f6a12a31200046d965ce6b2f-960x540.png",
+      "alt": "Tendon Driven Image"
+    },
+    {
+      "file": "assets/img/hero-mobile.webp",
+      "source": "https://cdn.sanity.io/images/qka6yvsc/production/ee557c733ef09cd4628692339331fa5abc79239b-1069x2293.webp",
+      "alt": "NEO"
+    },
+    {
+      "file": "assets/img/hero.webp",
+      "source": "https://cdn.sanity.io/images/qka6yvsc/production/c1a93f30beb4c513da832bcd886db94419e06be2-4096x2731.webp",
+      "alt": "Neo and elderly man"
+    },
+    {
+      "file": "assets/img/lint-roller.webp",
+      "source": "https://cdn.sanity.io/images/qka6yvsc/production/b432457c74c0c0e20ae3eb28da8b476d3ed9003d-1316x1317.jpg",
+      "alt": "NEO Lint roller"
+    },
+    {
+      "file": "assets/img/neo-back.webp",
+      "source": "https://cdn.sanity.io/images/qka6yvsc/production/2277cb5f5952be3c4c48b5bd66cafeccddb6ed27-3665x2062.webp",
+      "alt": "NEO gamma"
+    },
+    {
+      "file": "assets/img/spec-llm.webp",
+      "source": "https://cdn.sanity.io/images/qka6yvsc/production/16ac313d16c3550c96e2d9432ca52b07e887ec44-1920x1080.webp",
+      "alt": "NEO in the kitchen"
+    },
+    {
+      "file": "assets/img/spec-mobile-app.webp",
+      "source": "https://cdn.sanity.io/images/qka6yvsc/production/08fc56b688e0011d73e8adddbb6c7b4127f450b5-3840x2160.webp",
+      "alt": "NEO Mobile app"
+    },
+    {
+      "file": "assets/img/spec-redwood.webp",
+      "source": "https://cdn.sanity.io/images/qka6yvsc/production/df9ab4afbacf2d457ad8e984f4b80abdba0c2654-3840x2160.webp",
+      "alt": "NEO Chip"
+    },
+    {
+      "file": "assets/img/spec-voice.webp",
+      "source": "https://cdn.sanity.io/images/qka6yvsc/production/900c4cb36ceb21a1c3d70ff0f261558c4b471d00-3000x1686.webp",
+      "alt": "NEO"
+    },
+    {
+      "file": "assets/video/carousel-cozy.mp4",
+      "source": "https://stream.mux.com/7ugzWbGFRTUDBHbX5ELBBzVRJMJ7REORk02d9A01S7IOY.m3u8",
+      "note": "480p rendition, first 1 of 1 segments, video only, remuxed"
+    },
+    {
+      "file": "assets/video/carousel-cozy.webp",
+      "source": "https://image.mux.com/7ugzWbGFRTUDBHbX5ELBBzVRJMJ7REORk02d9A01S7IOY/thumbnail.webp?time=0"
+    },
+    {
+      "file": "assets/video/carousel-ear-ring.mp4",
+      "source": "https://stream.mux.com/IHWgLL7RMZD00kHYltaMDVPNenQtUSRIEEOxnzmAQstg.m3u8",
+      "note": "480p rendition, first 20 s, video only, remuxed"
+    },
+    {
+      "file": "assets/video/carousel-gentle.mp4",
+      "source": "https://stream.mux.com/2YCgTIiiSrCLhJEYNzyI8qXebEPtJfGlk002JEVGBqlI.m3u8",
+      "note": "480p rendition, first 20 s, video only, remuxed"
+    },
+    {
+      "file": "assets/video/carousel-tendon.mp4",
+      "source": "https://stream.mux.com/9xiYtMxgLZvg4igsI01ISwTDLP9LQ01N01Y01vjLYQH5T600.m3u8",
+      "note": "480p rendition, first 20 s, video only, remuxed"
+    },
+    {
+      "file": "assets/video/companion.mp4",
+      "source": "https://stream.mux.com/DM1B1loQuxwllFemIHB7VzNvOjK4wvjevdVEMXrPmpk.m3u8",
+      "note": "480p rendition, first 5 of 5 segments, video only, remuxed"
+    },
+    {
+      "file": "assets/video/companion.webp",
+      "source": "https://image.mux.com/DM1B1loQuxwllFemIHB7VzNvOjK4wvjevdVEMXrPmpk/thumbnail.webp?time=0"
+    },
+    {
+      "file": "assets/video/design.mp4",
+      "source": "https://stream.mux.com/RiL2UGdHxZ00XRRGUYQLwbKJapfDg5srQqxJAW00XG27k.m3u8",
+      "note": "480p rendition, first 6 of 8 segments, video only, remuxed"
+    },
+    {
+      "file": "assets/video/design.webp",
+      "source": "https://image.mux.com/RiL2UGdHxZ00XRRGUYQLwbKJapfDg5srQqxJAW00XG27k/thumbnail.webp?time=0"
+    },
+    {
+      "file": "assets/video/expert-bathroom.mp4",
+      "source": "https://stream.mux.com/16Jwpw2yrq01PNntN8CJS400uqxhIhLsMOVbNKECblu2U.m3u8",
+      "note": "480p rendition, first 20 s, video only, remuxed"
+    },
+    {
+      "file": "assets/video/expert-bathroom.webp",
+      "source": "https://image.mux.com/16Jwpw2yrq01PNntN8CJS400uqxhIhLsMOVbNKECblu2U/thumbnail.webp?time=0"
+    },
+    {
+      "file": "assets/video/expert-bedroom.mp4",
+      "source": "https://stream.mux.com/h02kkoQM01aEqRIMln00F02x01lSNYC8P01xEeVMuFwi5vXKU.m3u8",
+      "note": "480p rendition, first 20 s, video only, remuxed"
+    },
+    {
+      "file": "assets/video/expert-bedroom.webp",
+      "source": "https://image.mux.com/h02kkoQM01aEqRIMln00F02x01lSNYC8P01xEeVMuFwi5vXKU/thumbnail.webp?time=0"
+    },
+    {
+      "file": "assets/video/expert-entryway.mp4",
+      "source": "https://stream.mux.com/EKtdOMb3006SnbUan1EWSln8V8vnfPCqc2if2y1Fu01p00.m3u8",
+      "note": "480p rendition, first 20 s, video only, remuxed"
+    },
+    {
+      "file": "assets/video/expert-entryway.webp",
+      "source": "https://image.mux.com/EKtdOMb3006SnbUan1EWSln8V8vnfPCqc2if2y1Fu01p00/thumbnail.webp?time=0"
+    },
+    {
+      "file": "assets/video/expert-kitchen.mp4",
+      "source": "https://stream.mux.com/brFsAMR2T4MBO1goN5XsbImiKsA00o3fy7DWARV6G898.m3u8",
+      "note": "480p rendition, first 20 s, video only, remuxed"
+    },
+    {
+      "file": "assets/video/expert-kitchen.webp",
+      "source": "https://image.mux.com/brFsAMR2T4MBO1goN5XsbImiKsA00o3fy7DWARV6G898/thumbnail.webp?time=0"
+    },
+    {
+      "file": "assets/video/expert-laundry.mp4",
+      "source": "https://stream.mux.com/OzKH008V01ouO7RDhRSWSN3j4I6eJEqmfH01wEnB3aBZcw.m3u8",
+      "note": "480p rendition, first 20 s, video only, remuxed"
+    },
+    {
+      "file": "assets/video/expert-laundry.webp",
+      "source": "https://image.mux.com/OzKH008V01ouO7RDhRSWSN3j4I6eJEqmfH01wEnB3aBZcw/thumbnail.webp?time=0"
+    },
+    {
+      "file": "assets/video/expert-living-room.mp4",
+      "source": "https://stream.mux.com/gySfiWRGn5U7U0102t59txtlJozoB5yntqhltMMH9wWvE.m3u8",
+      "note": "480p rendition, first 20 s, video only, remuxed"
+    },
+    {
+      "file": "assets/video/expert-living-room.webp",
+      "source": "https://image.mux.com/gySfiWRGn5U7U0102t59txtlJozoB5yntqhltMMH9wWvE/thumbnail.webp?time=0"
+    },
+    {
+      "file": "assets/video/intelligence.mp4",
+      "source": "https://stream.mux.com/wkR02BJ01274eDAJhXX02Vqe5E2nZFEwZjVsf2nETV9jNM.m3u8",
+      "note": "488p rendition, first 2 of 2 segments, video only, remuxed"
+    },
+    {
+      "file": "assets/video/intelligence.webp",
+      "source": "https://image.mux.com/wkR02BJ01274eDAJhXX02Vqe5E2nZFEwZjVsf2nETV9jNM/thumbnail.webp?time=0"
+    },
+    {
+      "file": "assets/video/transform.mp4",
+      "source": "https://stream.mux.com/tYxIsKvw02LpWDTlWFJCz01OY3fn1Gk02b2TttilxzZ00Do.m3u8",
+      "note": "480p rendition, first 4 of 4 segments, video only, remuxed"
+    },
+    {
+      "file": "assets/video/transform.webp",
+      "source": "https://image.mux.com/tYxIsKvw02LpWDTlWFJCz01OY3fn1Gk02b2TttilxzZ00Do/thumbnail.webp?time=0"
+    },
+    {
+      "file": "assets/video/utility.mp4",
+      "source": "https://stream.mux.com/O7s2Tr00rN8VGzB7ZOw5xVX02Y8qx1UTQHnpFfjk68PwM.m3u8",
+      "note": "480p rendition, first 6 of 7 segments, video only, remuxed"
+    },
+    {
+      "file": "assets/video/utility.webp",
+      "source": "https://image.mux.com/O7s2Tr00rN8VGzB7ZOw5xVX02Y8qx1UTQHnpFfjk68PwM/thumbnail.webp?time=0"
+    }
+  ]
+}

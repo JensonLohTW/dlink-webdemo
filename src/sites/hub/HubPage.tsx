@@ -14,6 +14,7 @@ import {
   hero,
   parts,
   statusLabel,
+  type EffectStyle,
   type SiteGroup,
   type Status,
 } from './content'
@@ -156,38 +157,91 @@ function CurrentPlans() {
   )
 }
 
+function StyleTile({ style }: { style: EffectStyle }) {
+  const { tile, mount } = style
+  const href = cloneUrl(mount)
+  return (
+    <a href={href} className="group block overflow-hidden bg-paper no-underline">
+      {tile.kind === 'image' ? (
+        <img
+          src={cloneAsset(mount, tile.src)}
+          alt={tile.alt}
+          className={`aspect-square w-full transition-transform duration-700 group-hover:scale-[1.03] ${
+            tile.cover ? 'object-cover' : 'object-contain p-6'
+          }`}
+        />
+      ) : (
+        <video
+          src={`${cloneAsset(mount, tile.src)}#t=0.5`}
+          aria-label="Figure 風格示範頁的首屏影片"
+          className="aspect-square w-full bg-lagoon object-cover"
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          onMouseEnter={(event) => void event.currentTarget.play().catch(() => {})}
+          onMouseLeave={(event) => event.currentTarget.pause()}
+        />
+      )}
+    </a>
+  )
+}
+
 function Effects() {
+  const [activeId, setActiveId] = useState(effects.styles[0].id)
+  const style = effects.styles.find(({ id }) => id === activeId) ?? effects.styles[0]
+
   return (
     <section id="effects" className="scroll-mt-16 bg-mist py-20 text-lagoon md:py-32">
       <div className="mx-auto max-w-7xl px-6 md:px-10">
         <Reveal>
           <h2 className={h2}>{effects.title}</h2>
           <p className={`${lead} text-lagoon`}>{effects.body}</p>
+          <div role="tablist" aria-label="示範頁風格" className="mt-8 flex flex-wrap gap-3">
+            {effects.styles.map(({ id, label }) => {
+              const selected = id === activeId
+              return (
+                <button
+                  key={id}
+                  type="button"
+                  role="tab"
+                  id={`effects-tab-${id}`}
+                  aria-selected={selected}
+                  aria-controls="effects-panel"
+                  onClick={() => setActiveId(id)}
+                  className={`cursor-pointer px-6 py-3 font-corp-body text-base font-bold transition-colors ${
+                    selected ? 'bg-lagoon text-paper' : 'bg-paper text-lagoon hover:bg-lagoon hover:text-paper'
+                  }`}
+                >
+                  {label}
+                </button>
+              )
+            })}
+          </div>
         </Reveal>
-        <div className="mt-14 grid gap-10 md:mt-20 md:grid-cols-12 md:gap-14">
-          <Reveal className="md:sticky md:top-24 md:col-span-5 md:self-start">
-            <a href={cloneUrl()} className="group block bg-paper no-underline">
-              <img
-                src={cloneAsset('img/new_go2.webp')}
-                alt="參考站上的四足機器人 Unitree Go2。"
-                className="aspect-square w-full object-contain p-6 transition-transform duration-700 group-hover:scale-[1.03]"
-              />
-            </a>
-            <p className="mt-4 max-w-sm text-sm leading-relaxed">{effects.tileCaption}</p>
+        <div
+          id="effects-panel"
+          role="tabpanel"
+          aria-labelledby={`effects-tab-${style.id}`}
+          className="mt-10 grid gap-10 md:mt-14 md:grid-cols-12 md:gap-14"
+        >
+          <div className="md:sticky md:top-24 md:col-span-5 md:self-start">
+            <StyleTile key={style.id} style={style} />
+            <p className="mt-4 max-w-sm text-sm leading-relaxed">{style.tileCaption}</p>
             <a
-              href={cloneUrl()}
+              href={cloneUrl(style.mount)}
               className="group mt-6 inline-flex items-center gap-2 bg-lagoon px-7 py-4 font-corp-body text-base font-bold text-paper no-underline transition-colors hover:bg-lagoon-soft"
             >
-              {effects.cta}
+              {style.cta}
               <ArrowUpRight size={18} className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
             </a>
-          </Reveal>
+          </div>
           <ul className="m-0 flex list-none flex-col gap-3 p-0 md:col-span-7">
-            {effects.items.map((item, index) => (
-              <li key={item.name}>
+            {style.items.map((item, index) => (
+              <li key={`${style.id}-${item.name}`}>
                 <Reveal delay={index * 60}>
                   <a
-                    href={cloneUrl(item.hash)}
+                    href={cloneUrl(style.mount, item.hash)}
                     className="group grid gap-3 bg-paper p-6 text-lagoon no-underline transition-colors hover:bg-lagoon hover:text-paper md:grid-cols-2 md:gap-8 md:p-8"
                   >
                     <span>

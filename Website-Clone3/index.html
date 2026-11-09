@@ -1,0 +1,667 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>D-Link Robotics — NEO Home Robot</title>
+  <meta name="description" content="NEO takes on the boring and mundane tasks around the house so you can focus on what matters to you.">
+  <meta name="theme-color" content="#222222">
+  <link rel="preload" href="assets/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Global header: sits over the hero, hides once the product bar takes over -->
+  <header class="site-header" data-header>
+    <div class="site-header__inner">
+      <a class="site-header__logo" href="#top" aria-label="D-Link Robotics — back to top">
+        <svg viewBox="0 0 211 26" role="img" aria-label="D-Link Robotics"><text x="0" y="21" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="24" letter-spacing="-0.5" textLength="211" lengthAdjust="spacingAndGlyphs"><tspan font-weight="700" fill="currentColor">D-Link</tspan><tspan font-weight="400" fill="#4D8DFF"> Robotics</tspan></text></svg>
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu" data-menu-toggle>
+        <span></span><span></span>
+      </button>
+      <nav class="site-nav" aria-label="Primary">
+        <a class="nav-link" href="#top" aria-current="page">Neo</a>
+        <a class="nav-link" href="#intelligence">AI</a>
+        <a class="nav-link" href="#design">Factory</a>
+        <a class="nav-link" href="#companion">Stories</a>
+        <a class="nav-link" href="#">Careers</a>
+        <a class="nav-link" href="#">About</a>
+      </nav>
+      <a class="site-header__order" href="#order-title">Order</a>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobile-menu" data-menu inert>
+    <nav class="mobile-menu__nav" aria-label="Mobile">
+      <a href="#top">NEO</a>
+      <a href="#intelligence">AI</a>
+      <a href="#design">Factory</a>
+      <a href="#companion">Stories</a>
+      <a href="#">Careers</a>
+      <a href="#">About</a>
+    </nav>
+    <div class="mobile-menu__meta">
+      <a href="#">Privacy &amp; Cookies</a>
+      <a href="#">Terms of Use</a>
+      <span>D-Link Robotics © 2026</span>
+    </div>
+  </div>
+
+  <!-- Product bar: slides in after the hero -->
+  <div class="subnav" data-subnav inert>
+    <div class="subnav__inner">
+      <p class="subnav__title"><span>NEO</span><span>Home Robot</span></p>
+      <nav class="subnav__links" aria-label="Page sections">
+        <a class="subnav__link" href="#utility" data-nav-link="utility">Utility</a>
+        <a class="subnav__link" href="#design" data-nav-link="design">Design</a>
+        <a class="subnav__link" href="#companion" data-nav-link="companion">Companion</a>
+        <a class="subnav__link" href="#intelligence" data-nav-link="intelligence">Intelligence</a>
+      </nav>
+      <div class="subnav__actions">
+        <button class="chip-btn" type="button" data-open="faq-dialog">FAQ</button>
+        <button class="chip-btn" type="button" data-open="product-dialog">Product</button>
+        <a class="chip-btn chip-btn--solid" href="#order-title">Order</a>
+      </div>
+    </div>
+  </div>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero" id="top" aria-label="NEO Home Robot">
+      <div class="hero__media">
+        <picture>
+          <source media="(min-width: 768px)" srcset="assets/img/hero.webp" width="2400" height="1600">
+          <img src="assets/img/hero-mobile.webp" width="1069" height="2293" alt="NEO, a humanoid robot in a soft knit suit, beside a smiling older man who rests his arm on its shoulder" fetchpriority="high">
+        </picture>
+      </div>
+      <div class="hero__content">
+        <div class="hero__title">
+          <h1 class="t-h1 intro-in" style="--i:0">NEO</h1>
+          <p class="t-heading intro-in" style="--i:1">Home Robot</p>
+        </div>
+        <div class="hero__cta">
+          <a class="btn-light intro-in" style="--i:2" href="#order-title">Order Now</a>
+          <p class="t-xs intro-in" style="--i:3">$200 Deposit</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Transform -->
+    <section class="transform" aria-labelledby="transform-title">
+      <div class="section-intro">
+        <h2 class="t-large" id="transform-title" data-reveal>Transform Your Home</h2>
+        <p class="t-body" data-reveal>NEO takes on the boring and mundane tasks around the house so you can focus on what matters to you.</p>
+      </div>
+      <div class="card-wrap">
+        <div class="media-card" data-pill-card>
+          <img class="media-fill" src="assets/video/transform.webp" alt="NEO tidying a bookshelf while an older couple plays cards in their living room" loading="lazy">
+          <video class="media-fill media-fill--video" data-src="assets/video/transform.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>
+          <a class="watch-pill" href="https://youtu.be/LTYMWadOW7c" target="_blank" rel="noopener" aria-label="Watch Keynote on YouTube">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.425 13.1734C18.575 13.0734 18.6875 12.9484 18.7625 12.7984C18.8375 12.6484 18.875 12.4901 18.875 12.3234C18.875 12.1568 18.8375 11.9984 18.7625 11.8484C18.6875 11.6984 18.575 11.5734 18.425 11.4734L10.275 6.29844C10.1917 6.24844 10.1042 6.21094 10.0125 6.18594C9.92083 6.16094 9.83333 6.14844 9.75 6.14844C9.48333 6.14844 9.25 6.24427 9.05 6.43594C8.85 6.6276 8.75 6.8651 8.75 7.14844V17.4984C8.75 17.7818 8.85 18.0193 9.05 18.2109C9.25 18.4026 9.48333 18.4984 9.75 18.4984C9.83333 18.4984 9.92083 18.4859 10.0125 18.4609C10.1042 18.4359 10.1917 18.3984 10.275 18.3484L18.425 13.1734Z" fill="#fff"/></svg>
+            <span class="watch-pill__label">Watch Keynote</span>
+          </a>
+        </div>
+      </div>
+      <div class="features">
+        <article class="feature">
+          <img src="assets/icons/helping-hand.svg" width="32" height="32" alt="">
+          <p class="t-sm"><strong>Helping Hand</strong><br>Provides assistance with everyday tasks</p>
+        </article>
+        <article class="feature">
+          <img src="assets/icons/reclaim-time.svg" width="32" height="32" alt="">
+          <p class="t-sm"><strong>Reclaim Time</strong><br>Automates household chores, freeing time for priorities</p>
+        </article>
+        <article class="feature">
+          <img src="assets/icons/helpful-intelligence.svg" width="32" height="32" alt="">
+          <p class="t-sm"><strong>Helpful Intelligence</strong><br>Brings useful insight into every conversation</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Utility -->
+    <section class="utility" data-nav-section="utility" aria-labelledby="utility-title">
+      <div class="card-wrap">
+        <div class="media-card">
+          <img class="media-fill" src="assets/video/utility.webp" alt="NEO walking across a sunlit living room toward a man relaxing on the sofa" loading="lazy">
+          <video class="media-fill media-fill--video" data-src="assets/video/utility.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>
+          <p class="task-chip">Put Away Dishes</p>
+          <div class="step-caption" aria-hidden="true">
+            <p class="step-caption__label">Autonomous</p>
+            <p class="step-caption__text"><span class="swap-text" data-cycle='["Walk to Person","Grab Cup","Walk to Kitchen","Walk to Door","Grab Handle","Wait for Guest","Open Door","Walk Backward"]' data-interval="2400">Walk to Person</span></p>
+          </div>
+        </div>
+      </div>
+      <div class="section-intro" id="utility">
+        <span class="t-label letters">Utility</span>
+        <h2 class="t-large" id="utility-title" data-reveal>Automate Your Chores</h2>
+        <p class="t-body" data-reveal>Give your NEO a list of chores, schedule a time you want them done and come back to a cleaner home everyday.</p>
+      </div>
+    </section>
+
+    <!-- Expert mode -->
+    <section class="expert" data-nav-section="utility" aria-labelledby="expert-title" data-expert>
+      <div class="expert__frame">
+        <div class="expert__media">
+          <div class="expert__slide is-active" data-label="Clean Bathroom">
+            <img class="media-fill" src="assets/video/expert-bathroom.webp" alt="NEO's view of a granite bathroom vanity with two sinks" loading="lazy">
+            <video class="media-fill media-fill--video" data-src="assets/video/expert-bathroom.mp4" muted playsinline preload="none" aria-hidden="true"></video>
+            <div class="expert__shade"></div>
+          </div>
+          <div class="expert__slide" data-label="Clean Bedroom">
+            <img class="media-fill" src="assets/video/expert-bedroom.webp" alt="NEO cleaning a bedroom" loading="lazy">
+            <video class="media-fill media-fill--video" data-src="assets/video/expert-bedroom.mp4" muted playsinline preload="none" aria-hidden="true"></video>
+            <div class="expert__shade"></div>
+          </div>
+          <div class="expert__slide" data-label="Clean Kitchen">
+            <img class="media-fill" src="assets/video/expert-kitchen.webp" alt="NEO cleaning a kitchen" loading="lazy">
+            <video class="media-fill media-fill--video" data-src="assets/video/expert-kitchen.mp4" muted playsinline preload="none" aria-hidden="true"></video>
+            <div class="expert__shade"></div>
+          </div>
+          <div class="expert__slide" data-label="Laundry">
+            <img class="media-fill" src="assets/video/expert-laundry.webp" alt="NEO doing laundry" loading="lazy">
+            <video class="media-fill media-fill--video" data-src="assets/video/expert-laundry.mp4" muted playsinline preload="none" aria-hidden="true"></video>
+            <div class="expert__shade"></div>
+          </div>
+          <div class="expert__slide" data-label="Organize Entryway">
+            <img class="media-fill" src="assets/video/expert-entryway.webp" alt="NEO organizing an entryway" loading="lazy">
+            <video class="media-fill media-fill--video" data-src="assets/video/expert-entryway.mp4" muted playsinline preload="none" aria-hidden="true"></video>
+            <div class="expert__shade"></div>
+          </div>
+          <div class="expert__slide" data-label="Tidy Living Room">
+            <img class="media-fill" src="assets/video/expert-living-room.webp" alt="NEO tidying a living room" loading="lazy">
+            <video class="media-fill media-fill--video" data-src="assets/video/expert-living-room.mp4" muted playsinline preload="none" aria-hidden="true"></video>
+            <div class="expert__shade"></div>
+          </div>
+        </div>
+        <div class="expert__content">
+          <div class="expert__switcher" role="group" aria-label="Expert Mode chores">
+            <button class="expert__arrow" type="button" data-step="-1" aria-label="Previous chore">
+              <svg width="8" height="15" viewBox="0 0 8 15" fill="none" aria-hidden="true"><path d="M6.99919 1.32031L1 7.32113L6.99919 13.3203" stroke="#F7F7F7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <button class="expert__label" type="button" data-step="1" aria-live="polite"><span class="swap-text" data-expert-label>Clean Bathroom</span></button>
+            <button class="expert__arrow expert__arrow--next" type="button" data-step="1" aria-label="Next chore">
+              <svg width="8" height="15" viewBox="0 0 8 15" fill="none" aria-hidden="true"><path d="M6.99919 1.32031L1 7.32113L6.99919 13.3203" stroke="#F7F7F7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+          <div class="expert__text">
+            <h2 class="t-large" id="expert-title">Expert Mode</h2>
+            <p>NEO works autonomously by default. For any chore it doesn’t know, you can schedule a D-Link Robotics Expert to guide it, helping NEO learn while getting the job done.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Design -->
+    <section class="design" id="design" data-nav-section="design" aria-labelledby="design-title">
+      <div class="section-intro section-intro--narrow">
+        <span class="t-label letters">Design</span>
+        <h2 class="t-large" id="design-title" data-reveal>Soft and Safe</h2>
+        <p class="t-body" data-reveal>NEO is designed for gentle and safe interactions, making it perfect for people and the home.</p>
+      </div>
+      <div class="card-wrap">
+        <div class="media-card" data-pill-card>
+          <img class="media-fill" src="assets/video/design.webp" alt="Close-up of NEO's copper-coloured tendon drive modules stamped with the D-Link Robotics mark" loading="lazy">
+          <video class="media-fill media-fill--video" data-src="assets/video/design.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>
+          <a class="watch-pill" href="https://youtu.be/mveqrNJj8ME" target="_blank" rel="noopener" aria-label="Watch Design on YouTube">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.425 13.1734C18.575 13.0734 18.6875 12.9484 18.7625 12.7984C18.8375 12.6484 18.875 12.4901 18.875 12.3234C18.875 12.1568 18.8375 11.9984 18.7625 11.8484C18.6875 11.6984 18.575 11.5734 18.425 11.4734L10.275 6.29844C10.1917 6.24844 10.1042 6.21094 10.0125 6.18594C9.92083 6.16094 9.83333 6.14844 9.75 6.14844C9.48333 6.14844 9.25 6.24427 9.05 6.43594C8.85 6.6276 8.75 6.8651 8.75 7.14844V17.4984C8.75 17.7818 8.85 18.0193 9.05 18.2109C9.25 18.4026 9.48333 18.4984 9.75 18.4984C9.83333 18.4984 9.92083 18.4859 10.0125 18.4609C10.1042 18.4359 10.1917 18.3984 10.275 18.3484L18.425 13.1734Z" fill="#fff"/></svg>
+            <span class="watch-pill__label">Watch Design</span>
+          </a>
+        </div>
+      </div>
+      <div class="features">
+        <article class="feature">
+          <img src="assets/icons/light.svg" width="32" height="32" alt="">
+          <p class="t-sm"><strong>Light</strong><br>Fewer components make NEO lightweight without compromising performance</p>
+        </article>
+        <article class="feature">
+          <img src="assets/icons/quiet.svg" width="32" height="32" alt="">
+          <p class="t-sm"><strong>Quiet</strong><br>Operates at a noise level quieter than a modern refrigerator</p>
+        </article>
+        <article class="feature">
+          <img src="assets/icons/soft.svg" width="32" height="32" alt="">
+          <p class="t-sm"><strong>Soft</strong><br>Deformable 3D lattice wraps internal components for cushion</p>
+        </article>
+        <article class="feature">
+          <img src="assets/icons/gentle.svg" width="32" height="32" alt="">
+          <p class="t-sm"><strong>Gentle</strong><br>Tendon-driven actuators create safe movements</p>
+        </article>
+      </div>
+
+      <div class="carousel" data-carousel aria-roledescription="carousel" aria-label="NEO design details">
+        <div class="carousel__viewport" tabindex="0" aria-label="Use the left and right arrow keys to browse">
+          <div class="carousel__slide" role="group" aria-roledescription="slide" aria-label="1 of 6: Emotive Ear Ring">
+            <div class="carousel__card">
+              <img class="media-fill" src="assets/img/design-ear-ring.webp" width="1440" height="960" alt="NEO's head resting in autumn leaves, its ear ring glowing" loading="lazy" draggable="false">
+              <video class="media-fill media-fill--video" data-src="assets/video/carousel-ear-ring.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>
+              <div class="carousel__caption-wrap"><span class="carousel__caption">Emotive Ear Ring</span></div>
+            </div>
+          </div>
+          <div class="carousel__slide" role="group" aria-roledescription="slide" aria-label="2 of 6: Tendon-Driven">
+            <div class="carousel__card">
+              <img class="media-fill" src="assets/img/design-tendon.webp" width="960" height="540" alt="A tendon-drive pulley wound with braided cord" loading="lazy" draggable="false">
+              <video class="media-fill media-fill--video" data-src="assets/video/carousel-tendon.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>
+              <div class="carousel__caption-wrap"><span class="carousel__caption">Tendon-Driven</span></div>
+            </div>
+          </div>
+          <div class="carousel__slide" role="group" aria-roledescription="slide" aria-label="3 of 6: Gentle">
+            <div class="carousel__card">
+              <img class="media-fill" src="assets/img/design-gentle.webp" width="1440" height="960" alt="NEO's hand gently touching flowers" loading="lazy" draggable="false">
+              <video class="media-fill media-fill--video" data-src="assets/video/carousel-gentle.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>
+              <div class="carousel__caption-wrap"><span class="carousel__caption">Gentle</span></div>
+            </div>
+          </div>
+          <div class="carousel__slide" role="group" aria-roledescription="slide" aria-label="4 of 6: Cozy Design">
+            <div class="carousel__card">
+              <img class="media-fill" src="assets/video/carousel-cozy.webp" alt="NEO at home in its cozy knit suit" loading="lazy" draggable="false">
+              <video class="media-fill media-fill--video" data-src="assets/video/carousel-cozy.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>
+              <div class="carousel__caption-wrap"><span class="carousel__caption">Cozy Design</span></div>
+            </div>
+          </div>
+          <div class="carousel__slide" role="group" aria-roledescription="slide" aria-label="5 of 6: Knit Suit">
+            <div class="carousel__card">
+              <img class="media-fill media-fill--top" src="assets/img/design-knit-suit.webp" width="1080" height="1620" alt="NEO in its knit suit standing with a man" loading="lazy" draggable="false">
+              <div class="carousel__caption-wrap"><span class="carousel__caption">Knit Suit</span></div>
+            </div>
+          </div>
+          <div class="carousel__slide" role="group" aria-roledescription="slide" aria-label="6 of 6: Soft Body">
+            <div class="carousel__card">
+              <img class="media-fill" src="assets/img/design-soft-body.webp" width="1600" height="900" alt="Close-up of the soft 3D lattice polymer that wraps NEO's body" loading="lazy" draggable="false">
+              <div class="carousel__caption-wrap"><span class="carousel__caption">Soft Body</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel__dots" aria-label="Choose a slide">
+          <button class="carousel__dot" type="button" aria-current="true" aria-label="Go to slide 1"></button>
+          <button class="carousel__dot" type="button" aria-label="Go to slide 2"></button>
+          <button class="carousel__dot" type="button" aria-label="Go to slide 3"></button>
+          <button class="carousel__dot" type="button" aria-label="Go to slide 4"></button>
+          <button class="carousel__dot" type="button" aria-label="Go to slide 5"></button>
+          <button class="carousel__dot" type="button" aria-label="Go to slide 6"></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Companion -->
+    <section class="companion" id="companion" data-nav-section="companion" aria-labelledby="companion-title">
+      <div class="section-intro">
+        <span class="t-label letters">Companion</span>
+        <h2 class="t-large" id="companion-title" data-reveal>Laugh and Learn</h2>
+        <p class="t-body" data-reveal>Ask NEO questions and get instant access to knowledge, personalized intelligence, or even a joke.</p>
+      </div>
+      <div class="card-wrap">
+        <div class="media-card media-card--wide">
+          <img class="media-fill" src="assets/video/companion.webp" alt="An older man in his kitchen holding up a jar of spice and asking NEO about it" loading="lazy">
+          <video class="media-fill media-fill--video" data-src="assets/video/companion.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>
+          <div class="bubbles" data-bubbles='["I can’t seem to find my glasses.","Is this paprika?","Can I use this in my chili?"]' aria-hidden="true"></div>
+        </div>
+      </div>
+      <div class="features">
+        <article class="feature">
+          <img src="assets/icons/smart.svg" width="32" height="32" alt="">
+          <p class="t-sm"><strong>Smart</strong><br>Ask anything—history, recipes, or advice—and get real-time answers</p>
+        </article>
+        <article class="feature">
+          <img src="assets/icons/contextual.svg" width="32" height="32" alt="">
+          <p class="t-sm"><strong>Contextual help</strong><br>Pairs visual and spatial awareness with memory to personalize interactions</p>
+        </article>
+        <article class="feature">
+          <img src="assets/icons/fun.svg" width="32" height="32" alt="">
+          <p class="t-sm"><strong>Fun</strong><br>Shares jokes, stories, and games for lively, natural conversations</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Intelligence -->
+    <section class="intelligence" id="intelligence" data-nav-section="intelligence" aria-labelledby="intelligence-title">
+      <div class="divider" data-divider><span></span></div>
+      <div class="section-intro section-intro--intel">
+        <span class="t-label letters">Intelligence</span>
+        <h2 class="t-large" id="intelligence-title" data-reveal>Grows With You</h2>
+        <p class="t-body" data-reveal>NEO is built for full autonomy. Early Access offers foundational autonomy, and with continued use, NEO learns and unlocks new capabilities.</p>
+      </div>
+      <div class="card-wrap">
+        <div class="media-card">
+          <img class="media-fill" src="assets/video/intelligence.webp" alt="NEO carrying moving boxes up a wooden staircase" loading="lazy">
+          <video class="media-fill media-fill--video" data-src="assets/video/intelligence.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>
+        </div>
+      </div>
+    </section>
+
+    <!-- Order -->
+    <section class="order-cta" aria-labelledby="order-title">
+      <div class="order-cta__head">
+        <h2 class="t-h1" id="order-title">NEO</h2>
+        <p>Home Robot</p>
+        <div class="order-cta__actions">
+          <button class="btn-outline" type="button" data-open="faq-dialog">FAQ</button>
+          <a class="btn-solid" href="#order-title">Order</a>
+        </div>
+        <span class="t-xs order-cta__deposit">$200 Deposit</span>
+      </div>
+      <div class="order-cta__figure">
+        <img src="assets/img/neo-back.webp" width="1600" height="900" alt="NEO seen from behind, showing the ribbed knit of its suit" loading="lazy">
+      </div>
+    </section>
+  </main>
+
+  <div class="site-footer-wrap">
+    <footer class="site-footer">
+      <div class="site-footer__brand">
+        <a href="#top" aria-label="D-Link Robotics — back to top"><img src="assets/icons/dlink-robotics-logo.svg" width="162" height="20" alt="D-Link Robotics"></a>
+        <span class="site-footer__copy">D-Link Robotics © 2026</span>
+      </div>
+      <div class="site-footer__cols">
+        <nav class="site-footer__col" aria-label="Company">
+          <a class="footer-link" href="#top">NEO</a>
+          <a class="footer-link" href="#">Careers</a>
+          <a class="footer-link" href="#intelligence">AI</a>
+          <a class="footer-link" href="#design">Factory</a>
+          <a class="footer-link" href="#">About</a>
+          <a class="footer-link" href="#companion">Stories</a>
+          <a class="footer-link" href="#">Robot Fleet</a>
+          <a class="footer-link" href="#">Logs</a>
+        </nav>
+        <nav class="site-footer__col" aria-label="Social">
+          <a class="footer-link" href="#">LinkedIn</a>
+          <a class="footer-link" href="#">YouTube</a>
+          <a class="footer-link" href="#">Instagram</a>
+          <a class="footer-link" href="#">TikTok</a>
+          <a class="footer-link" href="#">X</a>
+        </nav>
+        <nav class="site-footer__col" aria-label="Legal">
+          <a class="footer-link" href="#">Terms of Use</a>
+          <a class="footer-link" href="#">Privacy &amp; Cookies</a>
+          <a class="footer-link" href="#">Press</a>
+          <a class="footer-link" href="#">Support</a>
+        </nav>
+        <nav class="site-footer__col" aria-label="Updates">
+          <a class="footer-link" href="#">Get Updates</a>
+          <a class="footer-link" href="#">Investor Relations</a>
+        </nav>
+      </div>
+    </footer>
+  </div>
+
+  <!-- FAQ dialog -->
+  <dialog class="overlay" id="faq-dialog" aria-labelledby="faq-title">
+    <div class="overlay__panel faq-panel">
+      <button class="overlay__close" type="button" data-close aria-label="Close FAQ">
+        <svg width="24" height="25" viewBox="0 0 24 25" aria-hidden="true"><path d="M11.9969 13.7289L7.09688 18.6289C6.91354 18.8122 6.68021 18.9039 6.39688 18.9039C6.11354 18.9039 5.88021 18.8122 5.69688 18.6289C5.51354 18.4456 5.42188 18.2122 5.42188 17.9289C5.42188 17.6456 5.51354 17.4122 5.69688 17.2289L10.5969 12.3289L5.69688 7.42891C5.51354 7.24557 5.42188 7.01224 5.42188 6.72891C5.42188 6.44557 5.51354 6.21224 5.69688 6.02891C5.88021 5.84557 6.11354 5.75391 6.39688 5.75391C6.68021 5.75391 6.91354 5.84557 7.09688 6.02891L11.9969 10.9289L16.8969 6.02891C17.0802 5.84557 17.3135 5.75391 17.5969 5.75391C17.8802 5.75391 18.1135 5.84557 18.2969 6.02891C18.4802 6.21224 18.5719 6.44557 18.5719 6.72891C18.5719 7.01224 18.4802 7.24557 18.2969 7.42891L13.3969 12.3289L18.2969 17.2289C18.4802 17.4122 18.5719 17.6456 18.5719 17.9289C18.5719 18.2122 18.4802 18.4456 18.2969 18.6289C18.1135 18.8122 17.8802 18.9039 17.5969 18.9039C17.3135 18.9039 17.0802 18.8122 16.8969 18.6289L11.9969 13.7289Z" fill="#000" fill-opacity="0.72"/></svg>
+      </button>
+      <div class="overlay__scroll">
+        <h2 id="faq-title">FAQ</h2>
+        <div class="faq-list">
+          <div class="faq-item">
+            <h3><button class="faq-q" type="button" id="faq-q-1" aria-expanded="false" aria-controls="faq-a-1">When do deliveries begin?</button></h3>
+            <div class="faq-a" id="faq-a-1" role="region" aria-labelledby="faq-q-1" inert><div><p>US deliveries begin in 2026 starting with Early Access customers choosing to purchase NEO, followed by subscriptions. International deliveries will commence later.</p></div></div>
+          </div>
+          <div class="faq-item">
+            <h3><button class="faq-q" type="button" id="faq-q-2" aria-expanded="false" aria-controls="faq-a-2">If I purchase my NEO, will I need an additional subscription?</button></h3>
+            <div class="faq-a" id="faq-a-2" role="region" aria-labelledby="faq-q-2" inert><div><p>No. If you purchase NEO (as opposed to a monthly subscription), no additional subscription is required.</p></div></div>
+          </div>
+          <div class="faq-item">
+            <h3><button class="faq-q" type="button" id="faq-q-3" aria-expanded="false" aria-controls="faq-a-3">Is NEO suitable for the home?</button></h3>
+            <div class="faq-a" id="faq-a-3" role="region" aria-labelledby="faq-q-3" inert><div><p>NEO is designed for household use. Safety has guided every step of NEO’s design to ensure it can operate amongst humans. This includes a host of passive and active safety features.
+
+NEO should be used only as intended. Users should remain attentive during operation and must always follow product safety instructions and guidelines when operating NEO, especially when in the presence of children, vulnerable people or pets.</p></div></div>
+          </div>
+          <div class="faq-item">
+            <h3><button class="faq-q" type="button" id="faq-q-4" aria-expanded="false" aria-controls="faq-a-4">Is my home a good environment for NEO?</button></h3>
+            <div class="faq-a" id="faq-a-4" role="region" aria-labelledby="faq-q-4" inert><div><p>NEO is equipped to provide a helping hand in every typical home. Redwood AI gives NEO a mobility toolkit capable of natural walking, sitting, standing, kneeling and stair climbing.</p></div></div>
+          </div>
+          <div class="faq-item">
+            <h3><button class="faq-q" type="button" id="faq-q-5" aria-expanded="false" aria-controls="faq-a-5">How does NEO charge?</button></h3>
+            <div class="faq-a" id="faq-a-5" role="region" aria-labelledby="faq-q-5" inert><div><p>NEO comes standard with a NEO Charger that functions using your standard home outlet. NEO can connect itself to charge when needed.</p></div></div>
+          </div>
+          <div class="faq-item">
+            <h3><button class="faq-q" type="button" id="faq-q-6" aria-expanded="false" aria-controls="faq-a-6">Are pre-orders refundable?</button></h3>
+            <div class="faq-a" id="faq-a-6" role="region" aria-labelledby="faq-q-6" inert><div><p>Yes, pre-order deposits to reserve your NEO are fully refundable up to the point of your NEO being ready for delivery.</p></div></div>
+          </div>
+          <div class="faq-item">
+            <h3><button class="faq-q" type="button" id="faq-q-7" aria-expanded="false" aria-controls="faq-a-7">How does NEO connect to the internet?</button></h3>
+            <div class="faq-a" id="faq-a-7" role="region" aria-labelledby="faq-q-7" inert><div><p>NEO comes equipped with 5G connectivity, for optimal performance, home WIFI is recommended.</p></div></div>
+          </div>
+          <div class="faq-item">
+            <h3><button class="faq-q" type="button" id="faq-q-8" aria-expanded="false" aria-controls="faq-a-8">Will my NEO be fully autonomous?</button></h3>
+            <div class="faq-a" id="faq-a-8" role="region" aria-labelledby="faq-q-8" inert><div><p>NEO works autonomously by default. For any chore request it doesn't know, you can schedule a D-Link Robotics Expert to guide it, helping NEO learn while getting the job done.</p></div></div>
+          </div>
+          <div class="faq-item">
+            <h3><button class="faq-q" type="button" id="faq-q-9" aria-expanded="false" aria-controls="faq-a-9">Will a D-Link Robotics Expert be able to connect and enter my NEO at any time?</button></h3>
+            <div class="faq-a" id="faq-a-9" role="region" aria-labelledby="faq-q-9" inert><div><p>No, owners have to actively schedule a time for an Expert to support with their chores and accept them into their robot using voice or mobile. NEO’s emotive ear rings will change color while a D-Link Robotics Expert Operator is active. Owners have full control over each session.</p></div></div>
+          </div>
+          <div class="faq-item">
+            <h3><button class="faq-q" type="button" id="faq-q-10" aria-expanded="false" aria-controls="faq-a-10">Who are the D-Link Robotics Experts?</button></h3>
+            <div class="faq-a" id="faq-a-10" role="region" aria-labelledby="faq-q-10" inert><div><p>D-Link Robotics employees physically present in the USA.</p></div></div>
+          </div>
+          <div class="faq-item">
+            <h3><button class="faq-q" type="button" id="faq-q-11" aria-expanded="false" aria-controls="faq-a-11">Do I need to share my data for NEO to work?</button></h3>
+            <div class="faq-a" id="faq-a-11" role="region" aria-labelledby="faq-q-11" inert><div><p>NEO works without the need for data sharing. In autonomous mode, limited sensor data may be sent to our servers to fulfill a request; it isn’t stored. You may always opt-out from data sharing for improving NEO’s performance.</p></div></div>
+          </div>
+          <div class="faq-item">
+            <h3><button class="faq-q" type="button" id="faq-q-12" aria-expanded="false" aria-controls="faq-a-12">How is NEO operated?</button></h3>
+            <div class="faq-a" id="faq-a-12" role="region" aria-labelledby="faq-q-12" inert><div><p>NEO understands natural language, allowing users to guide NEO through simple conversation. For scheduled or recurring tasks, users can use the D-Link Robotics mobile app to plan NEOs household chores.</p></div></div>
+          </div>
+          <div class="faq-item">
+            <h3><button class="faq-q" type="button" id="faq-q-13" aria-expanded="false" aria-controls="faq-a-13">How much does it cost to run?</button></h3>
+            <div class="faq-a" id="faq-a-13" role="region" aria-labelledby="faq-q-13" inert><div><p>NEO is a fully electronic humanoid robot, with a .75 kWh battery pack. On standard retail electricity rates, we expect NEO will run for under $1 a day.</p></div></div>
+          </div>
+          <div class="faq-item">
+            <h3><button class="faq-q" type="button" id="faq-q-14" aria-expanded="false" aria-controls="faq-a-14">Can my NEO cook?</button></h3>
+            <div class="faq-a" id="faq-a-14" role="region" aria-labelledby="faq-q-14" inert><div><p>Initially, NEOs cooking capabilities will be restricted from use. NEO can provide you with great recipes or help with the cleaning up instead.</p></div></div>
+          </div>
+          <div class="faq-item">
+            <h3><button class="faq-q" type="button" id="faq-q-15" aria-expanded="false" aria-controls="faq-a-15">Is my NEO waterproof?</button></h3>
+            <div class="faq-a" id="faq-a-15" role="region" aria-labelledby="faq-q-15" inert><div><p>NEO’s hands are waterproof, but the overall product is not. Should your NEO get wet, an automatic order will be placed for a child sized plastic swimming pool and 100 kgs of Basmati rice*. * Not really, but please don't get NEO wet.</p></div></div>
+          </div>
+          <div class="faq-item">
+            <h3><button class="faq-q" type="button" id="faq-q-16" aria-expanded="false" aria-controls="faq-a-16">Can NEO be used outside?</button></h3>
+            <div class="faq-a" id="faq-a-16" role="region" aria-labelledby="faq-q-16" inert><div><p>NEO is designed to be operated in and around your own home and on firm ground. Contact with moisture may damage your NEO.</p></div></div>
+          </div>
+          <div class="faq-item">
+            <h3><button class="faq-q" type="button" id="faq-q-17" aria-expanded="false" aria-controls="faq-a-17">What maintenance is required?</button></h3>
+            <div class="faq-a" id="faq-a-17" role="region" aria-labelledby="faq-q-17" inert><div><p>NEO comes with a limited manufacturer's warranty for defects or malfunctions. Maintenance by the D-Link Robotics team is recommended for optimal performance. D-Link Robotics Service can provide mobile support for every NEO.</p></div></div>
+          </div>
+          <div class="faq-item">
+            <h3><button class="faq-q" type="button" id="faq-q-18" aria-expanded="false" aria-controls="faq-a-18">Where will my NEO be made?</button></h3>
+            <div class="faq-a" id="faq-a-18" role="region" aria-labelledby="faq-q-18" inert><div><p>NEO is manufactured in California.</p></div></div>
+          </div>
+          <div class="faq-item">
+            <h3><button class="faq-q" type="button" id="faq-q-19" aria-expanded="false" aria-controls="faq-a-19">How does the subscription option work?</button></h3>
+            <div class="faq-a" id="faq-a-19" role="region" aria-labelledby="faq-q-19" inert><div><p>You pay monthly for having and using a NEO at home. At the end of your subscription, you may extend it or return NEO.</p></div></div>
+          </div>
+          <div class="faq-item">
+            <h3><button class="faq-q" type="button" id="faq-q-20" aria-expanded="false" aria-controls="faq-a-20">How will D-Link Robotics use my data?</button></h3>
+            <div class="faq-a" id="faq-a-20" role="region" aria-labelledby="faq-q-20" inert><div><p>Data collected from real world tasks refines NEO’s base intelligence and performance, advancing NEO’s autonomous capabilities and safety. We do not use this data to build a profile of you, nor do we sell this data. If you don’t want to participate in helping improve NEO further, you can always opt out.</p></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Product dialog -->
+  <dialog class="overlay" id="product-dialog" aria-label="NEO product details">
+    <div class="overlay__panel spec-panel">
+      <nav class="spec-tabs" aria-label="Product sections">
+        <button class="spec-tab" type="button" data-spec-target="spec-utility" aria-current="true">Utility</button>
+        <button class="spec-tab" type="button" data-spec-target="spec-design">Design</button>
+        <button class="spec-tab" type="button" data-spec-target="spec-ai">AI</button>
+        <button class="spec-tab" type="button" data-spec-target="spec-hardware">Hardware</button>
+      </nav>
+      <button class="overlay__close" type="button" data-close aria-label="Close product details">
+        <svg width="24" height="25" viewBox="0 0 24 25" aria-hidden="true"><path d="M11.9969 13.7289L7.09688 18.6289C6.91354 18.8122 6.68021 18.9039 6.39688 18.9039C6.11354 18.9039 5.88021 18.8122 5.69688 18.6289C5.51354 18.4456 5.42188 18.2122 5.42188 17.9289C5.42188 17.6456 5.51354 17.4122 5.69688 17.2289L10.5969 12.3289L5.69688 7.42891C5.51354 7.24557 5.42188 7.01224 5.42188 6.72891C5.42188 6.44557 5.51354 6.21224 5.69688 6.02891C5.88021 5.84557 6.11354 5.75391 6.39688 5.75391C6.68021 5.75391 6.91354 5.84557 7.09688 6.02891L11.9969 10.9289L16.8969 6.02891C17.0802 5.84557 17.3135 5.75391 17.5969 5.75391C17.8802 5.75391 18.1135 5.84557 18.2969 6.02891C18.4802 6.21224 18.5719 6.44557 18.5719 6.72891C18.5719 7.01224 18.4802 7.24557 18.2969 7.42891L13.3969 12.3289L18.2969 17.2289C18.4802 17.4122 18.5719 17.6456 18.5719 17.9289C18.5719 18.2122 18.4802 18.4456 18.2969 18.6289C18.1135 18.8122 17.8802 18.9039 17.5969 18.9039C17.3135 18.9039 17.0802 18.8122 16.8969 18.6289L11.9969 13.7289Z" fill="#000" fill-opacity="0.72"/></svg>
+      </button>
+      <div class="overlay__scroll" data-spec-scroll>
+        <section class="spec-section" id="spec-utility" aria-labelledby="spec-utility-title">
+          <h3 class="t-heading" id="spec-utility-title">Utility</h3>
+          <div class="spec-grid-2">
+            <div class="spec-mode">
+              <p class="spec-mode__title">Autonomy</p>
+              <p class="spec-mode__task"><span class="swap-text" data-cycle='["\"Get the door\"","\"Put dishes away\"","\"Turn off lights\"","\"Clean up trash\"","\"Water plants\""]' data-interval="2200">"Get the door"</span></p>
+              <p>NEO uses Redwood AI—D-Link Robotics’ Generalist AI model—for learning and repeating tasks. NEO arrives with basic autonomy for early owners and grows in capability overtime.</p>
+            </div>
+            <div class="spec-mode">
+              <p class="spec-mode__title spec-mode__title--orange">Scheduled Expert Mode</p>
+              <p class="spec-mode__task"><span class="swap-text" data-cycle='["\"Laundry\"","\"Empty dishwasher\"","\"Tidy entire house\"","\"Feed the pets\"","\"Bartend parties\""]' data-interval="2200">"Laundry"</span></p>
+              <p>For complex tasks NEO doesn’t know, an Expert from D-Link Robotics can remotely supervise its actions at scheduled times to help it learn new abilities and get the job done.</p>
+            </div>
+          </div>
+          <div class="spec-grid-2">
+            <div class="spec-media">
+              <img src="assets/img/spec-voice.webp" width="1400" height="787" alt="NEO listening in a home setting" loading="lazy">
+              <div class="spec-media__text"><h4>Voice Interface</h4><p>Companion allows you to speak naturally to NEO to access all features without using devices.</p></div>
+            </div>
+            <div class="spec-media">
+              <img src="assets/img/spec-mobile-app.webp" width="1400" height="788" alt="The NEO mobile app on a phone" loading="lazy">
+              <div class="spec-media__text"><h4>Mobile Interface</h4><p>With the NEO app, you can manage your NEO’s chore schedule, communicate remotely, monitor NEO and more.</p></div>
+            </div>
+          </div>
+          <div class="spec-grid-4">
+            <div class="spec-small"><img src="assets/icons/self-charge.svg" width="24" height="24" alt=""><div><h4>Self-Charge</h4><p>NEO manages it’s own battery life so you don't have to. When NEO needs a charge—it plugs itself in.</p></div></div>
+            <div class="spec-small"><img src="assets/icons/remote-control.svg" width="24" height="24" alt=""><div><h4>Remote Control</h4><p>Pilot your NEO from anywhere in the world through your Mobile App &amp; VR device.</p></div></div>
+            <div class="spec-small"><img src="assets/icons/ear-rings.svg" width="24" height="24" alt=""><div><h4>Emotive Ear Rings</h4><p>NEO uses its Emotive Ear Rings to communicate its state and status (battery, attention, etc.)</p></div></div>
+            <div class="spec-small"><img src="assets/icons/boom-box.svg" width="24" height="24" alt=""><div><h4>Boom Box</h4><p>Use NEO as a mobile bluetooth speaker anywhere in your home.</p></div></div>
+          </div>
+        </section>
+
+        <section class="spec-section" id="spec-design" aria-labelledby="spec-design-title">
+          <h3 class="t-heading" id="spec-design-title">Design</h3>
+          <div class="spec-grid-2">
+            <div class="spec-media">
+              <img src="assets/img/design-soft-body.webp" width="1600" height="900" alt="Close-up of NEO's lattice polymer body" loading="lazy">
+              <div class="spec-media__text"><h4>Soft Body</h4><p>All NEO’s hardware is wrapped in custom 3D lattice polymer for safety and cushioning.</p></div>
+            </div>
+            <div class="spec-media">
+              <img src="assets/img/design-tendon.webp" width="960" height="540" alt="A D-Link Robotics tendon-drive actuator" loading="lazy">
+              <div class="spec-media__text"><h4>Safe Movements</h4><p>D-Link Robotics Tendon Drive actuation creates precise, low-energy movements necessary for home use.</p></div>
+            </div>
+          </div>
+          <div class="spec-grid-4">
+            <div class="spec-small"><img src="assets/icons/pinch-proof.svg" width="24" height="24" alt=""><div><h4>Pinch Proof</h4><p>NEO’s joints are covered from outside access, making the surface entirely pinch proof.</p></div></div>
+            <div class="spec-small"><img src="assets/icons/body-language.svg" width="24" height="24" alt=""><div><h4>Body Language</h4><p>NEO understands and responds to human gestures and expressions.</p></div></div>
+            <div class="spec-small"><img src="assets/icons/comfortable.svg" width="24" height="24" alt=""><div><h4>Comfortable to be Around</h4><p>NEO is designed to compliment your living space, not disrupt it.</p></div></div>
+            <div class="spec-small"><img src="assets/icons/washable.svg" width="24" height="24" alt=""><div><h4>Machine Washable</h4><p>NEO’s soft suit and shoes are made from machine washable nylon.</p></div></div>
+          </div>
+        </section>
+
+        <section class="spec-section" id="spec-ai" aria-labelledby="spec-ai-title">
+          <h3 class="t-heading" id="spec-ai-title">Artificial Intelligence</h3>
+          <div class="spec-grid-2">
+            <div class="spec-media">
+              <img src="assets/img/spec-redwood.webp" width="1400" height="788" alt="The NEO compute chip" loading="lazy">
+              <div class="spec-media__text"><h4>Redwood AI</h4><p>NEO’s vision language model for learning and performing chores around the house. <a href="#intelligence">Learn more</a>.</p></div>
+            </div>
+            <div class="spec-media">
+              <img src="assets/img/spec-llm.webp" width="1400" height="788" alt="NEO in the kitchen" loading="lazy">
+              <div class="spec-media__text"><h4>Built-in LLM</h4><p>Interaction with NEO is driven by its built-in large language model, capable of understanding, reasoning, and conversing.</p></div>
+            </div>
+          </div>
+          <div class="spec-grid-4">
+            <div class="spec-small"><img src="assets/icons/audio-intelligence.svg" width="24" height="24" alt=""><div><h4>Audio Intelligence</h4><p>Interprets audio cues and conversational context.</p></div></div>
+            <div class="spec-small"><img src="assets/icons/memory.svg" width="24" height="24" alt=""><div><h4>Memory</h4><p>Retains information to personalize your experience.</p></div></div>
+            <div class="spec-small"><img src="assets/icons/visual-intelligence.svg" width="24" height="24" alt=""><div><h4>Visual Intelligence</h4><p>Uses visual input to enhance conversations.</p></div></div>
+            <div class="spec-small"><img src="assets/icons/fully-mobile.svg" width="24" height="24" alt=""><div><h4>Fully Mobile</h4><p>Uses AI for navigating to where its needed.</p></div></div>
+          </div>
+        </section>
+
+        <section class="spec-section" id="spec-hardware" aria-labelledby="spec-hardware-title">
+          <h3 class="t-heading" id="spec-hardware-title">Hardware</h3>
+          <div class="hw-grid">
+            <article class="hw-group">
+              <h4>Robot</h4>
+              <dl class="hw-rows">
+                <div class="hw-row"><dt>Height</dt><dd>5’6”</dd></div>
+                <div class="hw-row"><dt>Weight</dt><dd>66 lbs</dd></div>
+                <div class="hw-row"><dt>Lift</dt><dd>154 lbs</dd></div>
+                <div class="hw-row"><dt>Carry</dt><dd>55 lbs</dd></div>
+                <div class="hw-row"><dt>Arm Payload</dt><dd>18 lbs</dd></div>
+              </dl>
+            </article>
+            <article class="hw-group hw-group--right">
+              <h4>Degrees of Freedom</h4>
+              <dl class="hw-rows">
+                <div class="hw-row"><dt>Hands</dt><dd>22x2</dd></div>
+                <div class="hw-row"><dt>Arms</dt><dd>7x2</dd></div>
+                <div class="hw-row"><dt>Neck</dt><dd>3</dd></div>
+                <div class="hw-row"><dt>Spine</dt><dd>2</dd></div>
+                <div class="hw-row"><dt>Legs</dt><dd>6x2</dd></div>
+              </dl>
+            </article>
+            <div class="hw-rule" aria-hidden="true"></div>
+            <article class="hw-group">
+              <h4>Speed</h4>
+              <dl class="hw-rows">
+                <div class="hw-row"><dt>Hands</dt><dd>8.0 m/s</dd></div>
+                <div class="hw-row"><dt>Max run speed</dt><dd>6.2 m/s</dd></div>
+                <div class="hw-row"><dt>Walking speed</dt><dd>1.4 m/s</dd></div>
+              </dl>
+            </article>
+            <article class="hw-group hw-group--right">
+              <h4>Battery</h4>
+              <dl class="hw-rows">
+                <div class="hw-row"><dt>Capacity</dt><dd>842 Wh</dd></div>
+                <div class="hw-row"><dt>Run-time</dt><dd>4h</dd></div>
+                <div class="hw-row"><dt>Quick charge</dt><dd>6min per hour runtime</dd></div>
+              </dl>
+            </article>
+            <div class="hw-rule" aria-hidden="true"></div>
+            <article class="hw-group">
+              <h4>Safety</h4>
+              <dl class="hw-rows">
+                <div class="hw-row"><dt>Body</dt><dd>Soft body with custom lattice polymer structure</dd></div>
+                <div class="hw-row"><dt>Joints structure</dt><dd>No pinchpoints</dd></div>
+                <div class="hw-row"><dt>HIC</dt><dd>&lt;250</dd></div>
+                <div class="hw-row"><dt>Actuation</dt><dd>Low inertia tendon drives</dd></div>
+              </dl>
+            </article>
+            <article class="hw-group hw-group--right">
+              <h4>Ingress Protection</h4>
+              <dl class="hw-rows">
+                <div class="hw-row"><dt>Hands</dt><dd>IP68 (submersible)</dd></div>
+                <div class="hw-row"><dt>Body</dt><dd>IP44 (splash proof)</dd></div>
+              </dl>
+            </article>
+            <div class="hw-rule" aria-hidden="true"></div>
+            <article class="hw-group">
+              <h4>Tendon Drive</h4>
+              <dl class="hw-rows">
+                <div class="hw-row"><dt>Torque accuracy</dt><dd>2%</dd></div>
+                <div class="hw-row"><dt>Backdrivability</dt><dd>95%</dd></div>
+                <div class="hw-row"><dt>Repetition</dt><dd>0.1mm</dd></div>
+                <div class="hw-row"><dt>Nominal load cycles</dt><dd>2.000.000 (1 day service replacement)</dd></div>
+                <div class="hw-row"><dt>Peak (3x nominal) cycles</dt><dd>100.000 (1 day service replacement)</dd></div>
+                <div class="hw-row"><dt>Accuracy</dt><dd>1mm</dd></div>
+                <div class="hw-row"><dt>IMUs</dt><dd>Linkwise differential (velocity and accelerations)</dd></div>
+                <div class="hw-row"><dt>Calibration</dt><dd>AI based continous adaption</dd></div>
+                <div class="hw-row"><dt>Audible noise</dt><dd>22dB</dd></div>
+              </dl>
+            </article>
+            <article class="hw-group hw-group--right">
+              <h4>Compute</h4>
+              <dl class="hw-rows">
+                <div class="hw-row"><dt>Chipset</dt><dd>D-Link Robotics NEO Cortex (Nvidia Jetson Thor)</dd></div>
+                <div class="hw-row"><dt>AI Compute</dt><dd>Up to 2070 FP4 TFLOPS</dd></div>
+                <div class="hw-row"><dt>Microphone</dt><dd>4 beamforming microphones</dd></div>
+                <div class="hw-row"><dt>Speakers</dt><dd>3 stage speaker in pelvis and chest area</dd></div>
+                <div class="hw-row"><dt>Camera</dt><dd>Dual 8.85MP 90Hz Stereo Fisheye</dd></div>
+                <div class="hw-row"><dt>Communication</dt><dd>Wifi, Bluetooth, 5G</dd></div>
+              </dl>
+            </article>
+            <div class="hw-rule" aria-hidden="true"></div>
+          </div>
+          <h4 class="t-label comes-with-title">Comes with</h4>
+          <div class="comes-with">
+            <figure><div class="comes-with__tile"><img src="assets/img/charger.webp" width="800" height="801" alt="NEO Charger" loading="lazy"></div><figcaption>Charger</figcaption></figure>
+            <figure><div class="comes-with__tile"><img src="assets/img/lint-roller.webp" width="800" height="801" alt="NEO lint roller" loading="lazy"></div><figcaption>Lint Roller</figcaption></figure>
+            <figure><div class="comes-with__tile"><img class="is-contain" src="assets/img/case.webp" width="800" height="995" alt="NEO case" loading="lazy"></div><figcaption>Case</figcaption></figure>
+          </div>
+        </section>
+      </div>
+    </div>
+  </dialog>
+
+  <script src="main.js" defer></script>
+</body>
+</html>

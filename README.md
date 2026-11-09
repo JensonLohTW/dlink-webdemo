@@ -25,7 +25,9 @@ pnpm preview   # 預覽正式版本
 | `/` | 簡報主頁：會前說明用，串起下面三個部分（現行規劃、UI/UX 效果、建議架構） |
 | `/robotics` | D-Link Robotics 企業官網（單頁，含品牌、技術、產品、新聞、支援） |
 | `/robotics/news/:slug` | 新聞內頁 |
-| `/website-clone/index.html` | UI/UX 效果示範：`Website-Clone/` 的靜態頁，由 `vite/website-clone.ts` 掛載，不需修改原檔 |
+| `/website-clone/index.html` | UI/UX 效果示範（Unitree 風格）：`Website-Clone/` 的靜態頁，由 `vite/website-clone.ts` 掛載，不需修改原檔 |
+| `/website-clone2/index.html` | UI/UX 效果示範（Figure 風格）：`Website-Clone2/` 的靜態頁，同樣由 `vite/website-clone.ts` 掛載 |
+| `/website-clone3/index.html` | UI/UX 效果示範（1X 風格）：`Website-Clone3/` 的靜態頁，同樣由 `vite/website-clone.ts` 掛載 |
 | `/muru` | MuRu 產品官網首頁（繁中 / EN / 日） |
 | `/muru/growing-together` | 成長軌跡 |
 | `/muru/life-with-muru` | 陪伴特色 |

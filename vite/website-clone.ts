@@ -3,13 +3,20 @@ import { extname, join, resolve, sep } from 'node:path'
 import type { Plugin } from 'vite'
 
 /**
- * Serves the static Website-Clone prototype at /website-clone/ without touching its files,
- * and copies it into dist/ on build. A "back to the talk" link is injected into its HTML so
- * the speaker can always return to the hub.
+ * Serves the static clone prototypes without touching their files, and copies them into dist/
+ * on build. A "back to the talk" link is injected into their HTML so the speaker can always
+ * return to the hub.
+ *
+ *   /website-clone/   <- Website-Clone/   (Unitree style)
+ *   /website-clone2/  <- Website-Clone2/  (Figure style)
+ *   /website-clone3/  <- Website-Clone3/  (1X style)
  */
 
-const MOUNT = 'website-clone'
-const SOURCE_DIR = 'Website-Clone'
+const CLONES = [
+  { mount: 'website-clone', dir: 'Website-Clone' },
+  { mount: 'website-clone2', dir: 'Website-Clone2' },
+  { mount: 'website-clone3', dir: 'Website-Clone3' },
+]
 const SKIP = new Set(['DESIGN-HANDOFF.md', 'DESIGN-MANIFEST.json', '.claude'])
 
 const MIME: Record<string, string> = {
@@ -38,7 +45,6 @@ export function websiteClone(): Plugin {
   let root = ''
   let base = '/'
   let outDir = ''
-  const source = () => resolve(root, SOURCE_DIR)
 
   return {
     name: 'website-clone',
@@ -48,63 +54,67 @@ export function websiteClone(): Plugin {
       outDir = resolve(config.root, config.build.outDir)
     },
     configureServer(server) {
-      server.middlewares.use(`/${MOUNT}`, (req, res, next) => {
-        const dir = source()
-        if (!existsSync(dir)) return next()
+      for (const { mount, dir: sourceDir } of CLONES) {
+        server.middlewares.use(`/${mount}`, (req, res, next) => {
+          const dir = resolve(root, sourceDir)
+          if (!existsSync(dir)) return next()
 
-        let pathname = '/'
-        try {
-          pathname = decodeURIComponent((req.url ?? '/').split('?')[0])
-        } catch {
-          return next()
-        }
+          let pathname = '/'
+          try {
+            pathname = decodeURIComponent((req.url ?? '/').split('?')[0])
+          } catch {
+            return next()
+          }
 
-        let file = resolve(dir, `.${pathname}`)
-        if (file !== dir && !file.startsWith(dir + sep)) return next()
-        if (existsSync(file) && statSync(file).isDirectory()) file = join(file, 'index.html')
-        if (!existsSync(file) || !statSync(file).isFile()) return next()
+          let file = resolve(dir, `.${pathname}`)
+          if (file !== dir && !file.startsWith(dir + sep)) return next()
+          if (existsSync(file) && statSync(file).isDirectory()) file = join(file, 'index.html')
+          if (!existsSync(file) || !statSync(file).isFile()) return next()
 
-        const type = MIME[extname(file).toLowerCase()] ?? 'application/octet-stream'
-        res.setHeader('Content-Type', type)
+          const type = MIME[extname(file).toLowerCase()] ?? 'application/octet-stream'
+          res.setHeader('Content-Type', type)
 
-        if (type.startsWith('text/html')) {
-          res.setHeader('Cache-Control', 'no-cache')
-          res.end(inject(readFileSync(file, 'utf8'), base))
-          return
-        }
-
-        const { size } = statSync(file)
-        res.setHeader('Accept-Ranges', 'bytes')
-        const range = /^bytes=(\d*)-(\d*)$/.exec(req.headers.range ?? '')
-        if (range) {
-          const start = range[1] ? Number(range[1]) : Math.max(size - Number(range[2]), 0)
-          const end = range[1] && range[2] ? Math.min(Number(range[2]), size - 1) : size - 1
-          if (start > end || start >= size) {
-            res.statusCode = 416
-            res.setHeader('Content-Range', `bytes */${size}`)
-            res.end()
+          if (type.startsWith('text/html')) {
+            res.setHeader('Cache-Control', 'no-cache')
+            res.end(inject(readFileSync(file, 'utf8'), base))
             return
           }
-          res.statusCode = 206
-          res.setHeader('Content-Range', `bytes ${start}-${end}/${size}`)
-          res.setHeader('Content-Length', end - start + 1)
-          createReadStream(file, { start, end }).pipe(res)
-          return
-        }
-        res.setHeader('Content-Length', size)
-        createReadStream(file).pipe(res)
-      })
+
+          const { size } = statSync(file)
+          res.setHeader('Accept-Ranges', 'bytes')
+          const range = /^bytes=(\d*)-(\d*)$/.exec(req.headers.range ?? '')
+          if (range) {
+            const start = range[1] ? Number(range[1]) : Math.max(size - Number(range[2]), 0)
+            const end = range[1] && range[2] ? Math.min(Number(range[2]), size - 1) : size - 1
+            if (start > end || start >= size) {
+              res.statusCode = 416
+              res.setHeader('Content-Range', `bytes */${size}`)
+              res.end()
+              return
+            }
+            res.statusCode = 206
+            res.setHeader('Content-Range', `bytes ${start}-${end}/${size}`)
+            res.setHeader('Content-Length', end - start + 1)
+            createReadStream(file, { start, end }).pipe(res)
+            return
+          }
+          res.setHeader('Content-Length', size)
+          createReadStream(file).pipe(res)
+        })
+      }
     },
     closeBundle() {
-      const dir = source()
-      if (!existsSync(dir)) {
-        this.warn(`${SOURCE_DIR}/ not found, so dist/ has no ${MOUNT}/ page.`)
-        return
+      for (const { mount, dir: sourceDir } of CLONES) {
+        const dir = resolve(root, sourceDir)
+        if (!existsSync(dir)) {
+          this.warn(`${sourceDir}/ not found, so dist/ has no ${mount}/ page.`)
+          continue
+        }
+        const target = join(outDir, mount)
+        cpSync(dir, target, { recursive: true, filter: (path) => !SKIP.has(path.split(sep).pop() ?? '') })
+        const html = join(target, 'index.html')
+        writeFileSync(html, inject(readFileSync(html, 'utf8'), base))
       }
-      const target = join(outDir, MOUNT)
-      cpSync(dir, target, { recursive: true, filter: (path) => !SKIP.has(path.split(sep).pop() ?? '') })
-      const html = join(target, 'index.html')
-      writeFileSync(html, inject(readFileSync(html, 'utf8'), base))
     },
   }
 }

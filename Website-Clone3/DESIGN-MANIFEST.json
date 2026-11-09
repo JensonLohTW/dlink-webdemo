@@ -1,0 +1,311 @@
+{
+  "schema": "open-design.design-manifest.v1",
+  "title": "b27f35c4-a693-462c-840d-09f7345e829d",
+  "entryFile": "index.html",
+  "sourceFiles": {
+    "all": [
+      "assets/credits.json",
+      "assets/fonts/geist-latin-ext.woff2",
+      "assets/fonts/geist-latin.woff2",
+      "assets/icons/dlink-robotics-logo.svg",
+      "assets/icons/audio-intelligence.svg",
+      "assets/icons/body-language.svg",
+      "assets/icons/boom-box.svg",
+      "assets/icons/comfortable.svg",
+      "assets/icons/contextual.svg",
+      "assets/icons/ear-rings.svg",
+      "assets/icons/fully-mobile.svg",
+      "assets/icons/fun.svg",
+      "assets/icons/gentle.svg",
+      "assets/icons/helpful-intelligence.svg",
+      "assets/icons/helping-hand.svg",
+      "assets/icons/light.svg",
+      "assets/icons/memory.svg",
+      "assets/icons/pinch-proof.svg",
+      "assets/icons/quiet.svg",
+      "assets/icons/reclaim-time.svg",
+      "assets/icons/remote-control.svg",
+      "assets/icons/self-charge.svg",
+      "assets/icons/smart.svg",
+      "assets/icons/soft.svg",
+      "assets/icons/visual-intelligence.svg",
+      "assets/icons/washable.svg",
+      "assets/img/case.webp",
+      "assets/img/charger.webp",
+      "assets/img/design-ear-ring.webp",
+      "assets/img/design-gentle.webp",
+      "assets/img/design-knit-suit.webp",
+      "assets/img/design-soft-body.webp",
+      "assets/img/design-tendon.webp",
+      "assets/img/hero-mobile.webp",
+      "assets/img/hero.webp",
+      "assets/img/lint-roller.webp",
+      "assets/img/neo-back.webp",
+      "assets/img/spec-llm.webp",
+      "assets/img/spec-mobile-app.webp",
+      "assets/img/spec-redwood.webp",
+      "assets/img/spec-voice.webp",
+      "assets/video/carousel-cozy.mp4",
+      "assets/video/carousel-cozy.webp",
+      "assets/video/carousel-ear-ring.mp4",
+      "assets/video/carousel-gentle.mp4",
+      "assets/video/carousel-tendon.mp4",
+      "assets/video/companion.mp4",
+      "assets/video/companion.webp",
+      "assets/video/design.mp4",
+      "assets/video/design.webp",
+      "assets/video/expert-bathroom.mp4",
+      "assets/video/expert-bathroom.webp",
+      "assets/video/expert-bedroom.mp4",
+      "assets/video/expert-bedroom.webp",
+      "assets/video/expert-entryway.mp4",
+      "assets/video/expert-entryway.webp",
+      "assets/video/expert-kitchen.mp4",
+      "assets/video/expert-kitchen.webp",
+      "assets/video/expert-laundry.mp4",
+      "assets/video/expert-laundry.webp",
+      "assets/video/expert-living-room.mp4",
+      "assets/video/expert-living-room.webp",
+      "assets/video/intelligence.mp4",
+      "assets/video/intelligence.webp",
+      "assets/video/transform.mp4",
+      "assets/video/transform.webp",
+      "assets/video/utility.mp4",
+      "assets/video/utility.webp",
+      "index.html",
+      "main.js",
+      "styles.css"
+    ],
+    "html": [
+      "index.html"
+    ],
+    "css": [
+      "styles.css"
+    ],
+    "scriptsAndComponents": [
+      "main.js"
+    ],
+    "assets": [
+      "assets/credits.json",
+      "assets/fonts/geist-latin-ext.woff2",
+      "assets/fonts/geist-latin.woff2",
+      "assets/icons/dlink-robotics-logo.svg",
+      "assets/icons/audio-intelligence.svg",
+      "assets/icons/body-language.svg",
+      "assets/icons/boom-box.svg",
+      "assets/icons/comfortable.svg",
+      "assets/icons/contextual.svg",
+      "assets/icons/ear-rings.svg",
+      "assets/icons/fully-mobile.svg",
+      "assets/icons/fun.svg",
+      "assets/icons/gentle.svg",
+      "assets/icons/helpful-intelligence.svg",
+      "assets/icons/helping-hand.svg",
+      "assets/icons/light.svg",
+      "assets/icons/memory.svg",
+      "assets/icons/pinch-proof.svg",
+      "assets/icons/quiet.svg",
+      "assets/icons/reclaim-time.svg",
+      "assets/icons/remote-control.svg",
+      "assets/icons/self-charge.svg",
+      "assets/icons/smart.svg",
+      "assets/icons/soft.svg",
+      "assets/icons/visual-intelligence.svg",
+      "assets/icons/washable.svg",
+      "assets/img/case.webp",
+      "assets/img/charger.webp",
+      "assets/img/design-ear-ring.webp",
+      "assets/img/design-gentle.webp",
+      "assets/img/design-knit-suit.webp",
+      "assets/img/design-soft-body.webp",
+      "assets/img/design-tendon.webp",
+      "assets/img/hero-mobile.webp",
+      "assets/img/hero.webp",
+      "assets/img/lint-roller.webp",
+      "assets/img/neo-back.webp",
+      "assets/img/spec-llm.webp",
+      "assets/img/spec-mobile-app.webp",
+      "assets/img/spec-redwood.webp",
+      "assets/img/spec-voice.webp",
+      "assets/video/carousel-cozy.mp4",
+      "assets/video/carousel-cozy.webp",
+      "assets/video/carousel-ear-ring.mp4",
+      "assets/video/carousel-gentle.mp4",
+      "assets/video/carousel-tendon.mp4",
+      "assets/video/companion.mp4",
+      "assets/video/companion.webp",
+      "assets/video/design.mp4",
+      "assets/video/design.webp",
+      "assets/video/expert-bathroom.mp4",
+      "assets/video/expert-bathroom.webp",
+      "assets/video/expert-bedroom.mp4",
+      "assets/video/expert-bedroom.webp",
+      "assets/video/expert-entryway.mp4",
+      "assets/video/expert-entryway.webp",
+      "assets/video/expert-kitchen.mp4",
+      "assets/video/expert-kitchen.webp",
+      "assets/video/expert-laundry.mp4",
+      "assets/video/expert-laundry.webp",
+      "assets/video/expert-living-room.mp4",
+      "assets/video/expert-living-room.webp",
+      "assets/video/intelligence.mp4",
+      "assets/video/intelligence.webp",
+      "assets/video/transform.mp4",
+      "assets/video/transform.webp",
+      "assets/video/utility.mp4",
+      "assets/video/utility.webp"
+    ]
+  },
+  "screens": [
+    {
+      "file": "index.html",
+      "role": "screen",
+      "implementationNote": "Preserve visual hierarchy, responsive behavior, and interactive states from this screen."
+    }
+  ],
+  "screenFilePolicy": {
+    "mode": "screen-file-first",
+    "entryFileRole": "primary-screen",
+    "rules": [
+      "Each distinct user-facing screen or surface must be delivered and implemented as its own file/route.",
+      "If a landing page is present or requested, keep it in landing.html and do not merge it into the product app screen.",
+      "When multiple HTML screens exist, index.html is a launcher/overview only; it must not be treated as the combined final UI.",
+      "Keep product app screens, landing pages, platform screens, and OS widget surfaces separate in production code."
+    ]
+  },
+  "appModules": [
+    "Identify domain-specific in-app modules from the exported UI; do not reduce them to generic cards.",
+    "For each major module, implement purpose, default/loading/empty/error/success states, and responsive behavior.",
+    "Keep app modules separate from OS home-screen widgets in the production component model."
+  ],
+  "osWidgets": [
+    "If the export includes home-screen, lock-screen, Live Activity, tablet glance, or Android widget surfaces, implement them as platform quick-access surfaces outside the app UI.",
+    "If none are present, do not invent OS widgets unless the product requirements request them."
+  ],
+  "landingPage": {
+    "detection": "Inspect files and screen names for a marketing/landing page surface. If present, keep it separate from product app screens.",
+    "requiredSections": [
+      "hero",
+      "value props",
+      "product proof/screenshots",
+      "feature proof",
+      "CTA"
+    ]
+  },
+  "tokens": {
+    "source": [
+      "styles.css"
+    ],
+    "required": [
+      "background",
+      "surface",
+      "foreground",
+      "muted text",
+      "border",
+      "accent",
+      "radius",
+      "shadow",
+      "spacing",
+      "type scale",
+      "motion"
+    ],
+    "note": "Extract/freeze tokens before framework implementation so coding tools do not substitute default theme colors or typography."
+  },
+  "interactions": {
+    "source": [
+      "main.js"
+    ],
+    "requiredStates": [
+      "default",
+      "hover",
+      "focus",
+      "active",
+      "disabled",
+      "loading",
+      "empty",
+      "error",
+      "success"
+    ],
+    "requiredBehaviors": [
+      "forms/validation where present",
+      "tabs/filters where present",
+      "dialogs/sheets/drawers where present",
+      "copy/generate/share actions where present",
+      "player or quick controls where present"
+    ],
+    "note": "If the prototype is static, derive missing behavior from visible controls and document it before coding."
+  },
+  "responsiveViewports": [
+    {
+      "name": "mobile-compact",
+      "width": 360,
+      "height": 800,
+      "category": "mobile",
+      "mustAvoidHorizontalScroll": true
+    },
+    {
+      "name": "mobile-standard",
+      "width": 390,
+      "height": 844,
+      "category": "mobile",
+      "mustAvoidHorizontalScroll": true
+    },
+    {
+      "name": "mobile-large",
+      "width": 430,
+      "height": 932,
+      "category": "mobile",
+      "mustAvoidHorizontalScroll": true
+    },
+    {
+      "name": "foldable-small-tablet",
+      "width": 600,
+      "height": 960,
+      "category": "foldable-tablet",
+      "mustAvoidHorizontalScroll": true
+    },
+    {
+      "name": "tablet-portrait",
+      "width": 820,
+      "height": 1180,
+      "category": "tablet",
+      "mustAvoidHorizontalScroll": true
+    },
+    {
+      "name": "tablet-landscape",
+      "width": 1024,
+      "height": 768,
+      "category": "tablet",
+      "mustAvoidHorizontalScroll": true
+    },
+    {
+      "name": "laptop",
+      "width": 1366,
+      "height": 768,
+      "category": "desktop",
+      "mustAvoidHorizontalScroll": true
+    },
+    {
+      "name": "desktop",
+      "width": 1440,
+      "height": 900,
+      "category": "desktop",
+      "mustAvoidHorizontalScroll": true
+    },
+    {
+      "name": "wide",
+      "width": 1920,
+      "height": 1080,
+      "category": "wide",
+      "mustAvoidHorizontalScroll": true
+    }
+  ],
+  "implementationChecklist": [
+    "Open entryFile first and map screens, modules, tokens, and interactions.",
+    "Extract tokens before writing framework components.",
+    "Implement app-specific modules with real states instead of generic card grids.",
+    "Preserve or rebuild JS interactions for meaningful UX actions.",
+    "Validate screenshots at desktop/tablet/mobile viewports with no horizontal overflow.",
+    "Keep landing pages, in-app modules, and OS widgets as separate implementation surfaces."
+  ]
+}

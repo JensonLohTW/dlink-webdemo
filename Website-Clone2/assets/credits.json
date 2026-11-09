@@ -1,0 +1,14 @@
+{
+  "note": "Assets localized from the Figure AI homepage (https://www.figure.ai/) for a non-commercial study recreation. All Figure videos, imagery and marks remain the property of Figure AI, Inc.",
+  "assets": [
+    { "file": "assets/video/homepage-01.mp4", "use": "Section 1 background (desktop)", "source": "https://videos.ctfassets.net/qx5k8y1u9drj/2fyl7BnOtv5uyHkmWmnrQv/f9d9a70af813f0099d4a649b6748ec1a/homepage-01.mp4", "owner": "Figure AI, Inc.", "license": "All rights reserved" },
+    { "file": "assets/video/homepage-01-mobile.mp4", "use": "Section 1 background (mobile)", "source": "https://videos.ctfassets.net/qx5k8y1u9drj/2fVvlCNzoJ4KbpcvLkXodq/34459d6f89a26f547929aed8a3f89007/homepage-01-mobile.mp4", "owner": "Figure AI, Inc.", "license": "All rights reserved" },
+    { "file": "assets/video/homepage-02.mp4", "use": "Section 2 background (desktop)", "source": "https://videos.ctfassets.net/qx5k8y1u9drj/4C1XYI0dgotwsWGFYbw6g0/c48f7b8f97ce88242148751eb3a81180/homepage-02.mp4", "owner": "Figure AI, Inc.", "license": "All rights reserved" },
+    { "file": "assets/video/homepage-02-mobile.mp4", "use": "Section 2 background (mobile)", "source": "https://videos.ctfassets.net/qx5k8y1u9drj/6Jj7O2YwcJL735n94hQ02l/7171154c3f9b7d21f4f7f1c773bd381b/homepage-02-mobile.mp4", "owner": "Figure AI, Inc.", "license": "All rights reserved" },
+    { "file": "assets/video/homepage-03.mp4", "use": "Section 3 background", "source": "https://videos.ctfassets.net/qx5k8y1u9drj/5G8xXfsZV0lbr351WLUwPd/a787f09545493071364ebfdd908349a4/homepage-03.mp4", "owner": "Figure AI, Inc.", "license": "All rights reserved" },
+    { "file": "assets/images/footer-background.webp", "use": "Footer background (desktop, 1920x3017)", "source": "https://images.ctfassets.net/qx5k8y1u9drj/VVC0MrP2b4i0eC7jVaNyc/fb1b20a57c15495fc4ec0d37a7e8197c/extended-footer-background-v2.jpg", "owner": "Figure AI, Inc.", "license": "All rights reserved" },
+    { "file": "assets/images/footer-background-mobile.webp", "use": "Footer background (mobile, 828x1301)", "source": "https://images.ctfassets.net/qx5k8y1u9drj/VVC0MrP2b4i0eC7jVaNyc/fb1b20a57c15495fc4ec0d37a7e8197c/extended-footer-background-v2.jpg", "owner": "Figure AI, Inc.", "license": "All rights reserved" },
+    { "file": "assets/images/dlink-robotics-logo.svg", "use": "Footer wordmark (461x56)", "source": "original D-Link Robotics wordmark", "owner": "D-Link Robotics", "license": "Trademark, all rights reserved" },
+    { "file": "assets/fonts/space-grotesk-latin.woff2", "use": "Display face substituting the licensed PP Neue Machina", "source": "https://fonts.google.com/specimen/Space+Grotesk", "author": "Florian Karsten", "license": "SIL Open Font License 1.1" }
+  ]
+}

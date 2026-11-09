@@ -3,9 +3,14 @@
  * 標示為「建議」的項目是我們的提案草稿，會前請再確認。
  */
 
-/** Website-Clone 是靜態頁，由 vite/website-clone.ts 掛在 /website-clone/ 之下。 */
-export const cloneUrl = (hash = '') => `${import.meta.env.BASE_URL}website-clone/index.html${hash}`
-export const cloneAsset = (path: string) => `${import.meta.env.BASE_URL}website-clone/assets/${path}`
+/**
+ * 三個風格示範頁都是靜態頁，由 vite/website-clone.ts 掛載：
+ * Website-Clone（Unitree 風格）在 /website-clone/，Website-Clone2（Figure 風格）在 /website-clone2/，
+ * Website-Clone3（1X 風格）在 /website-clone3/。
+ */
+export type CloneMount = 'website-clone' | 'website-clone2' | 'website-clone3'
+export const cloneUrl = (mount: CloneMount, hash = '') => `${import.meta.env.BASE_URL}${mount}/index.html${hash}`
+export const cloneAsset = (mount: CloneMount, path: string) => `${import.meta.env.BASE_URL}${mount}/assets/${path}`
 
 export const parts = [
   { id: 'current', label: '現行規劃的呈現效果' },
@@ -52,50 +57,166 @@ export const current = {
   },
 }
 
+export interface EffectItem {
+  name: string
+  how: string
+  useFor: string
+  hash: string
+  hint?: string
+}
+
+export interface EffectStyle {
+  id: 'unitree' | 'figure' | 'onex'
+  label: string
+  mount: CloneMount
+  /** 左側圖塊：Unitree 用產品圖，Figure 用影片首格，1X 用首屏大圖。 */
+  tile: { kind: 'image'; src: string; alt: string; cover?: boolean } | { kind: 'video'; src: string }
+  tileCaption: string
+  cta: string
+  items: EffectItem[]
+}
+
 export const effects = {
   title: '我們建議的 UI/UX 效果',
-  body: '參考站是 Unitree Go2 產品頁的復刻原型。每一列都會直接跳到那段效果，右邊是我們建議套用的位置。',
-  tileCaption: '參考站：Unitree Go2 產品頁（購物車、搜尋等為示意，不會真的運作）',
-  cta: '開啟完整示範頁',
-  items: [
+  body: '我們做了三種風格的示範頁，品牌都已換成 D-Link Robotics。先選一種風格，再點下面任何一列，會直接跳到那段效果，右邊是我們建議套用的位置。',
+  styles: [
     {
-      name: '首屏影片與進場動畫',
-      how: '標題逐項浮現，往下捲時整個首屏淡出。',
-      useFor: 'MuRu 首頁：讓 OLED 表情成為首屏主角',
-      hash: '#hero-section',
+      id: 'unitree',
+      label: 'Unitree 風格',
+      mount: 'website-clone',
+      tile: { kind: 'image', src: 'img/new_go2.webp', alt: '參考站上的四足機器人 Unitree Go2。' },
+      tileCaption: '參考站：Unitree Go2 產品頁（購物車、搜尋等為示意，不會真的運作）',
+      cta: '開啟 Unitree 風格示範頁',
+      items: [
+        {
+          name: '首屏影片與進場動畫',
+          how: '標題逐項浮現，往下捲時整個首屏淡出。',
+          useFor: 'MuRu 首頁：讓 OLED 表情成為首屏主角',
+          hash: '#hero-section',
+        },
+        {
+          name: '捲動驅動的影格序列',
+          how: '往下捲，產品在畫面裡「動」起來，規格說明依序浮現。',
+          useFor: 'MuRu 智慧設計頁：一邊捲、一邊看牠轉頭與眨眼',
+          hash: '#new-section',
+        },
+        {
+          name: '規格表逐列浮現',
+          how: '技術規格一列一列進場，版型固定、容易套用。',
+          useFor: '每個產品頁共用同一種規格表',
+          hash: '#tech-title',
+        },
+        {
+          name: '擴充配件卡片',
+          how: '配件與選購項目依序展開。',
+          useFor: 'MuRu 方案生態：方案與擴充服務',
+          hash: '#cards-title',
+        },
+        {
+          name: '3D 翻頁式收尾',
+          how: '頁尾用一個有動態的行動呼籲收束。',
+          useFor: '支援與聯絡：保固登錄、商務合作',
+          hash: '#book-title',
+        },
+        {
+          name: '依產品類別展開的導覽',
+          how: '頁首點一個類別，展開該類別下的產品。',
+          useFor: '產品變多之後的企業官網選單',
+          hash: '',
+          hint: '到頁首點「quadruped」或「humanoid」',
+        },
+      ],
     },
     {
-      name: '捲動驅動的影格序列',
-      how: '往下捲，產品在畫面裡「動」起來，規格說明依序浮現。',
-      useFor: 'MuRu 智慧設計頁：一邊捲、一邊看牠轉頭與眨眼',
-      hash: '#new-section',
+      id: 'figure',
+      label: 'Figure 風格',
+      mount: 'website-clone2',
+      tile: { kind: 'video', src: 'video/homepage-02.mp4' },
+      tileCaption: '參考站：Figure 官網首頁（影片為參考站素材，僅作示意；表單不會真的送出）',
+      cta: '開啟 Figure 風格示範頁',
+      items: [
+        {
+          name: '全幅影片首屏',
+          how: '整個畫面就是一段影片，標題與行動呼籲直接疊在上面。',
+          useFor: '企業官網首屏：用一段品牌影片取代靜態橫幅',
+          hash: '#top',
+        },
+        {
+          name: '逐段換片的主張',
+          how: '往下捲，每一屏換一支影片與一句主張，進入畫面才播放。',
+          useFor: '企業官網：品牌精神、核心技術各佔一屏',
+          hash: '#intelligence',
+        },
+        {
+          name: '隨捲動收放的導覽列',
+          how: '往下捲時導覽列退場，一往上捲就回來；手機改為滿版選單。',
+          useFor: '全站導覽：內容優先，需要時才出現',
+          hash: '',
+          hint: '在示範頁往下捲一段，再往回捲',
+        },
+        {
+          name: '延伸式頁尾',
+          how: '頁尾前先接一段大背景的行動呼籲，再接聯絡資訊與連結。',
+          useFor: '支援與聯絡：商務合作、徵才入口',
+          hash: '#footerextension',
+        },
+        {
+          name: '訂閱與聯絡視窗',
+          how: '標籤會上浮的輸入框，以及滿版的聯絡表單視窗。',
+          useFor: '商務合作與新聞訂閱',
+          hash: '#footer',
+          hint: '到頁尾點「Contact Us」',
+        },
+      ],
     },
     {
-      name: '規格表逐列浮現',
-      how: '技術規格一列一列進場，版型固定、容易套用。',
-      useFor: '每個產品頁共用同一種規格表',
-      hash: '#tech-title',
+      id: 'onex',
+      label: '1X 風格',
+      mount: 'website-clone3',
+      tile: { kind: 'image', src: 'img/hero.webp', alt: '1X 風格示範頁的首屏：機器人與長者在家中。', cover: true },
+      tileCaption: '參考站：1X NEO 產品頁（影片與圖片為參考站素材，僅作示意；訂購不會真的運作）',
+      cta: '開啟 1X 風格示範頁',
+      items: [
+        {
+          name: '滿版首屏與收合頁首',
+          how: '首屏是一張滿版大圖，往下捲後頁首收起，換成產品列滑入。',
+          useFor: 'MuRu 首頁與各產品頁的首屏',
+          hash: '#top',
+        },
+        {
+          name: '跟著捲動的產品列',
+          how: '產品列標示目前讀到哪一段，點一下就跳到該段。',
+          useFor: '產品頁：一頁看完外型、陪伴、智慧各面向',
+          hash: '#utility',
+        },
+        {
+          name: '情境切換的影片',
+          how: '左右切換不同生活情境，影片與標題跟著交叉淡入。',
+          useFor: 'MuRu 陪伴特色：早晨、居家、睡前等場景',
+          hash: '#expert-title',
+        },
+        {
+          name: '環形輪播',
+          how: '設計細節卡片循環輪播，中間那張放大，可拖曳。',
+          useFor: 'MuRu 智慧設計頁：外型、材質、表情細節',
+          hash: '#design-title',
+        },
+        {
+          name: '對話泡泡',
+          how: '陪伴段落裡的對話泡泡依序浮現。',
+          useFor: 'MuRu 陪伴特色：互動對話的示意',
+          hash: '#companion',
+        },
+        {
+          name: '常見問題與規格視窗',
+          how: '點「FAQ」或「Product」開啟滿版視窗，問答可展開，規格分類整理。',
+          useFor: '支援與服務：常見問題、產品規格',
+          hash: '',
+          hint: '往下捲過首屏後，點頁首的「FAQ」或「Product」',
+        },
+      ],
     },
-    {
-      name: '擴充配件卡片',
-      how: '配件與選購項目依序展開。',
-      useFor: 'MuRu 方案生態：方案與擴充服務',
-      hash: '#cards-title',
-    },
-    {
-      name: '3D 翻頁式收尾',
-      how: '頁尾用一個有動態的行動呼籲收束。',
-      useFor: '支援與聯絡：保固登錄、商務合作',
-      hash: '#book-title',
-    },
-    {
-      name: '依產品類別展開的導覽',
-      how: '頁首點一個類別，展開該類別下的產品。',
-      useFor: '產品變多之後的企業官網選單',
-      hash: '',
-      hint: '到頁首點「quadruped」或「humanoid」',
-    },
-  ] as { name: string; how: string; useFor: string; hash: string; hint?: string }[],
+  ] as EffectStyle[],
 }
 
 export type Status = 'demo' | 'stub' | 'proposed'
